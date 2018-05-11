@@ -6,6 +6,86 @@
     	registerEventHandlers();
     });
     
+	function parseGpxXmlToData(file) {
+		console.log('inside parseGpxXmlToData');
+		file.readAsText(function(data) { 
+			try {
+				var xmlDoc = jQuery.parseXML(data); 
+				console.log("xml data loaded"); 
+				
+	             var xml_parser = new GPXFileParser(xmlDoc);
+	             xml_parser.addTrackpoints();         // Add the trackpoints
+
+	             var point_array = xml_parser.getPointArray();
+	             console.log('Point array');
+	             console.log(JSON.stringify(point_array));
+
+	             var distance_array = xml_parser.getDistanceArray();
+	             console.log('Distance array');
+	             console.log(distance_array);
+	             
+	             var ele_array = xml_parser.getEleArray();
+	             console.log('Ele Array');
+	             console.log(ele_array);
+
+	             var map_info = {points: point_array, distances: distance_array, elevations: ele_array};
+	             
+	             console.log("map_info");
+	             console.log(JSON.stringify(map_info));
+	             
+	             storeFilelistAndRedirect(file.fullPath);
+			}
+			catch (err) {
+				console.log("Error in parseXmlToData: ", err.toString());
+			}
+		});
+		
+		
+	};
+    
+    function parseXMLfile(filename) {
+    	
+    	console.log('inside parseXMLfile');
+    	tizen.filesystem.resolve(
+				filename,
+				parseGpxXmlToData, 
+				function(e) {console.log("Error" + e.message);},
+				"rw"
+			 );	
+    }
+    
+    function storeFilelistAndRedirect(fileName) {
+    
+    	var gpxFilelist = localStorage.getItem("gpxFilelist");    			    	
+		var route_name = document.getElementById("route_name_input").value;
+    	var parsedFileList;
+    	
+    	document.getElementById("save_file_btn").innerHTML = "File Added";
+    	
+    	if (gpxFilelist != null)
+    		parsedFileList = JSON.parse(gpxFilelist);
+    	else {
+			parsedFileList = [];
+		}
+    		
+    	parsedFileList.push({file:route_name, filename:fileName, status:"A"});
+    	    
+    	localStorage.setItem("gpxFilelist", JSON.stringify(parsedFileList));
+    		
+    	localStorage.setItem("currentGPXID", parsedFileList.length - 1);
+    	localStorage.setItem("currentGPXName", route_name);
+    	localStorage.setItem("currentGPXFilename", fileName);  	
+    	
+    	document.getElementById("download_popup_content").innerHTML = 'Download Completed';
+    	
+    	setTimeout(function(){ 
+    		tau.closePopup();},	 // Alert Popup Toast
+    		1000);
+    	
+		localStorage.setItem("firstPass", "N");
+    	window.location.href = 'index.html';
+    	
+    }
     
     function registerEventHandlers() {
 
@@ -64,30 +144,15 @@
     				  },
     				  oncompleted: function(id, fileName) {
     				    console.log('Completed with id: ' + id + ', file name: ' + fileName);
-    			    	document.getElementById("save_file_btn").innerHTML = "File Added";
-    			    	
-    			    	if (gpxFilelist != null)
-    			    		parsedFileList = JSON.parse(gpxFilelist);
-    			    	else {
-							parsedFileList = [];
-						}
-    			    		
-    			    	parsedFileList.push({file:route_name, filename:fileName, status:"A"});
-    			    	    
-    			    	localStorage.setItem("gpxFilelist", JSON.stringify(parsedFileList));
-    			    		
-    			    	localStorage.setItem("currentGPXID", parsedFileList.length - 1);
-    			    	localStorage.setItem("currentGPXName", route_name);
-    			    	localStorage.setItem("currentGPXFilename", fileName);  	
-    			    	
-    			    	document.getElementById("download_popup_content").innerHTML = 'Download Completed';
-    			    	
-    			    	setTimeout(function(){ 
-    			    		tau.closePopup();},	 // Alert Popup Toast
-    			    		1000);
-    			    	
-    					localStorage.setItem("firstPass", "N");
-    			    	window.location.href = 'index.html';
+    				    
+    				    // CODE FOR PARSING XML
+    				    
+    				    parseXMLfile(fileName);
+    				    
+    				    // END CODE FOR PARSING XML'
+    				    
+    				    //storeFilelistAndRedirect(fileName);
+    				    
     				  },
     				  onfailed: function(id, error) {
     				    console.log('Failed with id: ' + id + ', error name: ' + error.name);
