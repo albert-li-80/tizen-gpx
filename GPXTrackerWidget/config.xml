@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://yourdomain/GPXTrackerWidget" version="1.0.0" viewmodes="maximized">
+<widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://yourdomain/GPXTrackerWidget" version="1.0.1" viewmodes="maximized">
     <access origin="*" subdomains="true"></access>
     <tizen:app-widget id="e9hpC834zK.GPXTrackerWidget.GPXTrackerWidget" primary="true" max-instance="0">
         <tizen:widget-label>GPX Tracker</tizen:widget-label>
