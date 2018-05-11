@@ -1,0 +1,109 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#page-clock {
+	background-image: url("../image/widget_background.png");
+    position:relative;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    background-size: 100%;
+    overflow: hidden;
+    text-align: center;
+    color: #ffffff;
+}
+
+.city {
+    height: 48px;
+    margin-top: 38px;
+}
+
+#route-name {
+    font-size: 36px;
+    vertical-align: middle;
+}
+
+#info-type-1 {
+    height: 35px;
+    font-size: 28px;
+    color: rgb(166, 166, 166);
+}
+
+#info-type-2 {
+    height: 35px;
+    font-size: 28px;
+    color: rgb(166, 166, 166);
+}
+
+#elevation_info {
+    height: 35px;
+    font-size: 20px;
+    color: rgb(166, 166, 166);
+}
+
+#info {
+    height: 208px;
+    margin-top: 2px;
+}
+
+#elevation_profile_head {
+    height: 208px;
+    margin-top: 2px;
+}
+
+#elevation_profile {
+    height: 170px;
+    margin-top: 2px;
+}
+
+.update {
+    height: 50px;
+    margin-top: 2px;
+}
+
+#distance {
+    font-size: 58px;
+}
+
+#remaining {
+    font-size: 48px;
+}
+
+
+.unit {
+    font-size: 30px;
+}
+.date {
+    height: 32px;
+    margin-top: -8px;
+}
+
+#last-update {
+    font-size: 28px;
+    vertical-align: middle;
+}
+
+.charts--vertical {
+  position: fixed;
+  left: 50px;	
+  height: 208px;
+  width: 360px;
+  display: block;
+  text-align: center;
+}
+
+.cc {
+  font-size: 0;
+  padding: 0px 0px 0px 0px;
+  margin-left: -1.5px;
+  margin-right: -1.5px;
+  border-style: none;
+  display: inline-block;
+  background-color: white;
+  width: 2px;  
+}

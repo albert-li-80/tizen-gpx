@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<title>UI Components</title>
+	<link rel="stylesheet" href="lib/tau/wearable/theme/default/tau.min.css">
+	<link rel="stylesheet" media="all and (-tizen-geometric-shape: circle)" href="lib/tau/wearable/theme/default/tau.circle.min.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="ui-page ui-page-active">
+		<header class="ui-header">
+			<h2 class="ui-title">Add Route</h2>
+		</header>
+		<div class="ui-content">
+			<ul class="ui-listview">
+				<li class="li-has-multiline">
+					<a>
+						Route Name
+						<input id="route_name_input" type="text" value="HV to Central" class="ui-li-sub-text li-text-sub"></input>
+					</a>
+				</li>
+				 <li class="li-has-multiline">
+					<a>
+						GPX File URL
+						<input id="gpx_url_input" type="text" value="https://bit.ly/2HNjyT9" class="ui-li-sub-text li-text-sub"></input>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<footer class="ui-footer ui-bottom-button ui-fixed">
+			<button id="save_file_btn" class="ui-btn">Save File</button>
+		</footer>		
+	</div>
+	<div id="download_popup" class="ui-popup" data-enable-page-scroll="false">
+	    <div class="ui-popup-header">Downloading</div>
+	       	<div class="ui-content content-padding">
+   			   	<div class="ui-processing"></div>
+      			<div id="download_popup_content" class="ui-processing-text">
+      			</div>
+			</div>
+   		<div class="ui-processing ui-processing-full-size"></div>
+    </div>
+
+</body>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-2.0.0.min.js">\x3C/script>')</script>
+    <script type="text/javascript" src="lib/tau/wearable/js/tau.js"></script>
+	<script type="text/javascript" src="js/circle-helper.js"></script>
+	<script src="js/addfile.js"></script>
+</html>

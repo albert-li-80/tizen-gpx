@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" charset="utf-8"/>
+	<link rel="stylesheet" href="lib/tau/wearable/theme/default/tau.min.css">
+	<link rel="stylesheet" media="all and (-tizen-geometric-shape: circle)" href="lib/tau/wearable/theme/default/tau.circle.min.css">
+	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/customstyle.css"/>
+</head>
+
+<body>
+	<div id="map_main" class="ui-page ui-page-active" class="contents">
+		<div class="map" id="map_canvas"></div>
+		<div class="overlay" id="acquire_signal">Map Loading...<p><p><p></div>
+		<div class="settings_overlay" id="settings_button"> <img class="more_option_image" src="css/images/b_more_option.png"></div>
+	</div>
+		<!-- Circle Profile -->
+	<div id="moreoptionsPopupCircle" class="ui-popup">
+		<div id="selector" class="ui-selector">
+			<div id="gpx_route" class="ui-item add-gpx-icon" data-title="Route: Not Set"></div>
+			<div id="screen_on" class="ui-item screen-icon" data-title="Screen: Always On"></div>
+			<div id="location_on" class="ui-item currentpos-icon" data-title="Show Current Position: On"></div>
+			<div id="center_on" class="ui-item center-icon" data-title="Set Center to Current Location: On"></div>
+			<div id="follow_heading" class="ui-item orientation-icon" data-title="Map Orientation: North"></div>
+			<div id="draw_trace" class="ui-item trace-icon" data-title="Trace Current Route: On"></div>
+			<div id="show_distance" class="ui-item distance-icon" data-title="Show Distance from Route: On"></div>
+			<div id="off_track" class="ui-item offtrack-icon" data-title="Off Track Notification: Off"></div>
+			<div class="ui-item version-icon" data-title="Version 1.0.1 (Beta)"></div>
+		</div>
+	</div>	
+	<div id="sideBtnPopup" class="ui-popup">
+   		<div class="ui-popup-content">
+ 		     Are you sure to exit? Widget and off-track notification will be turned off.
+   		</div>
+   		<div class="ui-popup-footer ui-grid-col-2 ui-side-button">
+      		<button id="sideBtn-cancel" class="ui-btn btn-icon-cancel">Cancel</button>
+      		<button id="sideBtn-ok" class="ui-btn btn-icon-check">OK</button>
+   		</div>
+	</div>
+	<div id="loadFileErrorPopup" class="ui-popup">
+		<div class="ui-popup-header">Error</div>
+   		<div class="ui-popup-content">
+      		GPX Route File format incorrect. Choose a different file.
+   		</div>
+   		<div class="ui-popup-footer ui-bottom-button">
+      		<button id="dismissBtn" class="ui-btn">OK</button>
+   		</div>
+	</div>
+	<script>
+		/* Show Splash Screen */
+	
+		var splash = localStorage.getItem("firstPass");
+	
+		if ((splash == null) || (splash == '')) {
+			console.log("first pass");
+			document.getElementById("map_canvas").innerHTML = '<img src="icon.png" height="360" width="360"/>';
+		}
+		console.log("hello");
+		localStorage.setItem("firstPass", "");
+	</script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-2.0.0.min.js">\x3C/script>')</script>
+   	<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBTLN60rGwdpaNDrc6tOigjdA9NwUN4ZT0&v=3&libraries=geometry&language=en"></script>
+    <script src="js/geolib.js"></script> 
+    <script src="js/geolocation-marker.js"></script>  
+    <script src="js/GPXParser.js"></script>  
+    <script src="js/map.js"></script>
+    <script type="text/javascript" src="lib/tau/wearable/js/tau.min.js"></script>	
+</body>
+</html>
