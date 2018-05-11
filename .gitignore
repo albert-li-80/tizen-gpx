@@ -1,0 +1,11 @@
+*
+!.gitignore
+
+!/GPXTracker/js/*
+!/GPXTracker/*.html
+!/GPXTracker/config.xml
+
+!/GPXTrackerWidget/config.xml
+!/GPXTrackerWidget/widget/GPXTrackerWidget/css/*
+!/GPXTrackerWidget/widget/GPXTrackerWidget/js/*
+!/GPXTrackerWidget/widget/GPXTrackerWidget/*.html

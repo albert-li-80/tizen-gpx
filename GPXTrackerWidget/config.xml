@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://yourdomain/GPXTrackerWidget" version="1.0.0" viewmodes="maximized">
+    <access origin="*" subdomains="true"></access>
+    <tizen:app-widget id="e9hpC834zK.GPXTrackerWidget.GPXTrackerWidget" primary="true" max-instance="0">
+        <tizen:widget-label>GPX Tracker</tizen:widget-label>
+        <tizen:widget-content src="widget/GPXTrackerWidget/index.html">
+            <tizen:widget-size preview="widget/GPXTrackerWidget/preview.png">2x2</tizen:widget-size>
+        </tizen:widget-content>
+    </tizen:app-widget>
+    <tizen:application id="e9hpC834zK.GPXTrackerWidget" package="e9hpC834zK" required_version="2.3.2"/>
+    <content src="index.html"/>
+    <feature name="http://tizen.org/feature/screen.size.all"/>
+    <icon src="icon.png"/>
+    <name>GPXTrackerWidget</name>
+    <tizen:privilege name="http://tizen.org/privilege/application.info"/>
+    <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
+    <tizen:profile name="wearable"/>
+    <tizen:setting background-support="disable" encryption="disable" hwkey-event="enable"/>
+</widget>
