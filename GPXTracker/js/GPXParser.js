@@ -60,7 +60,7 @@ function GPXParser(xmlDoc, map){
 
 	    var pointElements = point.getElementsByTagName("html");
 	    if(pointElements.length > 0) {
-	        for(i = 0; i < pointElements.item(0).childNodes.length; i++) {
+	        for(var i = 0; i < pointElements.item(0).childNodes.length; i++) {
 	            html += pointElements.item(0).childNodes[i].nodeValue;
 	        }
 	    }
@@ -77,7 +77,7 @@ function GPXParser(xmlDoc, map){
 	        if(point.hasChildNodes) {
 	            var children = point.childNodes;
 	            var childrenlen = children.length;
-	            for(i = 0; i < childrenlen; i++) {
+	            for(var i = 0; i < childrenlen; i++) {
 	                // Ignore empty nodes
 	                if(children[i].nodeType != 1) continue;
 	                if(children[i].firstChild == null) continue;

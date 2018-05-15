@@ -70,7 +70,7 @@ function GPXFileParser(xmlDoc){
 
 	    var pointElements = point.getElementsByTagName("html");
 	    if(pointElements.length > 0) {
-	        for(i = 0; i < pointElements.item(0).childNodes.length; i++) {
+	        for(var i = 0; i < pointElements.item(0).childNodes.length; i++) {
 	            html += pointElements.item(0).childNodes[i].nodeValue;
 	        }
 	    }
@@ -79,7 +79,7 @@ function GPXFileParser(xmlDoc){
 	        html = "<b>" + this.translateName(point.nodeName) + "</b><br>";
 	        var attributes = point.attributes;
 	        var attrlen = attributes.length;
-	        for(i = 0; i < attrlen; i++) {
+	        for(var i = 0; i < attrlen; i++) {
 	            html += attributes.item(i).name + " = " +
 	                    attributes.item(i).nodeValue + "<br>";
 	        }
@@ -87,7 +87,7 @@ function GPXFileParser(xmlDoc){
 	        if(point.hasChildNodes) {
 	            var children = point.childNodes;
 	            var childrenlen = children.length;
-	            for(i = 0; i < childrenlen; i++) {
+	            for(var i = 0; i < childrenlen; i++) {
 	                // Ignore empty nodes
 	                if(children[i].nodeType != 1) continue;
 	                if(children[i].firstChild == null) continue;

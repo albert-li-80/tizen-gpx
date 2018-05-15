@@ -298,7 +298,7 @@
     
     function initializeMap()
     {
-    	var lastPosition = localStorage.getItem("lastKnownPosition");
+//    	var lastPosition = localStorage.getItem("lastKnownPosition");
     	var mapCenter;
     	
     	mapCenter = getLastPosition();
@@ -340,10 +340,8 @@
 
     function loadGPXTracker() {
     	
-    	var gpxFilelist = localStorage.getItem("gpxFilelist");
     	var currentGPXFilename = localStorage.getItem("currentGPXFilename");
     	var currentGPXID = localStorage.getItem("currentGPXID");
-    	var currentGPXFileFullpath = '';
     	var xmlDoc;
     	    	
     	console.log(currentGPXFilename);
