@@ -1,11 +1,25 @@
 *
 !.gitignore
+!/GPXTracker/
 
-!/GPXTracker/js/*
 !/GPXTracker/*.html
 !/GPXTracker/config.xml
+/GPXTracker/*
 
-!/GPXTrackerWidget/config.xml
-!/GPXTrackerWidget/widget/GPXTrackerWidget/css/*
-!/GPXTrackerWidget/widget/GPXTrackerWidget/js/*
-!/GPXTrackerWidget/widget/GPXTrackerWidget/*.html
+!/GPXTracker/js/
+!/GPXTracker/js/*
+
+!/GPXTracker/css/
+
+/GPXTracker/css/*
+!/GPXTracker/css/*.css
+
+!/GPXTracker/widget/
+!/GPXTracker/widget/*
+
+!/GPXTracker/widget/GPXTrackerWidget/
+/GPXTracker/widget/GPXTrackerWidget/*
+!/GPXTracker/widget/GPXTrackerWidget/*.html
+
+!/GPXTracker/widget/GPXTrackerWidget/css/
+!/GPXTracker/widget/GPXTrackerWidget/js/
