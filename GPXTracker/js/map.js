@@ -271,22 +271,6 @@
 //    	        console.log("inside app control");
 //    	    }
     	});
-    	/*
-    	 window.addEventListener( 'tizenhwkey', function( ev ) {
-    			if( ev.keyName === "back" ) {
-    			    var page = document.getElementsByClassName( 'ui-page-active' )[0],
-    				openDrawer = page.querySelector('.ui-drawer-open'),
-    				pageid = page ? page.id : "";
-    			    if( !openDrawer && (pageid === "main") ) {
-    				try {
-    				    tizen.application.getCurrentApplication().exit();
-    				} catch (ignore) {
-    				}
-    			    } else {
-    				window.history.back();
-    		            }
-    			}
-    		    } );*/
     };
     
     function getLastPosition() {
@@ -358,21 +342,60 @@
     	
     	var gpxFilelist = localStorage.getItem("gpxFilelist");
     	var currentGPXFilename = localStorage.getItem("currentGPXFilename");
+    	var currentGPXID = localStorage.getItem("currentGPXID");
     	var currentGPXFileFullpath = '';
     	var xmlDoc;
-    	
+    	    	
     	console.log(currentGPXFilename);
     	    	
     	if ((localStorage.getItem("currentGPXFilename") != null) && (localStorage.getItem("currentGPXFilename") != '')) {
-    		
-        	tizen.filesystem.resolve(
+    	
+        	var gpxFileList = localStorage.getItem("gpxFilelist");
+        	var parsedFileList = JSON.parse(gpxFileList);  	
+        	
+        	if ((parsedFileList[currentGPXID].infofile != null) && (parsedFileList[currentGPXID].infofile != '')) {
+        		
+        		// Info file has been stored. Get the info file
+
+        		tizen.filesystem.resolve(
+        			parsedFileList[currentGPXID].infofile,
+    				function(file) 	{ 
+    					file.readAsText(function(data) { 
+    						try {   							
+        						console.log("infofile data loaded"); 
+        						loadGPXDataIntoGoogleMap(data);
+    						}
+    						catch (err) {
+    							console.log("Error in file: " + err.toString());
+    							
+    							var filelist = JSON.parse(localStorage.getItem("gpxFilelist"));
+    							var currentID = localStorage.getItem("currentGPXID");
+    							filelist[currentID].status = "E";
+    							localStorage.setItem("gpxFilelist", JSON.stringify(filelist));
+    							
+    			        		localStorage.setItem("currentGPXID", "");
+    			        		localStorage.setItem("currentGPXName", "");
+    			        		localStorage.setItem("currentGPXFilename", ""); 
+    			        		
+    			        		getGPXFile();
+
+    							tau.openPopup("loadFileErrorPopup");
+    						}
+    					})}, 
+    				function(e) {console.log("Error" + e.message);},
+    				"rw"
+    			 );
+        		
+        	} else {
+
+        		tizen.filesystem.resolve(
     				currentGPXFilename,
     				function(file) 	{ 
     					file.readAsText(function(data) { 
     						try {
     							xmlDoc = jQuery.parseXML(data); 
         						console.log("data loaded"); 
-        						loadGPXFileIntoGoogleMap(map, xmlDoc);
+        						loadGPXFileIntoGoogleMap(xmlDoc);
     						}
     						catch (err) {
     							console.log("Error in file: " + err.toString());
@@ -395,7 +418,8 @@
     				"rw"
     			 );
         	
-    		console.log("gpx file loaded");
+        		console.log("gpx file loaded");
+        	}
     	} else
     	console.log("current gpx file not set");    	
     }
@@ -575,8 +599,90 @@
 	   tizen.preference.setValue("gpxRouteDistance", gpxRouteDistance);
 	   console.log("Distance of route: " + gpxRouteDistance);
    }
+
+   function addMarkers(markerPoint) {
+	       var marker = new google.maps.Marker({
+    		   position: markerPoint.latlng,
+    		   map: map
+    	   });
+	    
+    	   var infowindow = new google.maps.InfoWindow({
+    		   content: markerPoint.html,
+    		   size: new google.maps.Size(50,50)
+    	   });
+
+    	   google.maps.event.addListener(marker, "click", function() {
+    		   infowindow.open(map, marker);
+    	   });	   
+   }
    
-   function loadGPXFileIntoGoogleMap(map, data) {
+   function loadGPXDataIntoGoogleMap(data) {
+
+	   var infoObj = JSON.parse(data);
+	   
+	   var markerPoints = infoObj.markers;
+	   console.log("markers");
+       console.log(markerPoints);
+
+       for (var i = 0; i< markerPoints.length; i++) {   	   
+    	   addMarkers(markerPoints[i]);
+       };
+	    
+       routePoints = infoObj.points;
+       console.log("routepoints");
+       console.log(routePoints);
+       
+       routePointDistance = infoObj.distances;
+       console.log("routepointdistance");
+       console.log(routePointDistance);
+
+       gpxRouteDistance = infoObj.routeDistance;
+	   tizen.preference.setValue("gpxRouteDistance", gpxRouteDistance);
+	   console.log("Distance of route: " + gpxRouteDistance);
+	   
+       elePoints = infoObj.elevations;
+       console.log(elePoints);
+       
+       elePoints100 = infoObj.elePoints100;
+       
+       tizen.preference.setValue("GPXMaxEle", infoObj.maxElePoint);
+       tizen.preference.setValue("GPXElePoint100", JSON.stringify(elePoints100));
+
+       map.setCenter(new google.maps.LatLng(routePoints[0].lat, routePoints[0].lng));
+	   
+	   var polyline = new google.maps.Polyline({
+	        path: routePoints,
+	        strokeColor: "#ff0000",
+	        strokeWeight: 5,
+	        map: map
+	    });
+	   
+
+
+	    /*
+       var parser = new GPXParser(data, map);
+       parser.setTrackColour("#ff0000");     // Set the track line colour
+       parser.setTrackWidth(5);          // Set the track line width
+       parser.setMinTrackPointDelta(0.001);      // Set the minimum distance between track points
+       parser.centerAndZoom(data);
+       parser.addTrackpointsToMap();         // Add the trackpoints
+       parser.addRoutepointsToMap();         // Add the routepoints
+       parser.addWaypointsToMap();           // Add the waypoints
+       routePoints = parser.getPointArray();
+       console.log("routepoints");
+       console.log(routePoints);
+       routePointDistance = parser.getDistanceArray();
+       console.log("routepointdistance");
+       console.log(routePointDistance);
+       calculateRouteDistance();
+       elePoints = parser.getEleArray();
+       console.log(elePoints);
+       calculateEleProfile();
+       */
+};
+
+   
+   function loadGPXFileIntoGoogleMap(data) {
 
              var parser = new GPXParser(data, map);
              parser.setTrackColour("#ff0000");     // Set the track line colour
@@ -597,7 +703,11 @@
              console.log(elePoints);
              calculateEleProfile();
    };
+
    
+   /* POPUP */
+   /* POPUP */   
+   /* POPUP */
    /* POPUP */
    
 	/**

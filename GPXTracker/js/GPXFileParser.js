@@ -8,6 +8,11 @@ function GPXFileParser(xmlDoc){
 	this.pointarray = [];
 	this.elearray = [];
 	this.distancearray = [];
+	this.markerarray = [];
+
+	GPXFileParser.prototype.getMarkerArray = function() {
+	    return this.markerarray;
+	}
 	
 	// Set the colour of the track line segements.
 	GPXFileParser.prototype.getDistanceArray = function() {
@@ -54,8 +59,13 @@ function GPXFileParser(xmlDoc){
 
 
 	GPXFileParser.prototype.createMarker = function(point) {
+		
+		console.log("inside create marker");
 	    var lon = parseFloat(point.getAttribute("lon"));
 	    var lat = parseFloat(point.getAttribute("lat"));
+	    
+	    var latlng = {lat: lat, lng: lon};
+	    
 	    var html = "";
 
 	    var pointElements = point.getElementsByTagName("html");
@@ -86,7 +96,11 @@ function GPXFileParser(xmlDoc){
 	            }
 	        }
 	    }
-/*
+
+	    var markerObj = {html: html, latlng: latlng};
+	    this.markerarray.push(markerObj);
+
+	    /*
 	    var marker = new google.maps.Marker({
 	        position: new google.maps.LatLng(lat,lon),
 	        map: this.map
@@ -111,15 +125,11 @@ function GPXFileParser(xmlDoc){
 	        return;
 	    }
 
-//	    var pointarray = [];
-
 	    // process first point
 	    var lastlon = parseFloat(trackpoints[0].getAttribute("lon"));
 	    var lastlat = parseFloat(trackpoints[0].getAttribute("lat"));
-//	    var latlng = new google.maps.LatLng(lastlat,lastlon);
-//	    pointarray.push(latlng);
 
-	    var latlng = {latitude: lastlat, longitude: lastlon};
+	    var latlng = {lat: lastlat, lng: lastlon};
 	    this.pointarray.push(latlng);
 
 	    // Get elevation
@@ -130,8 +140,8 @@ function GPXFileParser(xmlDoc){
 	    	ele = elelist[0];
 	    
 	    if (ele != null)
-	    	this.elearray.push(ele.textContent);
-	    else this.elearray.push('99999');
+	    	this.elearray.push(Number(ele.textContent));
+	    else this.elearray.push(0);
 	    
 	    var outstanding_distance = 0;
 	    
@@ -143,8 +153,8 @@ function GPXFileParser(xmlDoc){
 	        var latdiff = lat - lastlat;
 	        var londiff = lon - lastlon;
 
-	        var lastlatlng = {latitude: parseFloat(trackpoints[i-1].getAttribute("lat")), longitude: parseFloat(trackpoints[i-1].getAttribute("lon"))};
-	        var thislatlng = {latitude: lat, longitude: lon};
+	        var lastlatlng = {lat: parseFloat(trackpoints[i-1].getAttribute("lat")), lng: parseFloat(trackpoints[i-1].getAttribute("lon"))};
+	        var thislatlng = {lat: lat, lng: lon};
 	        var point_distance = geolib.getDistance(lastlatlng, thislatlng);
 	        outstanding_distance = outstanding_distance + point_distance;
 	        
@@ -153,10 +163,7 @@ function GPXFileParser(xmlDoc){
 	            lastlon = lon;
 	            lastlat = lat;
 	    	    
-	            latlng = {latitude: lat, longitude: lon};
-
-//	            latlng = new google.maps.LatLng(lat,lon);
-//	            pointarray.push(latlng);
+	            latlng = {lat: lat, lng: lon};
 	    	    this.pointarray.push(latlng);
 	    	    
 	    	    // Get elevation
@@ -167,22 +174,97 @@ function GPXFileParser(xmlDoc){
 	    	    	ele = elelist[0];
 	    	    
 	    	    if (ele != null)
-	    	    	this.elearray.push(ele.textContent);
-	    	    else this.elearray.push('99999');	    	 
+	    	    	this.elearray.push(Number(ele.textContent));
+	    	    else this.elearray.push(0);	    	 
 	    	    
 	    	    // Calculate Distance
 	    	    this.distancearray.push(outstanding_distance);
 	    	    outstanding_distance = 0;
 	    	    }
 	        }
+	}
 
-/*
-	    var polyline = new google.maps.Polyline({
-	        path: pointarray,
-	        strokeColor: colour,
-	        strokeWeight: width,
-	        map: this.map
-	    });*/
+	GPXFileParser.prototype.addRoute = function(route) {
+
+		console.log("inside addroute");
+		
+		var trackpoints = route.getElementsByTagName("rtept");
+	    if(trackpoints.length == 0) {
+	        return;
+	    }
+
+	    // process first point
+	    var lastlon = parseFloat(trackpoints[0].getAttribute("lon"));
+	    var lastlat = parseFloat(trackpoints[0].getAttribute("lat"));
+
+	    var latlng = {lat: lastlat, lng: lastlon};
+	    this.pointarray.push(latlng);
+
+	    // Get elevation
+	    var elelist = trackpoints[0].getElementsByTagName("ele");
+	    var ele = null;
+	    
+	    if (elelist != null)
+	    	ele = elelist[0];
+	    
+	    if (ele != null)
+	    	this.elearray.push(Number(ele.textContent));
+	    else this.elearray.push(0);
+	    
+	    var outstanding_distance = 0;
+	    
+	    for(var i = 1; i < trackpoints.length; i++) {
+	        var lon = parseFloat(trackpoints[i].getAttribute("lon"));
+	        var lat = parseFloat(trackpoints[i].getAttribute("lat"));
+
+	        // Verify that this is far enough away from the last point to be used.
+	        var latdiff = lat - lastlat;
+	        var londiff = lon - lastlon;
+
+	        var lastlatlng = {lat: parseFloat(trackpoints[i-1].getAttribute("lat")), lng: parseFloat(trackpoints[i-1].getAttribute("lon"))};
+	        var thislatlng = {lat: lat, lng: lon};
+	        var point_distance = geolib.getDistance(lastlatlng, thislatlng);
+	        outstanding_distance = outstanding_distance + point_distance;
+	        
+	        if(Math.sqrt(latdiff*latdiff + londiff*londiff)
+	                > this.mintrackpointdelta) {
+	            lastlon = lon;
+	            lastlat = lat;
+	    	    
+	            latlng = {lat: lat, lng: lon};
+	    	    this.pointarray.push(latlng);
+	    	    
+	    	    // Get elevation
+	    	    var elelist = trackpoints[i].getElementsByTagName("ele");
+	    	    var ele = null;
+	    	    
+	    	    if (elelist != null)
+	    	    	ele = elelist[0];
+	    	    
+	    	    if (ele != null)
+	    	    	this.elearray.push(Number(ele.textContent));
+	    	    else this.elearray.push(0);	    	 
+	    	    
+	    	    // Calculate Distance
+	    	    this.distancearray.push(outstanding_distance);
+	    	    outstanding_distance = 0;
+	    	    }
+	        }
+	}
+
+
+	GPXFileParser.prototype.addWaypoints = function() {
+	    var waypoints = this.xmlDoc.documentElement.getElementsByTagName("wpt");
+	    for(var i = 0; i < waypoints.length; i++) {
+	        this.createMarker(waypoints[i]);
+	    }
+	}
+
+	GPXFileParser.prototype.addRoutepoints = function() {
+	    var routes = this.xmlDoc.documentElement.getElementsByTagName("rte");
+	    for(var i = 0; i < routes.length; i++) {
+	        this.addRoute(routes[i]);
+	    }
 	}
 
 	GPXFileParser.prototype.addTrack = function(track) {
@@ -192,49 +274,6 @@ function GPXFileParser(xmlDoc){
 	    }
 	}
 
-	GPXFileParser.prototype.addRouteToMap = function(route, colour, width) {
-	    var routepoints = route.getElementsByTagName("rtept");
-	    if(routepoints.length == 0) {
-	        return;
-	    }
-
-	    var pointarray = [];
-
-	    // process first point
-	    var lastlon = parseFloat(routepoints[0].getAttribute("lon"));
-	    var lastlat = parseFloat(routepoints[0].getAttribute("lat"));
-	    var latlng = {latitude: lastlat, longitude: lastlon};
-	    //= new google.maps.LatLng(lastlat,lastlon);
-	    //pointarray.push(latlng);
-	    this.pointarray.push(latlng);
-
-	    for(var i = 1; i < routepoints.length; i++) {
-	        var lon = parseFloat(routepoints[i].getAttribute("lon"));
-	        var lat = parseFloat(routepoints[i].getAttribute("lat"));
-
-	        // Verify that this is far enough away from the last point to be used.
-	        var latdiff = lat - lastlat;
-	        var londiff = lon - lastlon;
-	        if(Math.sqrt(latdiff*latdiff + londiff*londiff)
-	                > this.mintrackpointdelta) {
-	            lastlon = lon;
-	            lastlat = lat;
-	            var latlng = {latitude: lastlat, longitude: lastlon};
-//	            latlng = new google.maps.LatLng(lat,lon);
-//	            pointarray.push(latlng);
-	    	    this.pointarray.push(latlng);
-	        }
-
-	    }
-/*
-	    var polyline = new google.maps.Polyline({
-	        path: pointarray,
-	        strokeColor: colour,
-	        strokeWeight: width,
-	        map: this.map
-	    });*/
-	}
-
 	GPXFileParser.prototype.addTrackpoints = function() {
 	    var tracks = this.xmlDoc.documentElement.getElementsByTagName("trk");
 	    for(var i = 0; i < tracks.length; i++) {
@@ -242,18 +281,4 @@ function GPXFileParser(xmlDoc){
 	    }
 	}
 
-	GPXFileParser.prototype.addWaypointsToMap = function() {
-	    var waypoints = this.xmlDoc.documentElement.getElementsByTagName("wpt");
-	    for(var i = 0; i < waypoints.length; i++) {
-	        this.createMarker(waypoints[i]);
-	    }
-	}
-
-	GPXFileParser.prototype.addRoutepointsToMap = function() {
-	    var routes = this.xmlDoc.documentElement.getElementsByTagName("rte");
-	    for(var i = 0; i < routes.length; i++) {
-	        this.addRouteToMap(routes[i], this.trackcolour, this.trackwidth);
-	    }
-	}
-    
 };
