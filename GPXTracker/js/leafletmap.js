@@ -37,7 +37,7 @@ function leaflet_map() {
     	map = L.map('map_canvas', {zoomControl: false}).setView([51.505, -0.09], 13);
     	
     	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    	    attribution: '',
+    	    attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a>',
     	    id: 'mapbox.streets',
     	    maxZoom: 25,
     	    accessToken: 'pk.eyJ1IjoiYWxiZXJ0LWxpLTgwIiwiYSI6ImNqaDgwcDQ0cjBkcmQyd21zMGtuNnpjcTcifQ.nqH7zUFj4cVhXiR-SkF8fw'
