@@ -8,7 +8,7 @@
     $(document).ready(function() {
     	console.log("init: files ready");
     	
-    	if (document.title == "Files") {
+    	if ((document.title == "Files") || (document.title == "Remove Routes")) {
     		getGPXFilelist();
     		registerFileEventHandlers();
     	} else
@@ -35,7 +35,7 @@
     			if (parsedFileList[i].status == "A") {
     				
     				var check = '';    				
-    				if ((localStorage.getItem("currentGPXID") != null) && (i == localStorage.getItem("currentGPXID")) && (localStorage.getItem("currentGPXID") != ""))
+    				if ((document.title != "Remove Routes") && (localStorage.getItem("currentGPXID") != null) && (i == localStorage.getItem("currentGPXID")) && (localStorage.getItem("currentGPXID") != ""))
     					check = ' checked="checked"';
     		
     				innerHTML = innerHTML + '<li class="li-has-radio" value="' + i + '"><label><div class="ui-marquee ui-marquee-gradient">' + parsedFileList[i].file + '</div><input type="radio" name="radio-sample"' + check + '/></label></li>';
@@ -43,7 +43,7 @@
     		}
 
     		if (innerHTML == '')
-    			innerHTML = '<li class="li-has-multiline"><a href="#">No Files Exist.</a></li>';
+    			innerHTML = '<li><a href="#">No Routes</a></li>';
  
     	} else {
     		innerHTML = '<li><a href="#">No Routes</a></li>';
@@ -60,11 +60,18 @@
     	 */
     	
     	window.addEventListener('tizenhwkey', function(ev) {
-		if ((ev.keyName === "back") && (document.title == "Files")) {
-			localStorage.setItem("firstPass", "N");
-			window.location.href = 'index.html';
-//			window.history.back();
-		}
+    		console.log("title: " + document.title);
+    		
+    		if ((ev.keyName === "back") && (document.title == "Files")) {
+    			localStorage.setItem("firstPass", "N");
+    			window.location.href = 'index.html';
+    			//			window.history.back();
+    		}
+    		else if ((ev.keyName === "back") && (document.title == "Remove Routes")) {
+    			localStorage.setItem("firstPass", "N");
+    			window.location.href = 'index.html';
+//    			window.history.back();
+    		}
     	});
 
     	
@@ -74,9 +81,16 @@
 
     	var userSelection = document.getElementsByClassName('li-has-radio');
     	var clicked = false;
+    	var removeSelection = null;
     	
     	for(var i = 0; i < userSelection.length; i++) {
     		userSelection[i].addEventListener("click", function() {
+    			
+    			if (document.title == 'Remove Routes') {
+    				removeSelection = this.getAttribute("value");
+    				document.getElementById("remove_file_btn").disabled = false;
+    				return;
+    			}
     			
     			if (clicked) return;
     			
@@ -134,12 +148,34 @@
     	/**
     	 * Add File event handler
     	 */
-    	
-    	document.getElementById("add_file_btn").addEventListener("click", function(){
-    		console.log("add file button clicked");    		
-    		window.location.href = 'addfile.html';
-    	});
-    	
+    	if (document.getElementById("add_file_btn") != null)
+    		document.getElementById("add_file_btn").addEventListener("click", function(){
+    			console.log("add file button clicked");    		
+    			window.location.href = 'addfile.html';
+    		});
+
+    	if (document.getElementById("remove_file_btn") != null)
+    		document.getElementById("remove_file_btn").addEventListener("click", function(){
+    			console.log("remove file button clicked");
+    			console.log(removeSelection);
+    			
+    			if (removeSelection != null) {
+    				var filelist = JSON.parse(localStorage.getItem("gpxFilelist"));
+    				var currentID = localStorage.getItem("currentGPXID");
+
+    				filelist[removeSelection].status = "E";
+    				localStorage.setItem("gpxFilelist", JSON.stringify(filelist));
+			
+    				if (removeSelection == currentID) {
+    					localStorage.setItem("currentGPXID", "");
+    					localStorage.setItem("currentGPXName", "");
+    					localStorage.setItem("currentGPXFilename", ""); 
+    				}	
+    			
+    				window.location.href = 'removefile.html';
+    			}
+    		});
+
     	var listHelper;
     	
     	document.getElementById('files_page').addEventListener('pageshow', function() {
@@ -232,7 +268,7 @@
 	             console.log(JSON.stringify(point_array));
 	             
 	             if (point_array.length == 0)
-	            	 xml_parser.addRoutepoints();			// Add the routes only if trackpoints does not exit
+	            	 xml_parser.addRoutepoints();			// Add the routes only if trackpoints does not exist
 	             
 	             xml_parser.addWaypoints();				// Add the waypoints
 
@@ -292,6 +328,16 @@
 			}
 			catch (err) {
 				console.log("Error in parseXmlToData: ", err.toString());
+				
+			    document.getElementById("save_file_btn").innerHTML = "GPX File Format Error";
+		    	document.getElementById("download_popup_content").innerHTML = "GPX File Format Error! <br>" + err.toString();
+			    	
+			    setTimeout(function(){ 
+			    		tau.closePopup();},	 // Alert Popup Toast
+			    		3000);
+			    	
+			    window.location.href = 'files.html';
+
 			}
 		});
 	}

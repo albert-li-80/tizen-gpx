@@ -2,9 +2,9 @@
 !.gitignore
 !/GPXTracker/
 
+/GPXTracker/*
 !/GPXTracker/*.html
 !/GPXTracker/config.xml
-/GPXTracker/*
 
 !/GPXTracker/js/
 !/GPXTracker/js/*

@@ -6,6 +6,7 @@
 	<link rel="stylesheet" media="all and (-tizen-geometric-shape: circle)" href="lib/tau/wearable/theme/default/tau.circle.min.css">
 	<link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/customstyle.css"/>
+    <link rel="stylesheet" href="lib/leaflet/leaflet.css"/>
 </head>
 
 <body>
@@ -25,7 +26,9 @@
 			<div id="draw_trace" class="ui-item trace-icon" data-title="Trace Current Route: On"></div>
 			<div id="show_distance" class="ui-item distance-icon" data-title="Follow Route: On"></div>
 			<div id="off_track" class="ui-item offtrack-icon" data-title="Off Track Notification: Off"></div>
-			<div class="ui-item version-icon" data-title="Version 1.0.2 (Beta)"></div>
+			<div id="remove_file" class="ui-item removefile-icon" data-title="Remove Route"></div>
+			<div id="map_engine" class="ui-item mapengine-icon" data-title="Map Engine: Google (Online)"></div>
+			<div class="ui-item version-icon" data-title="Version 1.0.3 (Beta)"></div>
 		</div>
 	</div>	
 	<div id="sideBtnPopup" class="ui-popup">
@@ -53,18 +56,39 @@
 	
 		if ((splash == null) || (splash == '')) {
 			console.log("first pass");
-			document.getElementById("map_canvas").innerHTML = '<img src="icon.png" height="360" width="360"/>';
+			document.getElementById("map_canvas").innerHTML = '<img id="splash" src="icon.png" height="360" width="360"/>';
 		}
 		console.log("hello");
 		localStorage.setItem("firstPass", "");
 	</script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery-2.0.0.min.js">\x3C/script>')</script>
-   	<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBTLN60rGwdpaNDrc6tOigjdA9NwUN4ZT0&v=3&libraries=geometry&language=en"></script>
     <script src="js/geolib.js"></script> 
-    <script src="js/geolocation-marker.js"></script>  
-    <script src="js/GPXParser.js"></script>  
-    <script src="js/map.js"></script>
     <script type="text/javascript" src="lib/tau/wearable/js/tau.min.js"></script>	
+    <script type="text/javascript" src="js/map_common.js"></script>	
+	<script>
+		if ((localStorage.getItem("map_engine") != null) && (localStorage.getItem("map_engine") == 'leaflet')) { // load leaflet
+		   		$.getScript("lib/leaflet/leaflet.js", function() {
+   					$.getScript("lib/leaflet/leaflet-rotatedMarker.js", function() {
+   						$.getScript("js/leafletmap.js", function() {
+   							console.log("all leaflet javascripts loaded");
+						});
+					});
+				});
+			}		
+		else { // load google
+	    	console.log("load google dependent javascripts");
+	    
+			$.getScript("http://maps.google.com/maps/api/js?key=AIzaSyBTLN60rGwdpaNDrc6tOigjdA9NwUN4ZT0&v=3&libraries=geometry&language=en", function() {
+   				$.getScript("js/geolocation-marker.js", function() {
+				   	$.getScript("js/GPXParser.js", function() {
+   						$.getScript("js/map.js", function() {
+   							console.log("all google dependent javascripts loaded");
+						});
+					});
+				});
+			});   
+		}
+	</script>
 </body>
 </html>

@@ -1215,3 +1215,29 @@ input[type="checkbox"]#checkboxControl {
 	background-color: rgb(8, 8, 8);
 	-webkit-mask-repeat: no-repeat;
 }
+
+.mapengine-icon::before {
+	position: absolute;
+	content: "";
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	-webkit-mask-image: url(./images/shuffle_on.png);
+	-webkit-mask-size: 100% 100%;
+	background-color: rgb(8, 8, 8);
+	-webkit-mask-repeat: no-repeat;
+}
+
+.removefile-icon::before {
+	position: absolute;
+	content: "";
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	-webkit-mask-image: url(./images/delete.png);
+	-webkit-mask-size: 100% 100%;
+	background-color: rgb(8, 8, 8);
+	-webkit-mask-repeat: no-repeat;
+}

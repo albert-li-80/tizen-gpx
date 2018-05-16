@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" version="1.0.2" height="360" width="360" viewmodes="maximized">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" version="1.0.3" height="360" width="360" viewmodes="maximized">
     <access origin="http://googleapis.com" subdomains="true"></access>
     <access origin="http://gstatic.com" subdomains="true"></access>
     <access origin="http://google.com" subdomains="true"></access>
@@ -17,27 +17,29 @@
     <tizen:application id="1TQRTYAsJG.GPXTracker" package="1TQRTYAsJG" required_version="2.3.2"/>
     <author email="albert.li@biamsolution.com">Albert Li</author>
     <content src="index.html"/>
-    <description>Load a GPX route file online, and display the route with your current location on your Samsung Gear Watch!
-Don't you want to be notified if you have missed a turn during your hike? Don't you want to know how far away is the ending point? Don't tell me you trust your buddy who always say &quot;almost there&quot;!
-With this app, you can enjoy the same feature as those expensive Garmin / Polar watches on your Gear wearable device.
-Features:
-1. Load a GPX route and display it on your watch.
-2. Pinpoint your current location.
-3. Trace your current path.
-4. Option to rotate map to match the direction of travel.
-5. Calculate distance to closest point of loaded route (i.e. deviation).
-6. Calculate remaining distance based on your current location and pre-defined route.
-6. Off-route notification (once every 30 minutes)
-7. Widget to show deviation and remaining distance to finish route.
-This is a standalone application. No connection to phone is required. However, Internet is required for it to work properly.
-It is currently a beta version. It has been tested on Gear Sport only. Please welcome to test it on other devices and give me feedback.
-Starting Instructions:
-1. Click on the right ... button to enter &quot;Settings&quot;.
-2. Click on &quot;Route&quot;.
-3. Click on &quot;New Route&quot;
-4. Enter a Route Name (ex: Home to Office), and a http URL of your gpx file. (You can create / use GPXs file on Strava. If the URL is too long, you can shorten it with http://bit.ly to save some typing on your watch.)
-5. Wait for it to finish downloading. You will be taken back to the map after downloading complete.
-This is a free app, until Google starts to charge me for their Maps API. I created this app because I could not find a solution to my need after a few days of searching on the web, so I might as well code it up myself. </description>
+    <description>Load a GPX route file online, and display the route with your current location on your Samsung Gear Watch!&#xD;
+Don't you want to be notified if you have missed a turn during your hike? Don't you want to know how far away is the ending point? Don't tell me you trust your buddy who always say &quot;almost there&quot;!&#xD;
+With this app, you can enjoy the same feature as those expensive Garmin / Polar watches on your Gear wearable device.&#xD;
+Features:&#xD;
+1. Load a GPX route and display it on your watch.&#xD;
+2. Pinpoint your current location.&#xD;
+3. Trace your current path.&#xD;
+4. Option to rotate map to match the direction of travel.&#xD;
+5. Calculate distance to closest point of loaded route (i.e. deviation).&#xD;
+6. Calculate remaining distance based on your current location and pre-defined route.&#xD;
+6. Off-route notification (once every 30 minutes)&#xD;
+7. Widget to show deviation and remaining distance to finish route.&#xD;
+&#xD;
+This is a standalone application. No connection to phone is required. &#xD;
+There are two map engines implemented, google and leaflet. If you choose google as your map engine, Internet is required. Leaflet engine requires no internet connection (even though map tiles will not load).&#xD;
+It is currently a beta version. It has been tested on Gear Sport only. Please welcome to test it on other devices and give me feedback.&#xD;
+&#xD;
+Starting Instructions:&#xD;
+1. Click on the right ... button to enter &quot;Settings&quot;.&#xD;
+2. Click on &quot;Route&quot;.&#xD;
+3. Click on &quot;New Route&quot;&#xD;
+4. Enter a Route Name (ex: Home to Office), and a http URL of your gpx file. &#xD;
+5. Wait for it to finish downloading. You will be taken back to the map after downloading complete.</description>
     <feature name="http://tizen.org/feature/screen.size.all"/>
     <feature name="http://tizen.org/feature/location.gps"/>
     <feature name="http://tizen.org/feature/sensor.accelerometer"/>
