@@ -7,12 +7,14 @@ function leaflet_map() {
 	
 	var markerIcon = L.icon({
 	    iconUrl: 'lib/leaflet/images/marker-icon.png',
-	    iconSize: [30, 30]
+	    iconSize: [20, 40],
+		iconAnchor: [10,40]
 	});
 	
 	var arrowIcon = L.icon({
 	    iconUrl: 'lib/leaflet/images/right-arrow-icon.png',
-	    iconSize: [30, 30]
+	    iconSize: [40, 40],
+	    iconAnchor: [20,0]
 	});
 	
     // initialize with a little help of jQuery
@@ -110,6 +112,7 @@ function leaflet_map() {
 		   console.log("degree: " + degree);
 		   
 		   marker.setRotationAngle(heading);
+		   marker.setRotationOrigin('top center');
 		   marker.setIcon(arrowIcon);
 		   document.getElementById("map_canvas").style.transform = "rotate(" + degree + "deg)";
 	   }	
@@ -294,6 +297,7 @@ function leaflet_map() {
 
     		if (marker != null) {
     			marker.setRotationAngle(0);
+    			marker.setRotationOrigin('top center');
     			marker.setIcon(markerIcon);
     		}
 			document.getElementById("map_canvas").style.transform = "rotate(0deg)";
