@@ -18,6 +18,7 @@
 	var nextNotificationTime = tizen.time.getCurrentDateTime();
 	var gpsCallbackInterval = 10000;
 	var gpsSampleInterval = 10000;
+	var notificationID = null;
 
 	/* For Tracking */
 	
@@ -494,7 +495,7 @@
 	    console.log("NNT " + nextNotificationTime.toLocaleString());
 	    var nearestPt;
 	    
-		if ((document.webkitHidden) && (latlng != null) && ((localStorage.getItem("off_track") != '0') ||  (localStorage.getItem("show_distance") == 'true')) && (routePoints != null) && (routePoints.length > 0)) {
+		if ((latlng != null) && ((localStorage.getItem("off_track") != '0') ||  (localStorage.getItem("show_distance") == 'true')) && (routePoints != null) && (routePoints.length > 0)) {
 	    	nearestPt = geolib.findNearest(latlng, routePoints, 0, 1);
 	    	console.log("nearest :" + nearestPt.distance);
 	    		    	
@@ -508,20 +509,43 @@
 	    	}
 	    }
 		
-		if ((now.laterThan(nextNotificationTime)) && (document.webkitHidden) && (latlng != null) && (localStorage.getItem("off_track") != '0') && (routePoints != null) && (routePoints.length > 0)) {
+		if ((latlng != null) && (localStorage.getItem("off_track") != '0') && (routePoints != null) && (routePoints.length > 0)) {
 			
 			var off_track = localStorage.getItem("off_track");
 			if (nearestPt.distance > off_track) {
-				   
-				try {
-				      // Gets the current application information with tizen.application.getAppInfo
-				      var myappInfo = tizen.application.getAppInfo();
+				
+				if ((now.laterThan(nextNotificationTime)) && (document.webkitHidden)) {
+
+					var notification = null;
+					
+					if (notificationID != null) {
+						try {
+							notification = tizen.notification.get(notificationID);
+						} catch(err) {
+							console.log("Notification not found!");
+							console.log (err.name + ": " + err.message);
+							notificationID = null;
+						}
+					}
+							
+					if (notification != null) {
+					
+						notification.content = 'You are off track by ' + nearestPt.distance + " meters";
+						tizen.notification.update(notification);
+						notificationID = notification.id;
+						nextNotificationTime = now.addDuration(new tizen.TimeDuration(30, "SECS"));
+						
+					} else { 
+
+						try {
+							// Gets the current application information with tizen.application.getAppInfo
+							var myappInfo = tizen.application.getAppInfo();
 				      
-				      var notificationContent = 'You are off track by ' + nearestPt.distance + " meters";
-				      var appControl = new tizen.ApplicationControl('http://tizen.org/appcontrol/operation/view',
-                              null, null, null, null);
+							var notificationContent = 'You are off track by ' + nearestPt.distance + " meters";
+							var appControl = new tizen.ApplicationControl('http://tizen.org/appcontrol/operation/view',
+									null, null, null, null);
 				      
-				      var notificationDict = {
+							var notificationDict = {
 				    		  
 				    		  content : notificationContent,
 				    		  iconPath : myappInfo.iconPath,
@@ -529,18 +553,22 @@
 				              appControl: appControl,
 				              appId : myappInfo.id };
 
-				      var notification = new tizen.StatusNotification("SIMPLE",
+							notification = new tizen.StatusNotification("SIMPLE",
 				                  "GPX Tracker", notificationDict);
 
-				      tizen.notification.post(notification);
-				      nextNotificationTime = now.addDuration(new tizen.TimeDuration(30, "MINS"));
+							tizen.notification.post(notification);
 				      
-				   } catch (err) {
-					  console.log("Notification failed!");
-				      console.log (err.name + ": " + err.message);
-				   }
-			   	}
-		   }
+							notificationID = notification.id;
+							nextNotificationTime = now.addDuration(new tizen.TimeDuration(30, "SECS"));
+				      
+						} catch (err) {
+							console.log("Notification failed!");
+							console.log (err.name + ": " + err.message);
+						}
+					}
+				}
+			}
+		}
 
 	}
             
@@ -554,8 +582,8 @@
 	    nextNotificationTime = tizen.time.getCurrentDateTime();
 
     	var option = {
-    	    'callbackInterval': gpsCallbackInterval,
-    	    'sampleInterval': gpsSampleInterval
+    	    callbackInterval: gpsCallbackInterval,
+    	    sampleInterval: gpsSampleInterval
     	};
     	console.log("before setting HAM");
     	tizen.humanactivitymonitor.start('GPS', onchangedCB, onerrorCB, option);
