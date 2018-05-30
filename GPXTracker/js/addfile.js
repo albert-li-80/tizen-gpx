@@ -323,6 +323,17 @@
 							}
 	                     , function(e) {
 	                     	 console.log("Error " + e.message);
+	                     	 console.log("Error in writing file: ", err.toString());
+	        				
+	                     	 document.getElementById("save_file_btn").innerHTML = "Cannot Save File";
+	                     	 document.getElementById("download_popup_content").innerHTML = "Cannot Save File! <br>" + err.toString();
+	        			    	
+	                     	 setTimeout(function(){ 
+	        			    		tau.closePopup();},	 // Alert Popup Toast
+	        			    		3000);
+	        			    	
+	                     	 window.location.href = 'files.html';
+
 	                     }, "UTF-8");
 	                 });       
 			}
@@ -348,7 +359,19 @@
     	tizen.filesystem.resolve(
 				filename,
 				parseGpxXmlToData, 
-				function(e) {console.log("Error" + e.message);},
+				function(e) {
+					console.log("Error" + e.message);
+					console.log("Error in writing file: ", err.toString());
+     				
+					document.getElementById("save_file_btn").innerHTML = "Cannot Save GPS File";
+					document.getElementById("download_popup_content").innerHTML = "Cannot Save GPS File! <br>" + err.toString();
+    			    	
+					setTimeout(function(){ 
+    			    		tau.closePopup();},	 // Alert Popup Toast
+    			    		3000);
+    			    	
+					window.location.href = 'files.html';
+				},
 				"rw"
 			 );	
     }
