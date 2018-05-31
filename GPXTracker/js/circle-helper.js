@@ -24,7 +24,7 @@
 				/**
 				 * Some pages don't use snap list.
 				 */
-				if (page.id !== "pageMarqueeList" && page.id !== "pageTestVirtualList" && page.id !== "pageAnimation") {
+				if (page.id !== "files_page" && page.id !== "pageTestVirtualList" && page.id !== "pageAnimation") {
 					len = list.length;
 					for (i = 0; i < len; i++) {
 						listHelper[i] = tau.helper.SnapListStyle.create(list[i]);

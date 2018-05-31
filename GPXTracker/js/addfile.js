@@ -38,7 +38,7 @@
     				if ((document.title != "Remove Routes") && (localStorage.getItem("currentGPXID") != null) && (i == localStorage.getItem("currentGPXID")) && (localStorage.getItem("currentGPXID") != ""))
     					check = ' checked="checked"';
     		
-    				innerHTML = innerHTML + '<li class="li-has-radio" value="' + i + '"><label><div class="ui-marquee ui-marquee-gradient">' + parsedFileList[i].file + '</div><input type="radio" name="radio-sample"' + check + '/></label></li>';
+    				innerHTML = innerHTML + '<li class="li-has-radio" value="' + i + '"><label><div style="width: 220px" class="ui-marquee ui-marquee-gradient">' + parsedFileList[i].file + '</div><input type="radio" name="radio-sample"' + check + '/></label></li>';
     			}
     		}
 
@@ -72,6 +72,14 @@
     			window.location.href = 'index.html';
 //    			window.history.back();
     		}
+    		else if ((ev.keyName === "back") && (document.title == "Add Files")) {
+    			console.log("add files back button (unused)");
+        		window.history.back();
+        	}
+        	else {
+        		console.log("unknown back button");
+        		window.history.back();
+        	}
     	});
 
     	
@@ -379,7 +387,7 @@
     function storeFilelistAndRedirect(fileName, infofile) {
     
     	var gpxFilelist = localStorage.getItem("gpxFilelist");    			    	
-		var route_name = document.getElementById("route_name_input").value;
+		var route_name = document.getElementById("route_name_input").textContent;
     	var parsedFileList;
     	
     	document.getElementById("save_file_btn").innerHTML = "File Added";
@@ -414,13 +422,105 @@
     	/**
     	 * Back key event handler
     	 */
-    	if (document.title == "Add Files") {
+    	
+//    	if (document.title == "Add Files") {
     		window.addEventListener('tizenhwkey', function(ev) {
-    		if (ev.keyName === "back")
+    			if (ev.keyName === "back") {
+    				console.log("add files back button");
     				window.history.back();
+    			}
+    		});
+//    	}
+
+    	/**
+    	 * Route Name Input event handler
+    	 */
+    	
+    	var nameAppControlReplyCB = {
+    		    onsuccess: function(reply) {
+    		        for (var num = 0; num < reply.length; num++) {
+    		            if (reply[num].key == 'http://tizen.org/appcontrol/data/text') {
+    		                console.log('input text: ' + reply[num].value);
+    		                document.getElementById("route_name_input").textContent = reply[num].value;
+    		            }
+    		        }
+    		    },
+    		    onfailure: function() {
+    		         console.log('The launch application control failed');
+    		         window.location.href = 'addfile.html';
+    		    }
+    		}
+    	
+    	if (document.title == "Add Files") {
+    		document.getElementById("route_name_box").addEventListener("click", function(){
+    			console.log("route name box clicked");
+    			
+    			var input_type = new tizen.ApplicationControlData('http://tizen.org/appcontrol/data/input_type', ['input_keyboard']);
+    			var guide_text = new tizen.ApplicationControlData('http://tizen.org/appcontrol/data/input_default_text', [document.getElementById("route_name_input").textContent]);
+    			
+    			var appControl = new tizen.ApplicationControl('http://tizen.org/appcontrol/operation/get_input',
+    			                                              null, null, null, [input_type, guide_text], null);
+    			
+    			tizen.application.launchAppControl(appControl, null, function() {
+    			    console.log('launch application control succeed');
+    			}, function(e) {
+    			    console.log('launch application control failed. reason: ' + e.message);
+    			}, nameAppControlReplyCB);
     		});
     	}
+
+    	/**
+    	 * URL Input event handler
+    	 */
     	
+    	var urlAppControlReplyCB = {
+    		    onsuccess: function(reply) {
+    		        for (var num = 0; num < reply.length; num++) {
+    		            if (reply[num].key == 'http://tizen.org/appcontrol/data/text') {
+    		                console.log('url text: ' + reply[num].value);
+    		                document.getElementById("gpx_url_input").textContent = reply[num].value;
+    		            }
+    		        }
+    		    },
+    		    onfailure: function() {
+   		         console.log('The launch application control failed');
+   		         window.location.href = 'addfile.html';
+    		    }
+    		}
+    	
+    	if (document.title == "Add Files") {
+    		document.getElementById("gpx_url_box").addEventListener("click", function(){
+    			console.log("url box clicked");
+    			
+    			var input_type = new tizen.ApplicationControlData('http://tizen.org/appcontrol/data/input_type', ['input_keyboard']);
+    			var guide_text = new tizen.ApplicationControlData('http://tizen.org/appcontrol/data/input_default_text', [document.getElementById("gpx_url_input").textContent]);
+    			
+    			var appControl = new tizen.ApplicationControl('http://tizen.org/appcontrol/operation/get_input',
+    			                                              null, null, null, [input_type, guide_text], null);
+    			
+    			tizen.application.launchAppControl(appControl, null, function() {
+    			    console.log('launch application control succeed');
+    			}, function(e) {
+    			    console.log('launch application control failed. reason: ' + e.message);
+    			}, urlAppControlReplyCB);
+    		});
+    	}
+
+/*    	var height = window.innerHeight;
+    	
+    	if (document.title == "Add Files") {
+    		window.addEventListener("resize", function() {
+    			if (window.innerHeight < height) {
+    				console.log("keyboard active");
+    				document.getElementById("save_file_btn").style.display = "none";
+    				document.activeElement.scrollIntoView(false);
+    			} else if (window.innerHeight >= height) {
+    				console.log("keyboard inactive");
+    				document.getElementById("save_file_btn").style.display = "block";
+    		 	}
+    		});
+    	};
+ */   	
     	/**
     	 * Save File event handler
     	 */
@@ -434,8 +534,8 @@
 		    tau.openPopup("#download_popup");
 	        document.getElementById("download_popup_content").innerHTML = "Initializing Download";
 		    
-    		var route_name = document.getElementById("route_name_input").value;
-    		var gpx_url = document.getElementById("gpx_url_input").value;
+    		var route_name = document.getElementById("route_name_input").textContent;
+    		var gpx_url = encodeURI(document.getElementById("gpx_url_input").textContent);
 //	    	var gpxFilelist = localStorage.getItem("gpxFilelist");    			    	
 //	    	var parsedFileList;
 	    	var input_filename = gpx_url.split('/').pop();
@@ -469,14 +569,10 @@
     				    console.log('Completed with id: ' + id + ', file name: ' + fileName);
     				    
     				    // CODE FOR PARSING XML
-    				    
-    				     parseXMLfile(fileName);
-    				     document.getElementById("download_popup_content").innerHTML = "Analyzing route";
+    				    document.getElementById("download_popup_content").innerHTML = "Analyzing Route";
+    				    parseXMLfile(fileName);
     				    
     				    // END CODE FOR PARSING XML
-    				    
-    				    
-    				    
     				    // storeFilelistAndRedirect(fileName, '');
     				    
     				  },
@@ -487,21 +583,36 @@
     			    	document.getElementById("download_popup_content").innerHTML = "Download Failed! <br>" + error.name;
         			    	
         			    setTimeout(function(){ 
-        			    		tau.closePopup();},	 // Alert Popup Toast
-        			    		3000);
-        			    	
-        			    window.location.href = 'files.html';
-
+        			    		tau.closePopup();	 // Alert Popup Toast
+                			    window.location.href = 'files.html';},
+        			    		2000);       			    	
     				  }
     				};
  
     		var request = new tizen.DownloadRequest(
     			    gpx_url, // File URL
-    			    'wgt-private' // Destination directory
+    			    "wgt-private" // Destination directory
     			);
     		    		
-    		var id = tizen.download.start(request, listener);
+    		console.log("URL: " + gpx_url);
+    		
+    		var id = null;
+    		
+    		try {
+    			id = tizen.download.start(request);  		
+    			tizen.download.setListener(id, listener);
+    		}
+    		catch (error) {
+			    console.log('Failed with download start id: ' + id + ', error name: ' + error.name);
+			    document.getElementById("save_file_btn").innerHTML = "Download Failed!";
 
+		    	document.getElementById("download_popup_content").innerHTML = "Download Failed!<br>Try Again!<br>" + error.name;
+			    	
+			    setTimeout(function(){ 
+			    		tau.closePopup();
+			    		window.location.href = 'files.html';},	 // Alert Popup Toast
+			    		2000);			    			       			
+    		}
     	});
     	}
     };

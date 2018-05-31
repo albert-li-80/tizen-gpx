@@ -14,38 +14,36 @@
 		</header>
 		<div class="ui-content">
 			<ul class="ui-listview">
-				<li class="li-has-multiline">
+				<li id="route_name_box" class="li-has-2line">
 					<a>
 						Route Name
-						<input id="route_name_input" type="text" value="HV to Central" class="ui-li-sub-text li-text-sub"></input>
+						<span id="route_name_input" style="text-align: center" class="ui-li-sub-text li-text-sub" >HV to Central</span>
 					</a>
 				</li>
-				 <li class="li-has-multiline">
+				 <li id="gpx_url_box" class="li-has-2line">
 					<a>
 						GPX File URL
-						<input id="gpx_url_input" type="text" value="https://bit.ly/2HNjyT9" class="ui-li-sub-text li-text-sub"></input>
+						<span id="gpx_url_input" style="text-align: center" class="ui-li-sub-text li-text-sub">https://bit.ly/2HNjyT9</span>
 					</a>
 				</li>
 			</ul>
 		</div>
-		<footer class="ui-footer ui-bottom-button ui-fixed">
+ 	  		<footer class="ui-footer ui-bottom-button">
 			<button id="save_file_btn" class="ui-btn">Save File</button>
-		</footer>		
+			</footer>	
 	</div>
 	<div id="download_popup" class="ui-popup" data-enable-page-scroll="false">
 	    <div class="ui-popup-header">Downloading</div>
-	       	<div class="ui-content content-padding">
-   			   	<div class="ui-processing"></div>
-      			<div id="download_popup_content" class="ui-processing-text">
-      			</div>
-			</div>
-   		<div class="ui-processing ui-processing-full-size"></div>
+	    <div class="ui-content content-padding">
+      		<div id="download_popup_content" class="ui-processing-text"></div>
+		</div>
+		<div class="ui-processing ui-processing-full-size" style="opacity: 1"></div>
     </div>
 
 </body>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery-2.0.0.min.js">\x3C/script>')</script>
-    <script type="text/javascript" src="lib/tau/wearable/js/tau.js"></script>
+    <script type="text/javascript" src="lib/tau/wearable/js/tau.min.js"></script>
 	<script type="text/javascript" src="js/circle-helper.js"></script>
 	<script src="js/geolib.js"></script> 
 	<script src="js/GPXFileParser.js"></script>
