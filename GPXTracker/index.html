@@ -61,34 +61,47 @@
 		console.log("hello");
 		localStorage.setItem("firstPass", "");
 	</script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/jquery-2.0.0.min.js">\x3C/script>')</script>
+    <script type="text/javascript" src="lib/jquery-3.3.1.min.js"></script>
     <script src="js/geolib.js"></script> 
     <script type="text/javascript" src="lib/tau/wearable/js/tau.min.js"></script>	
     <script type="text/javascript" src="js/map_common.js"></script>	
 	<script>
-		if ((localStorage.getItem("map_engine") != null) && (localStorage.getItem("map_engine") == 'leaflet')) { // load leaflet
+		if (navigator.onLine)
+			console.log("network available");
+		else
+			console.log("no network");
+	
+		if ((!navigator.onLine) || ((localStorage.getItem("map_engine") != null) && (localStorage.getItem("map_engine") == 'leaflet'))) { // load leaflet
 		   		$.getScript("lib/leaflet/leaflet.js", function() {
    					$.getScript("lib/leaflet/leaflet-rotatedMarker.js", function() {
    						$.getScript("js/leafletmap.js", function() {
    							console.log("all leaflet javascripts loaded");
+   							localStorage.setItem("map_engine", 'leaflet');
 						});
 					});
 				});
 			}		
 		else { // load google
-	    	console.log("load google dependent javascripts");
+	    		console.log("load google dependent javascripts");
+	    		
+	    		var timeoutId; 
+				timeoutId = window.setTimeout(function() {
+    				localStorage.setItem("map_engine", 'leaflet');
+    				window.location.href = "index.html";
+				}, 3000);
 	    
-			$.getScript("http://maps.google.com/maps/api/js?key=AIzaSyBTLN60rGwdpaNDrc6tOigjdA9NwUN4ZT0&v=3&libraries=geometry&language=en", function() {
-   				$.getScript("js/geolocation-marker.js", function() {
-				   	$.getScript("js/GPXParser.js", function() {
-   						$.getScript("js/map.js", function() {
-   							console.log("all google dependent javascripts loaded");
+				$.getScript("http://maps.google.com/maps/api/js?key=AIzaSyBTLN60rGwdpaNDrc6tOigjdA9NwUN4ZT0&v=3&libraries=geometry&language=en", function() {
+   					$.getScript("js/geolocation-marker.js", function() {
+				   		$.getScript("js/GPXParser.js", function() {
+   							$.getScript("js/map.js", function() {
+   								console.log("all google dependent javascripts loaded");
+   								window.clearTimeout(timeoutId);
+   								localStorage.setItem("map_engine", 'google');
+							});
 						});
 					});
-				});
-			});   
-		}
+				});   
+			}
 	</script>
 </body>
 </html>

@@ -1113,7 +1113,6 @@ input[type="checkbox"]#checkboxControl {
 	background-color: rgba(2, 129, 209, 1);
 }
 
-
 .delete-icon::before {
 	position: absolute;
 	content: "";
