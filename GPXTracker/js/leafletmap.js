@@ -34,13 +34,13 @@ function leaflet_map() {
     });
 
     function initializeMap() {
-    	map = L.map('map_canvas', {zoomControl: false}).setView([51.505, -0.09], 13);
+    	map = L.map('map_canvas', {zoomControl: false}).setView([22.4,114.1], 13);
     	
-    	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    	    attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a>',
-    	    id: 'mapbox.streets',
+    	L.tileLayer('https://tile.thunderforest.com/{id}/{z}/{x}/{y}.png?apikey={accessToken}', {
+    	    attribution: '© <a href="https://www.thunderforest.com">Thunderforest</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    	    id: localStorage.getItem("map_type"),
     	    maxZoom: 25,
-    	    accessToken: 'pk.eyJ1IjoiYWxiZXJ0LWxpLTgwIiwiYSI6ImNqaDgwcDQ0cjBkcmQyd21zMGtuNnpjcTcifQ.nqH7zUFj4cVhXiR-SkF8fw'
+    	    accessToken: 'cf24ff10559d44dfabfeaa0a57541b4e'
     	}).addTo(map);    
     	
     	console.log("finished loading Map");

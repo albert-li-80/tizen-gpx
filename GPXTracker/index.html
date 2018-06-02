@@ -19,16 +19,17 @@
 	<div id="moreoptionsPopupCircle" class="ui-popup">
 		<div id="selector" class="ui-selector">
 			<div id="gpx_route" class="ui-item add-gpx-icon" data-title="Route: Not Set"></div>
-			<div id="screen_on" class="ui-item screen-icon" data-title="Screen: Always On"></div>
+			<div id="remove_file" class="ui-item removefile-icon" data-title="Remove Route"></div>
 			<div id="location_on" class="ui-item currentpos-icon" data-title="Show Current Position: On"></div>
 			<div id="center_on" class="ui-item center-icon" data-title="Set Center to Current Location: On"></div>
 			<div id="follow_heading" class="ui-item orientation-icon" data-title="Map Orientation: North"></div>
 			<div id="draw_trace" class="ui-item trace-icon" data-title="Trace Current Route: On"></div>
 			<div id="show_distance" class="ui-item distance-icon" data-title="Follow Route: On"></div>
 			<div id="off_track" class="ui-item offtrack-icon" data-title="Off Track Notification: Off"></div>
-			<div id="remove_file" class="ui-item removefile-icon" data-title="Remove Route"></div>
+			<div id="screen_on" class="ui-item screen-icon" data-title="Screen: Always On"></div>
 			<div id="map_engine" class="ui-item mapengine-icon" data-title="Map Engine: Google (Online)"></div>
-			<div class="ui-item version-icon" data-title="Version 1.0.4 (Beta)"></div>
+			<div id="map_type" class="ui-item maptype-icon" data-title="Map Type: Hiking"></div>
+			<div class="ui-item version-icon" data-title="Version 1.0.5 (Beta)"></div>
 		</div>
 	</div>	
 	<div id="sideBtnPopup" class="ui-popup">
@@ -71,7 +72,7 @@
 		else
 			console.log("no network");
 	
-		if ((!navigator.onLine) || ((localStorage.getItem("map_engine") != null) && (localStorage.getItem("map_engine") == 'leaflet'))) { // load leaflet
+		if ((!navigator.onLine) || (localStorage.getItem("map_engine") == null) || (localStorage.getItem("map_engine") == 'leaflet')) { // load leaflet
 		   		$.getScript("lib/leaflet/leaflet.js", function() {
    					$.getScript("lib/leaflet/leaflet-rotatedMarker.js", function() {
    						$.getScript("js/leafletmap.js", function() {

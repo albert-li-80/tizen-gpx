@@ -92,8 +92,15 @@
     	var map_engine = localStorage.getItem("map_engine");
     	
     	if (map_engine == null) {
-    		localStorage.setItem("map_engine", "google");
-    		map_engine = google;
+    		localStorage.setItem("map_engine", "leaflet");
+    		map_engine = 'leaflet';
+    	}
+
+    	var map_type = localStorage.getItem("map_type");
+    	
+    	if (map_type == null) {
+    		localStorage.setItem("map_type", "outdoors");
+    		map_type = 'outdoors';
     	}
 
 	};
@@ -166,6 +173,7 @@
     	var show_distance = localStorage.getItem("show_distance");
     	var off_track = localStorage.getItem("off_track");
     	var map_engine = localStorage.getItem("map_engine");
+    	var map_type = localStorage.getItem("map_type");
     	
     	if (screen_on == "true")
     		document.getElementById('screen_on').setAttribute("data-title", "Screen: Always On" );
@@ -207,6 +215,11 @@
     		document.getElementById('map_engine').setAttribute("data-title", "Map Engine: Google (Online)" );
     	else if (map_engine == "leaflet")
     		document.getElementById('map_engine').setAttribute("data-title", "Map Engine: Leaflet (Offline)" );
+
+    	if (map_type == "cycle")
+    		document.getElementById('map_type').setAttribute("data-title", "Map Type: Hiking" );
+    	else if (map_type == "outdoors")
+    		document.getElementById('map_type').setAttribute("data-title", "Map Type: Cycling" );
 
     };
     
@@ -288,6 +301,9 @@
 				    case 'map_engine':
 				        mapEngineHandler();
 				        break;
+				    case 'map_type':
+				        mapTypeHandler();
+				        break;
 				    default:
 				    	tau.closePopup(popupCircle);
 					}
@@ -325,6 +341,7 @@
     	document.getElementById("off_track").addEventListener("click", offTrackHandler);
     	document.getElementById("remove_file").addEventListener("click", removeFileHandler);
     	document.getElementById("map_engine").addEventListener("click", mapEngineHandler);
+    	document.getElementById("map_type").addEventListener("click", mapTypeHandler);
     };
 
 	function removeFileHandler() {
@@ -344,6 +361,22 @@
 			localStorage.setItem("map_engine", 'google');
 			document.getElementById('map_engine').setAttribute("data-title", "Map Engine: Google (Online)" );
 	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Map Engine: Google (Online)";
+			window.location.href = 'index.html';
+		} 
+	}
+
+	function mapTypeHandler() {
+		console.log("map_type toggle clicked");
+		
+		if (localStorage.getItem("map_type") == 'cycle') {
+			localStorage.setItem("map_type", 'outdoors');
+    		document.getElementById('map_type').setAttribute("data-title", "Map Type: Hiking" );
+	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Map Type: Hiking";
+			window.location.href = 'index.html';
+		} else if (localStorage.getItem("map_type") == 'outdoors') {
+			localStorage.setItem("map_type", 'cycle');
+			document.getElementById('map_type').setAttribute("data-title", "Map Type: Cycling" );
+	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Map Type: Cycling";
 			window.location.href = 'index.html';
 		} 
 	}
