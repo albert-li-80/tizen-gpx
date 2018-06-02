@@ -8,6 +8,13 @@
     $(document).ready(function() {
     	console.log("init: files ready");
     	
+    	// L10N
+    	
+    	for (var i = 0; i < document.querySelectorAll('[data-l10n]').length; i++) {
+    	    var elem = document.querySelectorAll('[data-l10n]')[i];
+    	    elem.innerHTML = TIZEN_L10N[elem.getAttribute('data-l10n')];
+    	}
+    	
     	if ((document.title == "Files") || (document.title == "Remove Routes")) {
     		getGPXFilelist();
     		registerFileEventHandlers();
@@ -43,10 +50,10 @@
     		}
 
     		if (innerHTML == '')
-    			innerHTML = '<li><a href="#">No Routes</a></li>';
+    			innerHTML = '<li><a href="#">' +  TIZEN_L10N['no_route'] + '</a></li>';
  
     	} else {
-    		innerHTML = '<li><a href="#">No Routes</a></li>';
+    		innerHTML = '<li><a href="#">' +  TIZEN_L10N['no_route'] + '</a></li>';
 		}
 
 		console.log(innerHTML);    		
@@ -406,7 +413,7 @@
     	localStorage.setItem("currentGPXName", route_name);
     	localStorage.setItem("currentGPXFilename", fileName);  	
     	
-    	document.getElementById("download_popup_content").innerHTML = 'Download Completed';
+    	document.getElementById("download_popup_content").innerHTML = TIZEN_L10N['download_completed'];
     	
     	setTimeout(function(){ 
     		tau.closePopup();},	 // Alert Popup Toast
@@ -532,7 +539,7 @@
 		    document.getElementById("save_file_btn").disabled = true;
 		    
 		    tau.openPopup("#download_popup");
-	        document.getElementById("download_popup_content").innerHTML = "Initializing Download";
+	        document.getElementById("download_popup_content").innerHTML = TIZEN_L10N['initializing_download'];
 		    
     		var route_name = document.getElementById("route_name_input").textContent;
     		var gpx_url = encodeURI(document.getElementById("gpx_url_input").textContent);
@@ -569,7 +576,7 @@
     				    console.log('Completed with id: ' + id + ', file name: ' + fileName);
     				    
     				    // CODE FOR PARSING XML
-    				    document.getElementById("download_popup_content").innerHTML = "Analyzing Route";
+    				    document.getElementById("download_popup_content").innerHTML = TIZEN_L10N['analyzing_route'];
     				    parseXMLfile(fileName);
     				    
     				    // END CODE FOR PARSING XML
@@ -580,7 +587,7 @@
     				    console.log('Failed with id: ' + id + ', error name: ' + error.name);
     				    document.getElementById("save_file_btn").innerHTML = "Download Failed!";
 
-    			    	document.getElementById("download_popup_content").innerHTML = "Download Failed! <br>" + error.name;
+    			    	document.getElementById("download_popup_content").innerHTML = TIZEN_L10N['download_failed']  + "! <br>" + error.name;
         			    	
         			    setTimeout(function(){ 
         			    		tau.closePopup();	 // Alert Popup Toast
@@ -606,7 +613,7 @@
 			    console.log('Failed with download start id: ' + id + ', error name: ' + error.name);
 			    document.getElementById("save_file_btn").innerHTML = "Download Failed!";
 
-		    	document.getElementById("download_popup_content").innerHTML = "Download Failed!<br>Try Again!<br>" + error.name;
+		    	document.getElementById("download_popup_content").innerHTML = TIZEN_L10N['download_failed'] +  "!<br>" + TIZEN_L10N['try_again'] + "<br>" + error.name;
 			    	
 			    setTimeout(function(){ 
 			    		tau.closePopup();

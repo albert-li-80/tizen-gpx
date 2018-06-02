@@ -1,56 +1,65 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" charset="utf-8"/>
-	<link rel="stylesheet" href="lib/tau/wearable/theme/default/tau.min.css">
-	<link rel="stylesheet" media="all and (-tizen-geometric-shape: circle)" href="lib/tau/wearable/theme/default/tau.circle.min.css">
-	<link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/customstyle.css"/>
-    <link rel="stylesheet" href="lib/leaflet/leaflet.css"/>
-</head>
-
-<body>
-	<div id="map_main" class="ui-page ui-page-active" class="contents">
-		<div class="map" id="map_canvas"></div>
-		<div class="overlay" id="acquire_signal">Map Loading...<p><p><p></div>
-		<div class="settings_overlay" id="settings_button"> <img class="more_option_image" src="css/images/b_more_option.png"></div>
-	</div>
-		<!-- Circle Profile -->
-	<div id="moreoptionsPopupCircle" class="ui-popup">
-		<div id="selector" class="ui-selector">
-			<div id="gpx_route" class="ui-item add-gpx-icon" data-title="Route: Not Set"></div>
-			<div id="remove_file" class="ui-item removefile-icon" data-title="Remove Route"></div>
-			<div id="location_on" class="ui-item currentpos-icon" data-title="Show Current Position: On"></div>
-			<div id="center_on" class="ui-item center-icon" data-title="Set Center to Current Location: On"></div>
-			<div id="follow_heading" class="ui-item orientation-icon" data-title="Map Orientation: North"></div>
-			<div id="draw_trace" class="ui-item trace-icon" data-title="Trace Current Route: On"></div>
-			<div id="show_distance" class="ui-item distance-icon" data-title="Follow Route: On"></div>
-			<div id="off_track" class="ui-item offtrack-icon" data-title="Off Track Notification: Off"></div>
-			<div id="screen_on" class="ui-item screen-icon" data-title="Screen: Always On"></div>
-			<div id="map_engine" class="ui-item mapengine-icon" data-title="Map Engine: Google (Online)"></div>
-			<div id="map_type" class="ui-item maptype-icon" data-title="Map Type: Hiking"></div>
-			<div class="ui-item version-icon" data-title="Version 1.0.5 (Beta)"></div>
-		</div>
-	</div>	
-	<div id="sideBtnPopup" class="ui-popup">
-   		<div class="ui-popup-content">
- 		     Are you sure to exit? Widget and off-track notification will be turned off.
-   		</div>
-   		<div class="ui-popup-footer ui-grid-col-2 ui-side-button">
-      		<button id="sideBtn-cancel" class="ui-btn btn-icon-cancel">Cancel</button>
-      		<button id="sideBtn-ok" class="ui-btn btn-icon-check">OK</button>
-   		</div>
-	</div>
-	<div id="loadFileErrorPopup" class="ui-popup">
-		<div class="ui-popup-header">Error</div>
-   		<div class="ui-popup-content">
-      		GPX Route File format incorrect. Choose a different file.
-   		</div>
-   		<div class="ui-popup-footer ui-bottom-button">
-      		<button id="dismissBtn" class="ui-btn">OK</button>
-   		</div>
-	</div>
-	<script>
+ <head> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" charset="utf-8" /> 
+  <link rel="stylesheet" href="lib/tau/wearable/theme/default/tau.min.css" /> 
+  <link rel="stylesheet" media="all and (-tizen-geometric-shape: circle)" href="lib/tau/wearable/theme/default/tau.circle.min.css" /> 
+  <link rel="stylesheet" href="css/style.css" /> 
+  <link rel="stylesheet" type="text/css" href="css/customstyle.css" /> 
+  <link rel="stylesheet" href="lib/leaflet/leaflet.css" /> 
+  <script src="language.js"></script>
+ </head> 
+ <body> 
+  <div id="map_main" class="contents"> 
+   <div class="map" id="map_canvas"></div> 
+   <div class="overlay" id="acquire_signal">
+     <span data-l10n="map_loading"></span>... 
+    <p></p> 
+    <p></p> 
+    <p></p> 
+   </div> 
+   <div class="settings_overlay" id="settings_button"> 
+    <img class="more_option_image" src="css/images/b_more_option.png" /> 
+   </div> 
+  </div> 
+  <!-- Circle Profile --> 
+  <div id="moreoptionsPopupCircle" class="ui-popup"> 
+   <div id="selector" class="ui-selector"> 
+    <div id="gpx_route" class="ui-item add-gpx-icon" data-title="Route: Not Set"></div> 
+    <div id="remove_file" class="ui-item removefile-icon" data-title="Remove Route"></div> 
+    <div id="location_on" class="ui-item currentpos-icon" data-title="Show Current Position: On"></div> 
+    <div id="center_on" class="ui-item center-icon" data-title="Set Center to Current Location: On"></div> 
+    <div id="follow_heading" class="ui-item orientation-icon" data-title="Map Orientation: North"></div> 
+    <div id="draw_trace" class="ui-item trace-icon" data-title="Trace Current Route: On"></div> 
+    <div id="show_distance" class="ui-item distance-icon" data-title="Follow Route: On"></div> 
+    <div id="off_track" class="ui-item offtrack-icon" data-title="Off Track Notification: Off"></div> 
+    <div id="screen_on" class="ui-item screen-icon" data-title="Screen: Always On"></div> 
+    <div id="map_engine" class="ui-item mapengine-icon" data-title="Map Engine: Google (Online)"></div> 
+    <div id="map_type" class="ui-item maptype-icon" data-title="Map Type: Hiking"></div> 
+    <div class="ui-item version-icon" data-title="Version 1.0.5 (Beta)"></div> 
+   </div> 
+  </div> 
+  <div id="sideBtnPopup" class="ui-popup"> 
+   <div class="ui-popup-content">
+     <span data-l10n="exit_reminder"></span>
+   </div> 
+   <div class="ui-popup-footer ui-grid-col-2 ui-side-button"> 
+    <button id="sideBtn-cancel" class="ui-btn btn-icon-cancel">Cancel</button> 
+    <button id="sideBtn-ok" class="ui-btn btn-icon-check">OK</button> 
+   </div> 
+  </div> 
+  <div id="loadFileErrorPopup" class="ui-popup"> 
+   <div class="ui-popup-header">
+	    <span data-l10n="error"></span>
+   </div> 
+   <div class="ui-popup-content">
+	   <span data-l10n="wrong_format"></span>
+   </div> 
+   <div class="ui-popup-footer ui-bottom-button"> 
+    <button id="dismissBtn" class="ui-btn">OK</button> 
+   </div> 
+  </div> 
+  <script>
 		/* Show Splash Screen */
 	
 		var splash = localStorage.getItem("firstPass");
@@ -58,15 +67,16 @@
 		if ((splash == null) || (splash == '')) {
 			console.log("first pass");
 			document.getElementById("map_canvas").innerHTML = '<img id="splash" src="icon.png" height="360" width="360"/>';
+			document.getElementById("acquire_signal").innerHTML = TIZEN_L10N['map_loading'] + '...<p><p><p>';
 		}
 		console.log("hello");
 		localStorage.setItem("firstPass", "");
-	</script>
-    <script type="text/javascript" src="lib/jquery-3.3.1.min.js"></script>
-    <script src="js/geolib.js"></script> 
-    <script type="text/javascript" src="lib/tau/wearable/js/tau.min.js"></script>	
-    <script type="text/javascript" src="js/map_common.js"></script>	
-	<script>
+	</script> 
+  <script type="text/javascript" src="lib/jquery-3.3.1.min.js"></script> 
+  <script src="js/geolib.js"></script> 
+  <script type="text/javascript" src="lib/tau/wearable/js/tau.min.js"></script> 
+  <script type="text/javascript" src="js/map_common.js"></script> 
+  <script>
 		if (navigator.onLine)
 			console.log("network available");
 		else
@@ -103,6 +113,6 @@
 					});
 				});   
 			}
-	</script>
-</body>
+	</script>  
+ </body>
 </html>

@@ -1326,3 +1326,18 @@ input[type="checkbox"]#checkboxControl {
 	background-color: rgb(8, 8, 8);
 	-webkit-mask-repeat: no-repeat;
 }
+
+ .btn-icon-add::before {
+	background-color: rgba(245, 245, 245, 1);
+	-webkit-mask-image: url(../css/images/add.png);
+ }
+ 
+ .btn-icon-save::before {
+	background-color: rgba(245, 245, 245, 1);
+	-webkit-mask-image: url(../css/images/save_attachment.png);
+ }
+ 
+ .btn-icon-delete::before {
+	background-color: rgba(245, 245, 245, 1);
+	-webkit-mask-image: url(../css/images/delete.png);
+ }

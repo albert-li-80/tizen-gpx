@@ -230,8 +230,9 @@ function google_map() {
 			   var nearestPt = geolib.findNearest(currentPos.toJSON(), routePoints, 0, 1);
 			   console.log("nearest :" + nearestPt.distance);
 			   var remaining = getRemainingDistance(nearestPt.key);
-			   var hinttext = 'Deviation: ' + nearestPt.distance + 'm<br>' ;
-			   hinttext = hinttext + 'Rem Dist: ' + (remaining / 1000).toFixed(2) + '/' + (gpxRouteDistance / 1000).toFixed(2) + 'km<p><p><p>';
+			   var hinttext = TIZEN_L10N['distance_remaining'] + ": " + (remaining / 1000).toFixed(2) + '/' + (gpxRouteDistance / 1000).toFixed(2) + 'km<br>';
+			   hinttext = hinttext + TIZEN_L10N['deviation'] + ": " + nearestPt.distance + 'm<p><p><p>' ;
+			   
 			   document.getElementById("acquire_signal").innerHTML = hinttext;
 		   }
 
@@ -281,7 +282,7 @@ function google_map() {
 	   
    function traceCurrentLocation() {
 	   
-	   document.getElementById("acquire_signal").innerHTML = 'Waiting for GPS Signal...<p><p><p>';
+	   document.getElementById("acquire_signal").innerHTML = TIZEN_L10N['wait_gps'] + '...<p><p><p>';
 	   
 	   GeoMarker = new GeolocationMarker();
 	   GeoMarker.setCircleOptions({fillColor: '#808080'});
@@ -421,8 +422,8 @@ function google_map() {
 		
 		if (localStorage.getItem("location_on") == 'true') {
 			localStorage.setItem("location_on", 'false');
-    		document.getElementById('location_on').setAttribute("data-title", "Show Current Position: Off" );
-    		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Show Current Position: Off";
+    		document.getElementById('location_on').setAttribute("data-title", TIZEN_L10N['show_current_position'] + ": " + TIZEN_L10N['off']);
+    		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['show_current_position'] + ": " + TIZEN_L10N['off'];
     		document.getElementById("acquire_signal").innerHTML = '';
     		
     		if (GeoMarker!= null)
@@ -430,8 +431,8 @@ function google_map() {
 
 		} else if (localStorage.getItem("location_on") == 'false') {
 			localStorage.setItem("location_on", 'true');
-			document.getElementById('location_on').setAttribute("data-title", "Show Current Position: On" );
-    		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Show Current Position: On";
+			document.getElementById('location_on').setAttribute("data-title", TIZEN_L10N['show_current_position'] + ": " + TIZEN_L10N['on'] );
+    		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['show_current_position'] + ": " + TIZEN_L10N['on'];
 
 			if (GeoMarker != null)
 				GeoMarker.setMap(map);
@@ -448,8 +449,8 @@ function google_map() {
 
 		if (localStorage.getItem("follow_heading") == 'true') {
 			localStorage.setItem("follow_heading", 'false');
-    		document.getElementById('follow_heading').setAttribute("data-title", "Map Orientation: North" );
-    		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Map Orientation: North";
+    		document.getElementById('follow_heading').setAttribute("data-title", TIZEN_L10N['map_orientation'] + ": " + TIZEN_L10N['north']  );
+    		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['map_orientation'] + ": " + TIZEN_L10N['north'] ;
     		
     		if (GeoMarker != null)	    			
     			GeoMarker.setMarkerOptions({icon: {
@@ -466,8 +467,8 @@ function google_map() {
 
 		} else if (localStorage.getItem("follow_heading") == 'false') {
 			localStorage.setItem("follow_heading", 'true');
-			document.getElementById('follow_heading').setAttribute("data-title", "Map Orientation: Direction of Travel" );
-    		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Map Orientation: Direction of Travel";
+			document.getElementById('follow_heading').setAttribute("data-title", TIZEN_L10N['map_orientation'] + ": " + TIZEN_L10N['direction_of_travel']  );
+    		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['map_orientation'] + ": " + TIZEN_L10N['direction_of_travel'];
     		
     		if (GeoMarker != null)
     			GeoMarker.setMarkerOptions({icon: {
@@ -487,13 +488,13 @@ function google_map() {
 		
 		if (localStorage.getItem("draw_trace") == 'true') {
 			localStorage.setItem("draw_trace", 'false');
-    		document.getElementById('draw_trace').setAttribute("data-title", "Trace Current Route: Off" );
-       		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Trace Current Route: Off";
+    		document.getElementById('draw_trace').setAttribute("data-title", TIZEN_L10N['trace_current_route'] + ": " + TIZEN_L10N['off'] );
+       		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['trace_current_route'] + ": " + TIZEN_L10N['off'];
     		landPath.setMap(null);
 		} else if (localStorage.getItem("draw_trace") == 'false') {
 			localStorage.setItem("draw_trace", 'true');
-			document.getElementById('draw_trace').setAttribute("data-title", "Trace Current Route: On" );
-	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Trace Current Route: On";
+			document.getElementById('draw_trace').setAttribute("data-title", TIZEN_L10N['trace_current_route'] + ": " + TIZEN_L10N['on'] );
+	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['trace_current_route'] + ": " + TIZEN_L10N['on'];
     		landPath.setMap(map);
 		}
 	}

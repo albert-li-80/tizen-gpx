@@ -6,34 +6,35 @@
 	<link rel="stylesheet" href="lib/tau/wearable/theme/default/tau.min.css">
 	<link rel="stylesheet" media="all and (-tizen-geometric-shape: circle)" href="lib/tau/wearable/theme/default/tau.circle.min.css">
 	<link rel="stylesheet" href="css/style.css">
+	<script src="language.js"></script>
 </head>
 <body>
 	<div class="ui-page ui-page-active">
 		<header class="ui-header">
-			<h2 class="ui-title">Add Route</h2>
+			<h2 class="ui-title"><span data-l10n="add_route"></span></h2>
 		</header>
 		<div class="ui-content">
 			<ul class="ui-listview">
 				<li id="route_name_box" class="li-has-2line">
 					<a>
-						Route Name
+						<span data-l10n="route_name"></span>
 						<span id="route_name_input" style="text-align: center" class="ui-li-sub-text li-text-sub" >HV to Central</span>
 					</a>
 				</li>
 				 <li id="gpx_url_box" class="li-has-2line">
 					<a>
-						GPX File URL
+						<span data-l10n="gpx_file_url"></span>
 						<span id="gpx_url_input" style="text-align: center" class="ui-li-sub-text li-text-sub">https://bit.ly/2HNjyT9</span>
 					</a>
 				</li>
 			</ul>
 		</div>
  	  		<footer class="ui-footer ui-bottom-button">
-			<button id="save_file_btn" class="ui-btn">Save File</button>
+			<button id="save_file_btn" class="ui-btn btn-icon-save" data-l10n="save_file">Save File</button>
 			</footer>	
 	</div>
 	<div id="download_popup" class="ui-popup" data-enable-page-scroll="false">
-	    <div class="ui-popup-header">Downloading</div>
+	    <div class="ui-popup-header"><span data-l10n="downloading"></span></div>
 	    <div class="ui-content content-padding">
       		<div id="download_popup_content" class="ui-processing-text"></div>
 		</div>

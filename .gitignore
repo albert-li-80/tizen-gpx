@@ -5,6 +5,9 @@
 /GPXTracker/*
 !/GPXTracker/*.html
 !/GPXTracker/config.xml
+!/GPXTracker/*.js
+
+!/GPXTracker/locales/
 
 !/GPXTracker/js/
 !/GPXTracker/js/*

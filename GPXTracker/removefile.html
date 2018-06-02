@@ -6,18 +6,19 @@
 	<link rel="stylesheet" href="lib/tau/wearable/theme/default/tau.min.css">
 	<link rel="stylesheet" media="all and (-tizen-geometric-shape: circle)" href="lib/tau/wearable/theme/default/tau.circle.min.css">
 	<link rel="stylesheet" href="css/style.css">
+	<script src="language.js"></script>
 </head>
 <body>
 	<div class="ui-page ui-page-active" id="files_page">
 		<header class="ui-header">
-			<h2 class="ui-title">Remove Routes</h2>
+			<h2 class="ui-title"><span data-l10n="remove_route"></span></h2>
 		</header>
 		<div class="ui-content">
 			<ul id="filelist" class="ui-listview ui-snap-listview expand-list">
 			</ul>
 		</div>
 		<div class="ui-footer ui-bottom-button">
-			<button id="remove_file_btn" class="ui-btn" disabled="disabled">Remove Route</button>
+			<button id="remove_file_btn" class="ui-btn btn-icon-delete" disabled="disabled"><span data-l10n="remove"></span></button>
 		</div>
 	</div>
 	<div id="file_popup" class="ui-popup content-padding" data-enable-page-scroll="false">

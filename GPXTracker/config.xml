@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" version="1.0.5" height="360" width="360" viewmodes="maximized">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" version="1.0.5" height="360" width="360" viewmodes="maximized">
     <access origin="http://googleapis.com" subdomains="true"></access>
     <access origin="http://gstatic.com" subdomains="true"></access>
     <access origin="http://google.com" subdomains="true"></access>
@@ -20,6 +20,7 @@
     <description>Load a GPX route file online, and display the route with your current location on your Samsung Gear Watch!&#xD;
 Don't you want to be notified if you have missed a turn during your hike? Don't you want to know how far away is the ending point? Don't tell me you trust your buddy who always say &quot;almost there&quot;!&#xD;
 With this app, you can enjoy the same feature as those expensive Garmin / Polar watches on your Gear wearable device.&#xD;
+&#xD;
 Features:&#xD;
 1. Load a GPX route and display it on your watch.&#xD;
 2. Pinpoint your current location.&#xD;
@@ -27,23 +28,333 @@ Features:&#xD;
 4. Option to rotate map to match the direction of travel.&#xD;
 5. Calculate distance to closest point of loaded route (i.e. deviation).&#xD;
 6. Calculate remaining distance based on your current location and pre-defined route.&#xD;
-6. Off-route notification (once every 30 minutes)&#xD;
+6. Off-route notification (vibrates once every 30 seconds)&#xD;
 7. Widget to show deviation and remaining distance to finish route.&#xD;
+&#xD;
 This is a standalone application. No connection to phone is required. &#xD;
 There are two map engines implemented, google and leaflet. If you choose google as your map engine, Internet is required. Leaflet engine requires no internet connection (even though map tiles will not load).&#xD;
-It is currently a beta version. It has been tested on Gear Sport only. Please welcome to test it on other devices and give me feedback.&#xD;
+It is currently a beta version. Please welcome to test it on other devices and give me feedback.&#xD;
+&#xD;
+Please also give me on translation because currently it is based on google translate.&#xD;
+&#xD;
 Starting Instructions:&#xD;
 1. Click on the right ... button to enter &quot;Settings&quot;.&#xD;
 2. Click on &quot;Route&quot;.&#xD;
 3. Click on &quot;New Route&quot;&#xD;
-4. Enter a Route Name (ex: Home to Office), and a http URL of your gpx file. &#xD;
-5. Wait for it to finish downloading. You will be taken back to the map after downloading complete.</description>
+4. Enter a Route Name (ex: Home to Office), and a http URL of your gpx file.  (*direct download link is required)&#xD;
+5. Wait for it to finish downloading. You will be taken back to the map after downloading complete.&#xD;
+&#xD;
+For further information, please visit https://sites.google.com/site/gpxroutetracker/</description>
+    <description xml:lang="ru-ru">Загрузите файл маршрута GPX онлайн и покажите маршрут с вашим текущим местоположением на вашем Samsung Gear Watch!
+Вы не хотите получать уведомления, если вы пропустили поворот во время вашего похода? Разве вы не хотите знать, как далеко находится конечная точка? Не говорите мне, что вы доверяете своему приятелю, который всегда говорит «почти там»!
+С помощью этого приложения вы можете пользоваться той же функцией, что и дорогие часы Garmin / Polar, на вашем носимом носителе Gear.
+
+Особенности:
+1. Загрузите маршрут GPX и покажите его на своих часах.
+2. Определите свое текущее местоположение.
+3. Проследите текущий путь.
+4. Возможность поворота карты в соответствии с направлением движения.
+5. Рассчитайте расстояние до ближайшей точки загруженного маршрута (т. Е. Отклонения).
+6. Рассчитайте оставшееся расстояние в зависимости от вашего текущего местоположения и заранее определенного маршрута.
+6. Уведомление о маршруте (вибрирует один раз каждые 30 секунд)
+7. Виджет, показывающий отклонение и оставшееся расстояние до финиша.
+
+Это автономное приложение. Не требуется подключение к телефону.
+Реализованы два движка карты: google и листовки. Если вы выбираете Google в качестве механизма вашей карты, требуется Интернет. Листовой двигатель не требует подключения к Интернету (даже если плитка не загружается).
+В настоящее время это бета-версия. Пожалуйста, добро пожаловать, чтобы проверить его на других устройствах и дать мне обратную связь.
+
+Пожалуйста, дайте мне перевод, потому что в настоящее время он основан на переводе Google.
+
+Начальные инструкции:
+1. Нажмите правую кнопку ..., чтобы войти в «Настройки».
+2. Нажмите «Маршрут».
+3. Нажмите «Новый маршрут»
+4. Введите имя маршрута (например: «Главная для офиса») и URL-адрес http вашего gpx-файла. (требуется прямая ссылка для скачивания)
+5. Дождитесь завершения загрузки. После завершения загрузки вы вернетесь на карту.
+
+Дополнительную информацию можно найти на странице https://sites.google.com/site/gpxroutetracker/
+</description>
+<description xml:lang="ja-jp">GPXルートファイルをオンラインで読み込み、Samsung Gear Watchの現在の位置にルートを表示してください！
+あなたがハイキング中にターンを逃した場合、通知を受けたくないのですか？あなたは終点がどれくらい離れているか知りたいですか？あなたはいつも「ほぼそこ」と言っているあなたのバディを信頼していると言ってはいけません！
+このアプリでは、あなたのGearウェアラブルデバイスの高価なGarmin / Polar時計と同じ機能を楽しむことができます。
+
+特徴：
+1. GPXルートをロードして時計に表示します。
+2.あなたの現在の位置を特定します。
+3.現在のパスをトレースします。
+4.旅行の方向に合わせて地図を回転するオプション。
+ロードされたルートの最も近いポイントまでの距離（すなわち、偏差）を計算する。
+6.現在の場所と事前定義されたルートに基づいて残りの距離を計算します。
+6.オフルート通知（30秒に1回振動）
+7.ルートを終了するための偏差と残りの距離を表示するウィジェット。
+
+これはスタンドアロンアプリケーションです。電話に接続する必要はありません。
+Googleとリーフレットの2つのマップエンジンが実装されています。マップエンジンとしてgoogleを選択した場合は、インターネットが必要です。リーフレットエンジンはインターネットに接続する必要はありません（マップタイルはロードされません）。
+現在、ベータ版です。他の端末でテストしてフィードバックをお寄せください。
+
+現在翻訳しているので、翻訳してください。
+
+開始指示：
+1.右のボタンをクリックして、「設定」を入力します。
+2.「ルート」をクリックします。
+3. [新しいルート]をクリックします。
+4. Route Name（例：Home to Office）とgpxファイルのhttp URLを入力します。 （*直接ダウンロードリンクが必要です）
+5.ダウンロードが完了するのを待ちます。ダウンロードが完了したら、地図に戻ります。
+
+詳細については、https：//sites.google.com/site/gpxroutetracker/をご覧ください。</description>
+<description xml:lang="de-de">
+Laden Sie eine GPX-Routendatei online und zeigen Sie die Route mit Ihrem aktuellen Standort auf Ihrer Samsung Gear Watch an!
+Möchtest du nicht benachrichtigt werden, wenn du während deiner Wanderung eine Runde verpasst hast? Willst du nicht wissen, wie weit der Endpunkt ist? Sag mir nicht, dass du deinem Kumpel vertraust, der immer "fast da" sagt!
+Mit dieser App können Sie die gleichen Funktionen wie die teuren Garmin / Polar-Uhren auf Ihrem tragbaren Gerät Gear genießen.
+
+Eigenschaften:
+1. Laden Sie eine GPX-Route und zeigen Sie sie auf Ihrer Uhr an.
+2. Bestimmen Sie Ihren aktuellen Standort.
+3. Verfolgen Sie Ihren aktuellen Pfad.
+4. Option, die Karte entsprechend der Fahrtrichtung zu drehen.
+5. Berechnen Sie den Abstand zum nächsten Punkt der geladenen Route (d. H. Abweichung).
+6. Berechnen Sie die verbleibende Entfernung basierend auf Ihrem aktuellen Standort und der vordefinierten Route.
+6. Off-route-Benachrichtigung (vibriert einmal alle 30 Sekunden)
+7. Widget, um die Abweichung und die verbleibende Entfernung anzuzeigen, um die Route zu beenden.
+
+Dies ist eine eigenständige Anwendung. Keine Verbindung zum Telefon ist erforderlich.
+Es sind zwei Map-Engines implementiert, Google und Leaflet. Wenn Sie Google als Karten-Engine auswählen, ist Internet erforderlich. Die Leaflet-Engine benötigt keine Internetverbindung (obwohl die Kartenkacheln nicht geladen werden).
+Es ist derzeit eine Beta-Version. Bitte, testen Sie es auf anderen Geräten und geben Sie mir Feedback.
+
+Bitte geben Sie mir auch eine Übersetzung, weil es derzeit auf Google Translate basiert.
+
+Startanweisungen:
+1. Klicken Sie auf die rechte ... Schaltfläche, um "Einstellungen" einzugeben.
+2. Klicken Sie auf "Route".
+3. Klicken Sie auf "Neue Route"
+4. Geben Sie einen Routennamen ein (z. B. Home to Office) und eine http-URL Ihrer GPX-Datei. (* direkter Download-Link ist erforderlich)
+5. Warten Sie, bis das Herunterladen beendet ist. Nach dem Herunterladen werden Sie zur Karte zurückgebracht.
+
+Weitere Informationen erhalten Sie unter https://sites.google.com/site/gpxroutetracker/
+</description>
+<description xml:lang="fr-fr">
+Chargez un fichier de route GPX en ligne et affichez l'itinéraire avec votre position actuelle sur votre Samsung Gear Watch!
+Ne voulez-vous pas être informé si vous avez manqué un virage pendant votre randonnée? Tu ne veux pas savoir jusqu'où est le point final? Ne me dis pas que tu fais confiance à ton pote qui dit toujours "presque là"!
+Avec cette application, vous pouvez profiter de la même fonctionnalité que les montres chères Garmin / Polar sur votre appareil portable Gear.
+
+Caractéristiques:
+1. Chargez un itinéraire GPX et affichez-le sur votre montre.
+2. Repérez votre position actuelle.
+3. Tracez votre chemin actuel.
+4. Possibilité de faire pivoter la carte pour qu'elle corresponde à la direction du déplacement.
+5. Calculez la distance jusqu'au point le plus proche de la route chargée (c'est-à-dire la déviation).
+6. Calculez la distance restante en fonction de votre position actuelle et de votre itinéraire prédéfini.
+6. Notification hors route (vibre toutes les 30 secondes)
+7. Widget pour montrer la déviation et la distance restante pour terminer l'itinéraire.
+
+Ceci est une application autonome. Aucune connexion au téléphone n'est requise.
+Deux moteurs de cartes sont implémentés, google et leaflet. Si vous choisissez google comme moteur de carte, Internet est requis. Le moteur de dépliant n'exige aucune connexion Internet (même si les mosaïques de carte ne se chargent pas).
+C'est actuellement une version bêta. S'il vous plaît accueillir pour le tester sur d'autres appareils et me donner des commentaires.
+
+S'il vous plaît donnez-moi aussi sur la traduction car actuellement il est basé sur google translate.
+
+Instructions de départ:
+1. Cliquez sur le bouton droit ... pour entrer dans "Paramètres".
+2. Cliquez sur "Route".
+3. Cliquez sur "Nouvelle route"
+4. Entrez un nom de routage (ex: Home to Office) et une URL http de votre fichier gpx. (* un lien de téléchargement direct est requis)
+5. Attendez que le téléchargement se termine. Vous serez ramené sur la carte après le téléchargement terminé.
+
+Pour plus d'informations, consultez la page https://sites.google.com/site/gpxroutetracker/
+</description>
+<description xml:lang="es-es">
+Cargue un archivo de ruta GPX en línea y visualice la ruta con su ubicación actual en su Samsung Gear Watch.
+¿No quieres que te notifiquen si te has perdido un turno durante tu caminata? ¿No quieres saber qué tan lejos está el punto final? ¡No me digas que confías en tu amigo que siempre dice "casi allí"!
+Con esta aplicación, puedes disfrutar de la misma característica que los costosos relojes Garmin / Polar en tu dispositivo portátil Gear.
+
+caracteristicas:
+1. Cargue una ruta GPX y muéstrela en su reloj.
+2. Identifica tu ubicación actual.
+3. Traza tu camino actual.
+4. Opción para rotar el mapa para que coincida con la dirección de viaje.
+5. Calcule la distancia hasta el punto más cercano de la ruta cargada (es decir, la desviación).
+6. Calcule la distancia restante en función de su ubicación actual y ruta predefinida.
+6. Notificación fuera de ruta (vibra una vez cada 30 segundos)
+7. Widget para mostrar la desviación y la distancia restante para finalizar la ruta.
+
+Esta es una aplicación independiente. No se requiere conexión al teléfono.
+Hay dos motores de mapas implementados, google y folleto. Si elige google como su motor de mapas, se requiere Internet. El motor de folletos no requiere conexión a Internet (aunque las fichas del mapa no se cargarán).
+Actualmente es una versión beta. Démosle la bienvenida para probarlo en otros dispositivos y darme su opinión.
+
+Por favor, también dame la traducción porque actualmente está basada en Google translate.
+
+Instrucciones de inicio:
+1. Haga clic en el botón derecho ... para ingresar a "Configuración".
+2. Haga clic en "Ruta".
+3. Haga clic en "Nueva ruta"
+4. Ingrese un Nombre de ruta (por ejemplo: De la casa a la oficina) y una URL http de su archivo gpx. (* se requiere un enlace de descarga directa)
+5. Espere a que termine la descarga. Volverá al mapa una vez que la descarga esté completa.
+
+Para obtener más información, visite https://sites.google.com/site/gpxroutetracker/
+</description>
+<description xml:lang="zh-hk">
+在線加載GPX路線文件，並在Samsung Gear Watch上顯示當前位置的路線！
+如果您在徒步旅行期間錯過了轉機，您是否想要收到通知？難道你不想知道終點有多遠？不要告訴我你相信你的朋友，他總是說“差不多”！
+有了這個應用程序，您可以享受與Gear可穿戴設備上昂貴的Garmin / Polar手錶相同的功能。
+
+特徵：
+1.加載GPX路線並將其顯示在手錶上。
+2.確定您的當前位置。
+3.跟踪你當前的路徑。
+4.選擇旋轉地圖以匹配旅行的方向。
+5.計算到加載路線最近點的距離（即偏差）。
+6.根據您當前的位置和預先定義的路線計算剩餘距離。
+6.路外通知（每30秒震動一次）
+7.小部件顯示偏差和剩餘距離以完成路線。
+
+這是一個獨立的應用程序。不需要連接電話。
+有兩個地圖引擎實施，谷歌和傳單。如果您選擇google作為地圖引擎，則需要Internet。傳單引擎不需要互聯網連接（即使地圖瓷磚不會加載）。
+它目前是一個測試版本。歡迎在其他設備上進行測試並給我反饋。
+
+請同時給我翻譯，因為它目前是基於谷歌翻譯。
+
+開始說明：
+1.點擊右邊的按鈕進入“設置”。
+2.點擊“路線”。
+3.點擊“新路線”
+4.輸入一個路由名稱（例如：家庭到辦公室）以及您的gpx文件的http URL。 （*需要直接下載鏈接）
+5.等待它完成下載。下載完成後，您將被帶回地圖。
+
+有關更多信息，請訪問https://sites.google.com/site/gpxroutetracker/
+</description>
+<description xml:lang="zh-tw">
+在線加載GPX路線文件，並在Samsung Gear Watch上顯示當前位置的路線！
+如果您在徒步旅行期間錯過了轉機，您是否想要收到通知？難道你不想知道終點有多遠？不要告訴我你相信你的朋友，他總是說“差不多”！
+有了這個應用程序，您可以享受與Gear可穿戴設備上昂貴的Garmin / Polar手錶相同的功能。
+
+特徵：
+1.加載GPX路線並將其顯示在手錶上。
+2.確定您的當前位置。
+3.跟踪你當前的路徑。
+4.選擇旋轉地圖以匹配旅行的方向。
+5.計算到加載路線最近點的距離（即偏差）。
+6.根據您當前的位置和預先定義的路線計算剩餘距離。
+6.路外通知（每30秒震動一次）
+7.小部件顯示偏差和剩餘距離以完成路線。
+
+這是一個獨立的應用程序。不需要連接電話。
+有兩個地圖引擎實施，谷歌和傳單。如果您選擇google作為地圖引擎，則需要Internet。傳單引擎不需要互聯網連接（即使地圖瓷磚不會加載）。
+它目前是一個測試版本。歡迎在其他設備上進行測試並給我反饋。
+
+請同時給我翻譯，因為它目前是基於谷歌翻譯。
+
+開始說明：
+1.點擊右邊的按鈕進入“設置”。
+2.點擊“路線”。
+3.點擊“新路線”
+4.輸入一個路由名稱（例如：家庭到辦公室）以及您的gpx文件的http URL。 （*需要直接下載鏈接）
+5.等待它完成下載。下載完成後，您將被帶回地圖。
+
+有關更多信息，請訪問https://sites.google.com/site/gpxroutetracker/
+</description>
+<description xml:lang="zh-cn">
+在线加载GPX路线文件，并在Samsung Gear Watch上显示当前位置的路线！
+如果您在徒步旅行期间错过了转机，您是否想要收到通知？难道你不想知道终点有多远？不要告诉我你相信你的朋友，他总是说“差不多”！
+有了这个应用程序，您可以享受与Gear可穿戴设备上昂贵的Garmin / Polar手表相同的功能。
+
+特征：
+1.加载GPX路线并将其显示在手表上。
+2.确定您的当前位置。
+3.跟踪你当前的路径。
+4.选择旋转地图以匹配旅行的方向。
+5.计算到加载路线最近点的距离（即偏差）。
+6.根据您当前的位置和预先定义的路线计算剩余距离。
+6.路外通知（每30秒震动一次）
+7.小部件显示偏差和剩余距离以完成路线。
+
+这是一个独立的应用程序。不需要连接电话。
+有两个地图引擎实施，谷歌和传单。如果您选择google作为地图引擎，则需要Internet。传单引擎不需要互联网连接（即使地图瓷砖不会加载）。
+它目前是一个测试版本。欢迎在其他设备上进行测试并给我反馈。
+
+请同时给我翻译，因为它目前是基于谷歌翻译。
+
+开始说明：
+1.点击右边的按钮进入“设置”。
+2.点击“路线”。
+3.点击“新路线”
+4.输入一个路由名称（例如：家庭到办公室）以及您的gpx文件的http URL。 （*需要直接下载链接）
+5.等待它完成下载。下载完成后，您将被带回地图。
+
+有关更多信息，请访问https://sites.google.com/site/gpxroutetracker/
+</description>
+<description xml:lang="ko-kr">
+GPX 경로 파일을 온라인에로드하고 Samsung Gear Watch에서 현재 위치의 경로를 표시하십시오!
+하이킹 중에 차례를 놓친 경우 통보를 받고 싶지 않으십니까? 끝 지점이 얼마나 멀리 있는지 알고 싶지 않으십니까? 항상 "거의 거기"라고 말한 당신의 친구를 신뢰한다고 말하지 마십시오!
+이 앱을 사용하면 Gear 웨어러블 기기에서 고가의 Garmin / Polar 시계와 동일한 기능을 즐길 수 있습니다.
+
+풍모:
+1. GPX 경로를로드하고 시계에 표시하십시오.
+2. 현재 위치를 정확하게 지적하십시오.
+3. 현재 경로를 추적하십시오.
+4. 여행 방향과 일치하도록지도를 회전하는 옵션.
+5. 적재 된 경로의 가장 가까운 지점까지의 거리 (즉, 편차)를 계산하십시오.
+6. 현재 위치와 사전 정의 된 경로에 따라 남은 거리를 계산하십시오.
+6. 경로 이탈 알림 (30 초마다 한 번 진동)
+7. 경로를 완료하기 위해 편차와 남은 거리를 표시하는 위젯.
+
+이것은 독립 실행 형 응용 프로그램입니다. 전화에 연결할 필요가 없습니다.
+두 가지 맵 엔진, Google 및 전단지가 구현되었습니다. 지도 엔진으로 google을 선택하면 인터넷이 필요합니다. 전단지 엔진은 인터넷 연결이 필요하지 않습니다 (지도 타일이로드되지 않더라도).
+현재 베타 버전입니다. 다른 기기에서 테스트 해보고 의견을 보내주십시오.
+
+또한 현재 Google 번역을 기반으로하므로 번역 해주세요.
+
+시작 지침 :
+1. 오른쪽 버튼을 클릭하여 "설정"을 입력하십시오.
+2. "Route"를 클릭하십시오.
+3. "새 경로"를 클릭하십시오.
+4. Route Name (예 : Home to Office)과 gpx 파일의 http URL을 입력하십시오. (* 직접 다운로드 링크 필요)
+5. 다운로드가 완료 될 때까지 기다립니다. 다운로드가 완료되면지도로 다시 이동합니다.
+
+자세한 내용은 https://sites.google.com/site/gpxroutetracker/를 방문하십시오.
+</description>
+<description xml:lang="it-it">
+Carica un file di percorso GPX online e visualizza il percorso con la posizione corrente sul tuo Samsung Gear Watch!
+Non vuoi essere avvisato se hai perso un turno durante la tua escursione? Non vuoi sapere quanto è lontano il punto finale? Non dirmi che ti fidi del tuo amico che dice sempre "quasi lì"!
+Con questa app, puoi goderti la stessa funzione dei costosi orologi Garmin / Polar sul tuo dispositivo indossabile Gear.
+
+Caratteristiche:
+1. Caricare una rotta GPX e visualizzarla sull'orologio.
+2. Individua la tua posizione attuale.
+3. Traccia il tuo percorso attuale.
+4. Opzione per ruotare la mappa in modo che corrisponda alla direzione di viaggio.
+5. Calcolare la distanza dal punto più vicino del percorso caricato (cioè la deviazione).
+6. Calcola la distanza rimanente in base alla posizione corrente e al percorso predefinito.
+6. Notifica fuori rotta (vibra una volta ogni 30 secondi)
+7. Widget per mostrare la deviazione e la distanza rimanente per completare la rotta.
+
+Questa è un'applicazione standalone. Non è richiesta alcuna connessione al telefono.
+Ci sono due motori di mappe implementati, google e volantini. Se scegli Google come motore di mappe, è necessario Internet. Il motore del volantino non richiede alcuna connessione a Internet (anche se le mappe non verranno caricate).
+Attualmente è una versione beta. Si prega di dare il benvenuto per testarlo su altri dispositivi e darmi un feedback.
+
+Per favore, dammi anche la traduzione perché attualmente si basa su google translate.
+
+Istruzioni iniziali:
+1. Fare clic sul pulsante a destra ... per accedere a "Impostazioni".
+2. Fare clic su "Route".
+3. Fai clic su "Nuova rotta"
+4. Immettere un nome percorso (es .: Home to Office) e un URL http del file gpx. (* è richiesto il link per il download diretto)
+5. Aspetta che finisca il download. Verrai reindirizzato alla mappa dopo aver completato il download.
+
+Per ulteriori informazioni, visita https://sites.google.com/site/gpxroutetracker/
+</description>
+
     <feature name="http://tizen.org/feature/screen.size.all"/>
     <feature name="http://tizen.org/feature/location.gps"/>
-    <feature name="http://tizen.org/feature/sensor.accelerometer"/>
-    <feature name="http://tizen.org/feature/sensor.gyroscope"/>
     <icon src="icon.png"/>
     <name>GPX Route Tracker</name>
+    <name xml:lang="zh-hk">GPX Route Tracker - 路線追踪器</name>
+    <name xml:lang="de-de">GPX Route Tracker - Strecke Tracker</name>
+    <name xml:lang="it-it">GPX Route Tracker - Tracker Percorso</name>
+    <name xml:lang="es-es">GPX Route Tracker - Ruta Rastreador</name>
+    <name xml:lang="ko-kr">GPX Route Tracker - 경로 추적기</name>
+    <name xml:lang="zh-cn">GPX Route Tracker - 路线追踪器</name>
+    <name xml:lang="cs-cz">GPX Route Tracker - Trasy Tracker</name>
+    <name xml:lang="ja-jp">GPX ルート.トラッカー</name>
     <tizen:privilege name="http://tizen.org/privilege/filesystem.write"/>
     <tizen:privilege name="http://tizen.org/privilege/application.info"/>
     <tizen:privilege name="http://tizen.org/privilege/application.launch"/>

@@ -6,22 +6,23 @@
 	<link rel="stylesheet" href="lib/tau/wearable/theme/default/tau.min.css">
 	<link rel="stylesheet" media="all and (-tizen-geometric-shape: circle)" href="lib/tau/wearable/theme/default/tau.circle.min.css">
 	<link rel="stylesheet" href="css/style.css">
+	<script src="language.js"></script>
 </head>
 <body>
 	<div class="ui-page ui-page-active" id="files_page">
 		<header class="ui-header">
-			<h2 class="ui-title">Routes</h2>
+			<h2 class="ui-title"><span data-l10n="routes"></span></h2>
 		</header>
 		<div class="ui-content">
 			<ul id="filelist" class="ui-listview ui-snap-listview expand-list">
 			</ul>
 		</div>
 		<div class="ui-footer ui-bottom-button">
-			<button id="add_file_btn" class="ui-btn">New Route</button>
+			<button id="add_file_btn" class="ui-btn btn-icon-add"><span data-l10n="new"></span></button>
 		</div>
 	</div>
 	<div id="file_popup" class="ui-popup content-padding" data-enable-page-scroll="false">
-		<div class="ui-popup-header">Success</div>
+		<div class="ui-popup-header"><span data-l10n="success"></span></div>
    		<div id="file_popup_content" class="ui-popup-content"></div>
     </div>    
     <script type="text/javascript" src="lib/jquery-3.3.1.min.js"></script>

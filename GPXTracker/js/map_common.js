@@ -49,7 +49,7 @@
     	}
 
     	if (location_on == "true") 
-    		document.getElementById("acquire_signal").innerHTML = 'Waiting for GPS Signal...<p><p><p>';
+    		document.getElementById("acquire_signal").innerHTML = TIZEN_L10N['wait_gps'] + '...<p><p><p>';
 
     	var follow_heading = localStorage.getItem("follow_heading");
     	
@@ -103,6 +103,12 @@
     		map_type = 'outdoors';
     	}
 
+    	// L10N
+    	
+    	for (var i = 0; i < document.querySelectorAll('[data-l10n]').length; i++) {
+    	    var elem = document.querySelectorAll('[data-l10n]')[i];
+    	    elem.innerHTML = TIZEN_L10N[elem.getAttribute('data-l10n')];
+    	}
 	};
     
     function registerEventHandlers() {
@@ -176,50 +182,52 @@
     	var map_type = localStorage.getItem("map_type");
     	
     	if (screen_on == "true")
-    		document.getElementById('screen_on').setAttribute("data-title", "Screen: Always On" );
+    		document.getElementById('screen_on').setAttribute("data-title", TIZEN_L10N['screen'] + ": " + TIZEN_L10N['always_on']);
     	else 
-    		document.getElementById('screen_on').setAttribute("data-title", "Screen: Normal" );
+    		document.getElementById('screen_on').setAttribute("data-title", TIZEN_L10N['screen'] + ": " + TIZEN_L10N['normal'] );
 
     	if (location_on == "true")
-    		document.getElementById('location_on').setAttribute("data-title", "Show Current Position: On" );
+    		document.getElementById('location_on').setAttribute("data-title", TIZEN_L10N['show_current_position'] + ": " + TIZEN_L10N['on']);
     	else {
-    		document.getElementById('location_on').setAttribute("data-title", "Show Current Position: Off" );
+    		document.getElementById('location_on').setAttribute("data-title", TIZEN_L10N['show_current_position'] + ": " + TIZEN_L10N['off']);
     	}
 
     	if (follow_heading == "true")
-    		document.getElementById('follow_heading').setAttribute("data-title", "Map Orientation: Direction of Travel" );
+    		document.getElementById('follow_heading').setAttribute("data-title", TIZEN_L10N['map_orientation'] + ": " + TIZEN_L10N['direction_of_travel'] );
     	else 
-    		document.getElementById('follow_heading').setAttribute("data-title", "Map Orientation: North" );
+    		document.getElementById('follow_heading').setAttribute("data-title", TIZEN_L10N['map_orientation'] + ": " + TIZEN_L10N['north']);
 
     	if (draw_trace == "true")
-    		document.getElementById('draw_trace').setAttribute("data-title", "Trace Current Route: On" );
+    		document.getElementById('draw_trace').setAttribute("data-title", TIZEN_L10N['trace_current_route'] + ": " + TIZEN_L10N['on'] );
     	else 
-    		document.getElementById('draw_trace').setAttribute("data-title", "Trace Current Route: Off" );
+    		document.getElementById('draw_trace').setAttribute("data-title", TIZEN_L10N['trace_current_route'] + ": " + TIZEN_L10N['off'] );
 
     	if (center_on == "true")
-    		document.getElementById('center_on').setAttribute("data-title", "Set Center to Current Location: On" );
+    		document.getElementById('center_on').setAttribute("data-title", TIZEN_L10N['set_center'] + ": " + TIZEN_L10N['on'] );
     	else 
-    		document.getElementById('center_on').setAttribute("data-title", "Set Center to Current Location: Off" );
+    		document.getElementById('center_on').setAttribute("data-title", TIZEN_L10N['set_center'] + ": " + TIZEN_L10N['off'] );
 
     	if (show_distance == "true")
-    		document.getElementById('show_distance').setAttribute("data-title", "Follow Route: On" );
+    		document.getElementById('show_distance').setAttribute("data-title", TIZEN_L10N['follow_route'] + ": " + TIZEN_L10N['on'] );
     	else 
-    		document.getElementById('show_distance').setAttribute("data-title", "Follow Route: Off" );
+    		document.getElementById('show_distance').setAttribute("data-title", TIZEN_L10N['follow_route'] + ": " + TIZEN_L10N['off'] );
 
     	if (off_track == "0")
-    		document.getElementById('off_track').setAttribute("data-title", "Off Track Notification: Off" );
+    		document.getElementById('off_track').setAttribute("data-title", TIZEN_L10N['off_track_notification'] + ": " + TIZEN_L10N['off'] );
     	else 
-    		document.getElementById('off_track').setAttribute("data-title", "Off Track Notification: " + off_track + " M" );
+    		document.getElementById('off_track').setAttribute("data-title", TIZEN_L10N['off_track_notification'] + ": " + off_track + " M" );
 
     	if (map_engine == "google")
-    		document.getElementById('map_engine').setAttribute("data-title", "Map Engine: Google (Online)" );
+    		document.getElementById('map_engine').setAttribute("data-title", TIZEN_L10N['map_engine'] + ": Google (Online)" );
     	else if (map_engine == "leaflet")
-    		document.getElementById('map_engine').setAttribute("data-title", "Map Engine: Leaflet (Offline)" );
+    		document.getElementById('map_engine').setAttribute("data-title", TIZEN_L10N['map_engine'] + ": Leaflet (Offline)" );
 
     	if (map_type == "cycle")
-    		document.getElementById('map_type').setAttribute("data-title", "Map Type: Hiking" );
+    		document.getElementById('map_type').setAttribute("data-title", TIZEN_L10N['map_type'] + ": " + TIZEN_L10N['hiking'] );
     	else if (map_type == "outdoors")
-    		document.getElementById('map_type').setAttribute("data-title", "Map Type: Cycling" );
+    		document.getElementById('map_type').setAttribute("data-title", TIZEN_L10N['map_type'] + ": " + TIZEN_L10N['cycling'] );
+
+		document.getElementById('remove_file').setAttribute("data-title", TIZEN_L10N['remove_route']);
 
     };
     
@@ -320,12 +328,12 @@
     		tizen.preference.setValue('currentGPXName', gpxFile);
   		
     	if ((gpxFile != null) && (gpxFile != "")) {
-    		document.getElementById('gpx_route').setAttribute("data-title", "Route: " + gpxFile);
-      		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Route: " + gpxFile;
+    		document.getElementById('gpx_route').setAttribute("data-title", TIZEN_L10N['route'] + ": " + gpxFile);
+      		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['route'] + ": " + gpxFile;
     	}
     	else {
-    		document.getElementById('gpx_route').setAttribute("data-title", "Route: Not Set");
-    		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Route: Not Set";
+    		document.getElementById('gpx_route').setAttribute("data-title", TIZEN_L10N['route'] + ": " + TIZEN_L10N['not_set']);
+    		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['route'] + ": " + TIZEN_L10N['not_set'];
     	}
     };
 
@@ -354,13 +362,13 @@
 		
 		if (localStorage.getItem("map_engine") == 'google') {
 			localStorage.setItem("map_engine", 'leaflet');
-    		document.getElementById('map_engine').setAttribute("data-title", "Map Engine: Leaflet (Offline)" );
-	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Map Engine: Leaflet (Offline)";
+    		document.getElementById('map_engine').setAttribute("data-title", TIZEN_L10N['map_engine'] + ": Leaflet (Offline)" );
+	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['map_engine'] + ": Leaflet (Offline)";
 			window.location.href = 'index.html';
 		} else if (localStorage.getItem("map_engine") == 'leaflet') {
 			localStorage.setItem("map_engine", 'google');
-			document.getElementById('map_engine').setAttribute("data-title", "Map Engine: Google (Online)" );
-	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Map Engine: Google (Online)";
+			document.getElementById('map_engine').setAttribute("data-title", TIZEN_L10N['map_engine'] + ": Google (Online)" );
+	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['map_engine'] + ": Google (Online)";
 			window.location.href = 'index.html';
 		} 
 	}
@@ -370,13 +378,13 @@
 		
 		if (localStorage.getItem("map_type") == 'cycle') {
 			localStorage.setItem("map_type", 'outdoors');
-    		document.getElementById('map_type').setAttribute("data-title", "Map Type: Hiking" );
-	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Map Type: Hiking";
+    		document.getElementById('map_type').setAttribute("data-title", TIZEN_L10N['map_type'] + ": " + TIZEN_L10N['hiking'] );
+	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['map_type'] + ": " + TIZEN_L10N['hiking'];
 			window.location.href = 'index.html';
 		} else if (localStorage.getItem("map_type") == 'outdoors') {
 			localStorage.setItem("map_type", 'cycle');
-			document.getElementById('map_type').setAttribute("data-title", "Map Type: Cycling" );
-	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Map Type: Cycling";
+			document.getElementById('map_type').setAttribute("data-title", TIZEN_L10N['map_type'] + ": " + TIZEN_L10N['cycling'] );
+	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['map_type'] + ": " + TIZEN_L10N['cycling'];
 			window.location.href = 'index.html';
 		} 
 	}
@@ -386,12 +394,12 @@
 		
 		if (localStorage.getItem("center_on") == 'true') {
 			localStorage.setItem("center_on", 'false');
-    		document.getElementById('center_on').setAttribute("data-title", "Set Center to Current Location: Off" );
-	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Set Center to Current Location: Off";
+    		document.getElementById('center_on').setAttribute("data-title", TIZEN_L10N['set_center'] + ": " + TIZEN_L10N['off'] );
+	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['set_center'] + ": " + TIZEN_L10N['off'];
 		} else if (localStorage.getItem("center_on") == 'false') {
 			localStorage.setItem("center_on", 'true');
-			document.getElementById('center_on').setAttribute("data-title", "Set Center to Current Location: On" );
-	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Set Center to Current Location: On";
+			document.getElementById('center_on').setAttribute("data-title", TIZEN_L10N['set_center'] + ": " + TIZEN_L10N['on'] );
+	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['set_center'] + ": " + TIZEN_L10N['on'];
 		} 
 	}
 	
@@ -400,13 +408,13 @@
 		
 		if (localStorage.getItem("show_distance") == 'true') {
 			localStorage.setItem("show_distance", 'false');
-    		document.getElementById('show_distance').setAttribute("data-title", "Follow Route: Off" );
+    		document.getElementById('show_distance').setAttribute("data-title", TIZEN_L10N['follow_route'] + ": " + TIZEN_L10N['off']  );
 			document.getElementById("acquire_signal").innerHTML = '';
-	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Follow Route: Off";
+	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['follow_route'] + ": " + TIZEN_L10N['off'] ;
 		} else if (localStorage.getItem("show_distance") == 'false') {
 			localStorage.setItem("show_distance", 'true');
-			document.getElementById('show_distance').setAttribute("data-title", "Follow Route: On" );
-	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Follow Route: On";
+			document.getElementById('show_distance').setAttribute("data-title", TIZEN_L10N['follow_route'] + ": " + TIZEN_L10N['on']  );
+	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['follow_route'] + ": " + TIZEN_L10N['on'];
 		} 
 	}
 
@@ -427,12 +435,12 @@
 		}
 		
 		if (off_track == 0) {
-			document.getElementById('off_track').setAttribute("data-title", "Off Track Notification: Off" );
-	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Off Track Notification: Off";			
+			document.getElementById('off_track').setAttribute("data-title", TIZEN_L10N['off_track_notification'] + ": " + TIZEN_L10N['off'] );
+	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['off_track_notification'] + ": " + TIZEN_L10N['off'];			
 		}
 		else {
-			document.getElementById('off_track').setAttribute("data-title", "Off Track Notification: " + off_track + " M");
-	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Off Track Notification: " + off_track + " M";						
+			document.getElementById('off_track').setAttribute("data-title", TIZEN_L10N['off_track_notification'] + ": " + off_track + " M");
+	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['off_track_notification'] + ": " + off_track + " M";						
 		}
 		
 		localStorage.setItem("off_track", off_track);
@@ -443,13 +451,13 @@
 		
 		if (localStorage.getItem("screen_on") == 'true') {
 				localStorage.setItem("screen_on", 'false');
-	    		document.getElementById('screen_on').setAttribute("data-title", "Screen: Normal" );
-	    		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Screen: Normal";
+	    		document.getElementById('screen_on').setAttribute("data-title", TIZEN_L10N['screen'] + ": " + TIZEN_L10N['normal'] );
+	    		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['screen'] + ": " + TIZEN_L10N['normal'];
     			tizen.power.release("SCREEN");
 		} else if (localStorage.getItem("screen_on") == 'false') {
 			localStorage.setItem("screen_on", 'true');
-    		document.getElementById('screen_on').setAttribute("data-title", "Screen: Always On" );
-    		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = "Screen: Always On";
+    		document.getElementById('screen_on').setAttribute("data-title", TIZEN_L10N['screen'] + ": " + TIZEN_L10N['always_on']);
+    		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['screen'] + ": " + TIZEN_L10N['always_on'];
 			tizen.power.request("SCREEN", "SCREEN_NORMAL");
 		} 
 	}
