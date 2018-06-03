@@ -18,7 +18,7 @@ TIZEN_L10N=
 	"trace_current_route" : "顯示gps軌跡",
 	"set_center" : "以當前位置為中心",
 	"follow_route" : "追踪路線",
-	"off_track_notification" : "脫離路線通知",
+	"off_track_notification" : "偏離路線通知",
 	"map_engine" : "地圖引擎",
 	"map_type" : "地圖類型",
 	"hiking" : "徒步旅行",
@@ -47,5 +47,7 @@ TIZEN_L10N=
 	"wrong_format" : "Gpx文件格式不正確。選擇另一個文件。",
 	"error" : "錯誤",
 	"remove" : "刪除",
-	"new" : "新增"
+	"new" : "新增",
+	"off_route_content" : "您正在偏離路線",
+	"distance_to_nearest_point" : "路線上最近點的距離"
 };

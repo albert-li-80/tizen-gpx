@@ -46,8 +46,7 @@ function google_map() {
          });
   	
     	console.log("finished initializeMap");
-    	if (document.getElementById("acquire_signal").innerHTML == 'Map Loading...')
-    		document.getElementById("acquire_signal").innerHTML = '';
+    	document.getElementById("acquire_signal").innerHTML = '';
     	
     	loadGPXTracker();
 
@@ -59,7 +58,7 @@ function google_map() {
     		landPath = new google.maps.Polyline({
     			path: landPathCoordinates,
     			geodesic: true,
-    			strokeColor: '#FFFF00',
+    			strokeColor: '#e542f4',
     			strokeOpacity: 1.0,
     			strokeWeight: 5
     		});
@@ -230,8 +229,8 @@ function google_map() {
 			   var nearestPt = geolib.findNearest(currentPos.toJSON(), routePoints, 0, 1);
 			   console.log("nearest :" + nearestPt.distance);
 			   var remaining = getRemainingDistance(nearestPt.key);
-			   var hinttext = TIZEN_L10N['distance_remaining'] + ": " + (remaining / 1000).toFixed(2) + '/' + (gpxRouteDistance / 1000).toFixed(2) + 'km<br>';
-			   hinttext = hinttext + TIZEN_L10N['deviation'] + ": " + nearestPt.distance + 'm<p><p><p>' ;
+			   var hinttext = TIZEN_L10N['distance_remaining'] + ": " + (remaining / 1000).toFixed(2) + '/' + (gpxRouteDistance / 1000).toFixed(2) + 'KM<br>';
+			   hinttext = hinttext + TIZEN_L10N['deviation'] + ": " + nearestPt.distance + 'M<p><p><p>' ;
 			   
 			   document.getElementById("acquire_signal").innerHTML = hinttext;
 		   }

@@ -571,7 +571,7 @@
 							
 					if (notification != null) {
 					
-						notification.content = 'You are off track by ' + nearestPt.distance + " meters";
+						notification.content = TIZEN_L10N['off_route_content'] + '. ' + TIZEN_L10N['distance_to_nearest_point'] + ': ' + nearestPt.distance + "M";
 						tizen.notification.update(notification);
 						notificationID = notification.id;
 						nextNotificationTime = now.addDuration(new tizen.TimeDuration(30, "SECS"));
@@ -582,7 +582,7 @@
 							// Gets the current application information with tizen.application.getAppInfo
 							var myappInfo = tizen.application.getAppInfo();
 				      
-							var notificationContent = 'You are off track by ' + nearestPt.distance + " meters";
+							var notificationContent = TIZEN_L10N['off_route_content'] + '. ' + TIZEN_L10N['distance_to_nearest_point'] + ': ' + nearestPt.distance + "M";
 							var appControl = new tizen.ApplicationControl('http://tizen.org/appcontrol/operation/view',
 									null, null, null, null);
 				      

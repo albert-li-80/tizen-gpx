@@ -61,9 +61,9 @@ body {
   pointer-events: none;
   position: absolute;
   width: 10.25rem;
-  max-height: 5.90625rem;
-  line-height: 1.96875rem;
-  font-size: 0.65625em;
+  max-height: 7.3828125rem;
+  line-height: 1.84570312rem;
+  font-size: 0.820315em;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);

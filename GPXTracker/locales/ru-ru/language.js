@@ -18,7 +18,7 @@ TIZEN_L10N=
 	"trace_current_route" : "Показать Дорожка Gps",
 	"set_center" : "Текущее Положение В Качестве Центра",
 	"follow_route" : "Трассировка Маршрута",
-	"off_track_notification" : "Уведомление От Маршрута",
+	"off_track_notification" : "Отклонению От Маршрута Уведомления",
 	"map_engine" : "Карта Двигателя",
 	"map_type" : "Тип Карты",
 	"hiking" : "Пеший Туризм",
@@ -47,5 +47,7 @@ TIZEN_L10N=
 	"wrong_format" : "Gpx Формат Файла Неверен. Выберите Другой Файл.",
 	"error" : "Ошибка",
 	"remove" : "Удалять",
-	"new" : "Новый"
+	"new" : "Новый",
+	"off_route_content" : "Вы С Курса",
+	"distance_to_nearest_point" : "С Ближайшей Точки На Маршруте"
 };

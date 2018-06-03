@@ -18,7 +18,7 @@ TIZEN_L10N=
 	"trace_current_route" : "쇼 Gps 트랙",
 	"set_center" : "중심으로 현재 위치",
 	"follow_route" : "경로 추적",
-	"off_track_notification" : "경로로부터의 통지",
+	"off_track_notification" : "오프 경로 알림",
 	"map_engine" : "지도 엔진",
 	"map_type" : "지도 유형",
 	"hiking" : "하이킹",
@@ -47,5 +47,7 @@ TIZEN_L10N=
 	"wrong_format" : "Gpx 파일 형식 잘못된. 다른 파일을 선택합니다.",
 	"error" : "오류",
 	"remove" : "삭제",
-	"new" : "새로운"
+	"new" : "새로운",
+	"off_route_content" : "물론 당신 떠나라",
+	"distance_to_nearest_point" : "노선에 가장 가까운 지점에서"
 };

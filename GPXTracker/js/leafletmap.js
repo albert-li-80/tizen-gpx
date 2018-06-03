@@ -44,8 +44,8 @@ function leaflet_map() {
     	}).addTo(map);    
     	
     	console.log("finished loading Map");
-    	if (document.getElementById("acquire_signal").innerHTML == 'Map Loading...')
-    		document.getElementById("acquire_signal").innerHTML = '';
+
+    	document.getElementById("acquire_signal").innerHTML = '';
 
     	if (document.getElementById("splash") != null)
     		document.getElementById("splash").style.display="none";
@@ -56,7 +56,7 @@ function leaflet_map() {
     		traceCurrentLocation();
     	
     	if (localStorage.getItem("draw_trace") == "true")     		
-            landPath = L.polyline(landPathCoordinates, {color: '#FFFF00'}).addTo(map);
+            landPath = L.polyline(landPathCoordinates, {color: '#e542f4'}).addTo(map);
     	
     }
         
@@ -86,8 +86,8 @@ function leaflet_map() {
 			   console.log("nearest :" + nearestPt.distance);
 			   var remaining = getRemainingDistance(nearestPt.key);
 			   
-			   var hinttext = TIZEN_L10N['distance_remaining'] + ": " + (remaining / 1000).toFixed(2) + '/' + (gpxRouteDistance / 1000).toFixed(2) + 'km<br>';
-			   hinttext = hinttext + TIZEN_L10N['deviation'] + ": " + nearestPt.distance + 'm<p><p><p>' ;
+			   var hinttext = TIZEN_L10N['distance_remaining'] + ": " + (remaining / 1000).toFixed(2) + '/' + (gpxRouteDistance / 1000).toFixed(2) + 'KM<br>';
+			   hinttext = hinttext + TIZEN_L10N['deviation'] + ": " + nearestPt.distance + 'M<p><p><p>' ;
 
 			   document.getElementById("acquire_signal").innerHTML = hinttext;
 		   }
@@ -326,7 +326,7 @@ function leaflet_map() {
 			localStorage.setItem("draw_trace", 'true');
 			document.getElementById('draw_trace').setAttribute("data-title", TIZEN_L10N['trace_current_route'] + ": " + TIZEN_L10N['on']);
 	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['trace_current_route'] + ": " + TIZEN_L10N['on'];
-    		landPath = L.polyline(landPathCoordinates, {color: '#FFFF00'}).addTo(map);
+    		landPath = L.polyline(landPathCoordinates, {color: '#e542f4'}).addTo(map);
 		}
 	}
 

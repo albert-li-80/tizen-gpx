@@ -18,7 +18,7 @@ TIZEN_L10N=
 	"trace_current_route" : "Toon Gps Track",
 	"set_center" : "De Huidige Positie In Het Midden",
 	"follow_route" : "Trace Route",
-	"off_track_notification" : "Kennisgeving Van De Route",
+	"off_track_notification" : "Off-Route Kennisgeving",
 	"map_engine" : "Kaart Engine",
 	"map_type" : "Kaartsoort",
 	"hiking" : "Wandelen",
@@ -47,5 +47,7 @@ TIZEN_L10N=
 	"wrong_format" : "Gpx-Bestandsformaat Onjuist. Kies Een Ander Bestand.",
 	"error" : "Fout",
 	"remove" : "Verwijder",
-	"new" : "Nieuw"
+	"new" : "Nieuw",
+	"off_route_content" : "Je Bent Natuurlijk",
+	"distance_to_nearest_point" : "Van Het Dichtstbijzijnde Punt Op De Route"
 };

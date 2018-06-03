@@ -18,7 +18,7 @@ TIZEN_L10N=
 	"trace_current_route" : "Show GPS Track",
 	"set_center" : "Set Center to Current Location",
 	"follow_route" : "Follow Route",
-	"off_track_notification" : "Off-Track Notification",
+	"off_track_notification" : "Off-Route Notification",
 	"map_engine" : "Map Engine",
 	"map_type" : "Map Type",
 	"hiking" : "Hiking",
@@ -47,5 +47,7 @@ TIZEN_L10N=
 	"wrong_format" : "GPX File format incorrect. Choose another file. ",
 	"error" : "Error",
 	"remove" : "Remove",
-	"new" : "New"
+	"new" : "New",
+	"off_route_content" : "You are off-route.",
+	"distance_to_nearest_point" : "Distance to the nearest point on the route"
 };

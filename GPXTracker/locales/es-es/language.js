@@ -18,7 +18,7 @@ TIZEN_L10N=
 	"trace_current_route" : "Mostrar Track Gps",
 	"set_center" : "La Posición Actual Como El Centro",
 	"follow_route" : "Trazado De Ruta",
-	"off_track_notification" : "Notificación De La Ruta",
+	"off_track_notification" : "Fuera De Ruta De Notificación",
 	"map_engine" : "Motor Mapa",
 	"map_type" : "Tipo De Mapa",
 	"hiking" : "Excursionismo",
@@ -47,5 +47,7 @@ TIZEN_L10N=
 	"wrong_format" : "Gpx Formato De Archivo Incorrecto. Elige Un Nuevo Archivo.",
 	"error" : "Error",
 	"remove" : "Borrar",
-	"new" : "Nuevo"
+	"new" : "Nuevo",
+	"off_route_content" : "Estás Fuera De Curso",
+	"distance_to_nearest_point" : "Desde El Punto De La Ruta Más Cercana"
 };

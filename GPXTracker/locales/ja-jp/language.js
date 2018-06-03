@@ -10,15 +10,15 @@ TIZEN_L10N=
 	"always_on" : "常にオン",
 	"normal" : "ノーマル",
 	"show_current_position" : "現在位置を表示します",
-	"on" : "に",
+	"on" : "オン",
 	"off" : "オフ",
 	"map_orientation" : "地図オリエンテーション",
 	"direction_of_travel" : "進行方向",
 	"north" : "北",
 	"trace_current_route" : "ショーgpsトラック",
-	"set_center" : "現在の場所にセンターを設定します。",
+	"set_center" : "現在の場所にセンターを設定します",
 	"follow_route" : "ルートをたどります",
-	"off_track_notification" : "オフトラックの通知",
+	"off_track_notification" : "オフルート通知",
 	"map_engine" : "地図エンジン",
 	"map_type" : "マップタイプ",
 	"hiking" : "ハイキング",
@@ -47,5 +47,7 @@ TIZEN_L10N=
 	"wrong_format" : "Gpxファイル形式が正しくありません。別のファイルを選択してください。",
 	"error" : "エラー",
 	"remove" : "取り除きます",
-	"new" : "新しい"
+	"new" : "新しい",
+	"off_route_content" : "あなたはオフルートです。",
+	"distance_to_nearest_point" : "ルート上の最も近い点までの距離"
 };

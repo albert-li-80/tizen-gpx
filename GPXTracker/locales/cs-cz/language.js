@@ -18,7 +18,7 @@ TIZEN_L10N=
 	"trace_current_route" : "Show Gps Track",
 	"set_center" : "Aktuální Pozice Jako Centrum",
 	"follow_route" : "Traceroute",
-	"off_track_notification" : "Oznámení Trasy",
+	"off_track_notification" : "Mimo Trasu Oznámení",
 	"map_engine" : "Map Engine",
 	"map_type" : "Na Mapě Typ Zařízení",
 	"hiking" : "Turistika",
@@ -47,5 +47,7 @@ TIZEN_L10N=
 	"wrong_format" : "Gpx Formátu Souboru Nesprávný. Zvolit Jiný Soubor.",
 	"error" : "Chyba",
 	"remove" : "Vymazat",
-	"new" : "Nový"
+	"new" : "Nový",
+	"off_route_content" : "Jsi Mimo Kurs",
+	"distance_to_nearest_point" : "Od Nejbližšího Bodu Na Trase"
 };
