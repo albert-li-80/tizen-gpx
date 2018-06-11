@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" version="1.0.6" height="360" width="360" viewmodes="maximized">
+<widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" version="2.0.0" height="360" width="360" viewmodes="maximized">
     <access origin="http://googleapis.com" subdomains="true"></access>
     <access origin="http://gstatic.com" subdomains="true"></access>
     <access origin="http://google.com" subdomains="true"></access>
@@ -221,8 +221,7 @@ Para obtener más información, visite https://sites.google.com/site/gpxroutetra
 4.輸入一個路由名稱（例如：家庭到辦公室）以及您的gpx文件的http URL。 （*需要直接下載鏈接）
 5.等待它完成下載。下載完成後，您將被帶回地圖。
 
-有關更多信息，請訪問https://sites.google.com/site/gpxroutetracker/
-</description>
+有關更多信息，請訪問https://sites.google.com/site/gpxroutetracker/</description>
     <description xml:lang="zh-cn">
 在线加载GPX路线文件，并在Samsung Gear Watch上显示当前位置的路线！
 如果您在徒步旅行期间错过了转机，您是否想要收到通知？难道你不想知道终点有多远？不要告诉我你相信你的朋友，他总是说“差不多”！
@@ -281,8 +280,7 @@ GPX 경로 파일을 온라인에로드하고 Samsung Gear Watch에서 현재 �
 4. Route Name (예 : Home to Office)과 gpx 파일의 http URL을 입력하십시오. (* 직접 다운로드 링크 필요)
 5. 다운로드가 완료 될 때까지 기다립니다. 다운로드가 완료되면지도로 다시 이동합니다.
 
-자세한 내용은 https://sites.google.com/site/gpxroutetracker/를 방문하십시오.
-</description>
+자세한 내용은 https://sites.google.com/site/gpxroutetracker/를 방문하십시오.</description>
     <description xml:lang="it-it">
 Carica un file di percorso GPX online e visualizza il percorso con la posizione corrente sul tuo Samsung Gear Watch!
 Non vuoi essere avvisato se hai perso un turno durante la tua escursione? Non vuoi sapere quanto è lontano il punto finale? Non dirmi che ti fidi del tuo amico che dice sempre &quot;quasi lì&quot;!
