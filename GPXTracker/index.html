@@ -85,9 +85,13 @@
 		if ((!navigator.onLine) || (localStorage.getItem("map_engine") == null) || (localStorage.getItem("map_engine") == 'leaflet')) { // load leaflet
 		   		$.getScript("lib/leaflet/leaflet.js", function() {
    					$.getScript("lib/leaflet/leaflet-rotatedMarker.js", function() {
-   						$.getScript("js/leafletmap.js", function() {
-   							console.log("all leaflet javascripts loaded");
-   							localStorage.setItem("map_engine", 'leaflet');
+   						$.getScript("lib/pouchdb-6.4.3.min.js", function() {
+   						   	$.getScript("lib/L.TileLayer.PouchDBCached.js", function() {
+	   							$.getScript("js/leafletmap.js", function() {
+   									console.log("all leaflet javascripts loaded");
+   									localStorage.setItem("map_engine", 'leaflet');
+								});
+							});
 						});
 					});
 				});

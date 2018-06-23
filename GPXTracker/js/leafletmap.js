@@ -36,15 +36,30 @@ function leaflet_map() {
     function initializeMap() {
     	map = L.map('map_canvas', {zoomControl: false}).setView([22.4,114.1], 13);
     	
-    	L.tileLayer('https://tile.thunderforest.com/{id}/{z}/{x}/{y}.png?apikey={accessToken}', {
+    	var layer = L.tileLayer('https://tile.thunderforest.com/{id}/{z}/{x}/{y}.png?apikey={accessToken}', {
     	    attribution: '© <a href="https://www.thunderforest.com">Thunderforest</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     	    id: localStorage.getItem("map_type"),
     	    maxZoom: 25,
+    	    useCache: true,
+    	    crossOrigin: true,
+    	    maxAge: 30 * 1000 * 60 * 60 * 24,	// 30 days
     	    accessToken: 'cf24ff10559d44dfabfeaa0a57541b4e'
     	}).addTo(map);    
     	
     	console.log("finished loading Map");
 
+		// Listen to cache hits and misses and spam the console
+		// The cache hits and misses are only from this layer, not from the WMS layer.
+		layer.on('tilecachehit',function(ev){
+			console.log('Cache hit: ', ev.url);
+		});
+		layer.on('tilecachemiss',function(ev){
+			console.log('Cache miss: ', ev.url);
+		});
+		layer.on('tilecacheerror',function(ev){
+			console.log('Cache error: ', ev.tile, ev.error);
+		});
+		
     	document.getElementById("acquire_signal").innerHTML = '';
 
     	if (document.getElementById("splash") != null)
