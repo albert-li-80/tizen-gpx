@@ -150,6 +150,8 @@
     		tau.closePopup();    		
     	});
     	
+    	var returnScreen = false;
+    	
     	// add eventListener for hidden
     	document.addEventListener('webkitvisibilitychange', function() {
     	   
@@ -158,9 +160,27 @@
 				tizen.power.request("SCREEN", "SCREEN_NORMAL");
             } else {
 				tizen.power.release("SCREEN");
+				
+				if (!(tizen.power.isScreenOn())) {
+					console.log("return screen on");
+					returnScreen = true;
+				}
+				else  {
+					console.log("return screen off");
+					returnScreen = false;
+				}
+					
             }
     	});    	
 
+    	tizen.power.setScreenStateChangeListener( function(prevState,currState){
+	        if (currState === 'SCREEN_NORMAL' && prevState === 'SCREEN_OFF' && returnScreen) {
+	          //when screen woke up
+	          var app = tizen.application.getCurrentApplication();
+	          tizen.application.launch(app.appInfo.id);
+	        }
+    	});
+   	 
     	window.addEventListener('appcontrol', function onAppControl() {
     		console.log("inside app control");
 //    	    var reqAppControl = tizen.application.getCurrentApplication.getRequestedAppControl();

@@ -201,7 +201,7 @@
     	document.getElementById('files_page').addEventListener('pagehide', function() {
     	    listHelper.destroy();
     	});
-    	    	
+     	
     };
     
     // End files.js
@@ -439,13 +439,17 @@
     		});
 //    	}
 
+    		
     	/**
     	 * Route Name Input event handler
     	 */
     	
     	var nameAppControlReplyCB = {
     		    onsuccess: function(reply) {
-    		        for (var num = 0; num < reply.length; num++) {
+
+   		         	console.log('The launch application control returned');
+   		         
+    		    	for (var num = 0; num < reply.length; num++) {
     		            if (reply[num].key == 'http://tizen.org/appcontrol/data/text') {
     		                console.log('input text: ' + reply[num].value);
     		                document.getElementById("route_name_input").textContent = reply[num].value;
@@ -466,7 +470,8 @@
     			var guide_text = new tizen.ApplicationControlData('http://tizen.org/appcontrol/data/input_default_text', [document.getElementById("route_name_input").textContent]);
     			
     			var appControl = new tizen.ApplicationControl('http://tizen.org/appcontrol/operation/get_input',
-    			                                              null, null, null, [input_type, guide_text], null);
+//                        null, null, null, [input_type, guide_text], 'GROUP');
+    					null, null, null, [guide_text], 'GROUP');
     			
     			tizen.application.launchAppControl(appControl, null, function() {
     			    console.log('launch application control succeed');
@@ -503,7 +508,7 @@
     			var guide_text = new tizen.ApplicationControlData('http://tizen.org/appcontrol/data/input_default_text', [document.getElementById("gpx_url_input").textContent]);
     			
     			var appControl = new tizen.ApplicationControl('http://tizen.org/appcontrol/operation/get_input',
-    			                                              null, null, null, [input_type, guide_text], null);
+    			                                              null, null, null, [guide_text], null);
     			
     			tizen.application.launchAppControl(appControl, null, function() {
     			    console.log('launch application control succeed');
@@ -591,6 +596,8 @@
         			    	
         			    setTimeout(function(){ 
         			    		tau.closePopup();	 // Alert Popup Toast
+        			    		document.getElementById("save_file_btn").innerHTML = "Save";
+        			    		document.getElementById("save_file_btn").disabled = false;
                 			    window.location.href = 'files.html';},
         			    		2000);       			    	
     				  }
@@ -617,6 +624,10 @@
 			    	
 			    setTimeout(function(){ 
 			    		tau.closePopup();
+
+			    		document.getElementById("save_file_btn").innerHTML = "Save";
+			    		document.getElementById("save_file_btn").disabled = false;
+
 			    		window.location.href = 'files.html';},	 // Alert Popup Toast
 			    		2000);			    			       			
     		}
