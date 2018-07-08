@@ -346,6 +346,9 @@
     	
     	if (gpxFile != null)
     		tizen.preference.setValue('currentGPXName', gpxFile);
+    	else {
+    		tizen.preference.setValue('currentGPXName', '');    		
+		}
   		
     	if ((gpxFile != null) && (gpxFile != "")) {
     		document.getElementById('gpx_route').setAttribute("data-title", TIZEN_L10N['route'] + ": " + gpxFile);

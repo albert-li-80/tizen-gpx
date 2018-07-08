@@ -11,7 +11,7 @@ TIZEN_L10N=
 	"normal" : "Normale",
 	"show_current_position" : "Mostrare La Posizione Corrente",
 	"on" : "Aperto",
-	"off" : "Chiudere",
+	"off" : "Chiuso",
 	"map_orientation" : "Orientamento Della Mappa",
 	"direction_of_travel" : "Senso Di Marcia",
 	"north" : "Nord",

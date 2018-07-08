@@ -22,6 +22,8 @@
 !/GPXTracker/widget/GPXTrackerWidget/
 /GPXTracker/widget/GPXTrackerWidget/*
 !/GPXTracker/widget/GPXTrackerWidget/*.html
+!/GPXTracker/widget/GPXTrackerWidget/*.js
 
 !/GPXTracker/widget/GPXTrackerWidget/css/
 !/GPXTracker/widget/GPXTrackerWidget/js/
+!/GPXTracker/widget/GPXTrackerWidget/locales/

@@ -92,12 +92,12 @@
     		var hours = time_diff.getUTCHours();
     		var minutes = time_diff.getMinutes();
     		var seconds = time_diff.getSeconds();
-    		document.getElementById('last_update').textContent = 'Last updated: ' + hours + 'h ' + minutes + 'm ' + seconds + 's ago';   
+    		document.getElementById('last_update').textContent = TIZEN_L10N['last_updated'] + ': ' + hours + 'h ' + minutes + 'm ' + seconds + 's ago';   
     	}
     	else if (currentGPXName == null)
-    		document.getElementById('last_update').textContent = 'Set route in GPX Tracker';
+    		document.getElementById('last_update').textContent = TIZEN_L10N['set_route'];
     	else
-    		document.getElementById('last_update').textContent = 'No data. Enable Follow Route';
+    		document.getElementById('last_update').textContent = TIZEN_L10N['no_data'];
     }
     
     function setPreferenceListeners() {
@@ -108,7 +108,13 @@
             switch (data.key) {
             	case 'currentGPXName':
             		currentGPXName = data.value;
-            		document.getElementById('route-name').textContent = data.value; break;
+
+              		if ((currentGPXName != null) && (currentGPXName != ''))
+              			document.getElementById('route-name').textContent = data.value; 
+              		else 
+              			document.getElementById('route-name').textContent = 'GPX Tracker';
+                            		
+              		break;
             	case 'nearestPoint':
             		document.getElementById('distance').textContent = data.value; break;
             	case 'distanceRemaining':
@@ -215,10 +221,19 @@
      		console.log("text " + hinttext);
      		document.getElementById('elevation_info').textContent = hinttext;
     	}
-    	else document.getElementById('elevation_info').textContent = "No route information";
+    	else document.getElementById('elevation_info').textContent = TIZEN_L10N['no_route_info'];
     }
     	    	
     function init() {
+    	
+    	// L10N
+    	
+    	var label = document.getElementById('label_deviation');
+    	label.textContent = TIZEN_L10N[label.getAttribute('data-l10n')];
+
+    	var label = document.getElementById('label_dist_rem');
+    	label.textContent = TIZEN_L10N[label.getAttribute('data-l10n')];
+    	
         var content_box = document.getElementById('elevation_profile_head');
         content_box.style.display = 'none';
         

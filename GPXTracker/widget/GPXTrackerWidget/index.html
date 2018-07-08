@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="css/style.css">
+  <script src="language.js"></script>
 </head>
 <body>
     <div id="page-clock">
         <div class="city"><span id="route-name"></span></div>
         <div id ="info" class="time">
-        	<div id="info-type-1">Deviation</div>
+        	<div id="info-type-1"> <span id="label_deviation" data-l10n="deviation"></span></div>
             <div><span id="distance"></span><span class="unit"> M</span></div>
-            <div id="info-type-2">Distance Remaining</div>
+            <div id="info-type-2"> <span id="label_dist_rem" data-l10n="distance_remaining"></span></div>
             <div><span id="remaining"></span><span class="unit"> KM</span></div>
         </div>
         <div id ="elevation_profile_head">
