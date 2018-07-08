@@ -189,7 +189,7 @@ Para obtener más información, visite https://sites.google.com/site/gpxroutetra
 1.點擊右邊的按鈕進入“設置”。
 2.點擊“路線”。
 3.點擊“新路線”
-4.輸入一個路由名稱（例如：家庭到辦公室）以及您的gpx文件的http URL。 （*需要直接下載鏈接）
+4.輸入一個路線名稱（例如：家庭到辦公室）以及您的gpx文件的http URL。 （*需要直接下載鏈接）
 5.等待它完成下載。下載完成後，您將被帶回地圖。
 
 有關更多信息，請訪問https://sites.google.com/site/gpxroutetracker/</description>
@@ -247,7 +247,7 @@ Para obtener más información, visite https://sites.google.com/site/gpxroutetra
 1.点击右边的按钮进入“设置”。
 2.点击“路线”。
 3.点击“新路线”
-4.输入一个路由名称（例如：家庭到办公室）以及您的gpx文件的http URL。 （*需要直接下载链接）
+4.输入一个路线名称（例如：家庭到办公室）以及您的gpx文件的http URL。 （*需要直接下载链接）
 5.等待它完成下载。下载完成后，您将被带回地图。
 
 有关更多信息，请访问https://sites.google.com/site/gpxroutetracker/
@@ -311,6 +311,80 @@ Istruzioni iniziali:
 
 Per ulteriori informazioni, visita https://sites.google.com/site/gpxroutetracker/
 </description>
+    <description xml:lang="id-id">
+Muat file rute GPX secara online, dan tampilkan rute dengan lokasi Anda saat ini di Samsung Gear Watch Anda!
+
+Tidakkah Anda ingin diberi tahu jika Anda kehilangan giliran saat mendaki? Apakah kamu tidak ingin tahu seberapa jauh titik akhir? Jangan bilang kamu mempercayai temanmu yang selalu mengatakan "hampir di sana"!
+
+Dengan aplikasi ini, Anda dapat menikmati fitur yang sama seperti jam tangan Garmin / Polar yang mahal di perangkat Wearable yang dapat dikenakan.
+
+Cari "GPX Route Tracker" di Samsung Galaxy Apps Store.
+
+Fitur:
+
+1. Muat rute GPX dan tampilkan di jam tangan Anda.
+2. Tentukan lokasi Anda saat ini.
+3. Lacak jalur Anda saat ini.
+4. Opsi untuk memutar peta agar sesuai dengan arah perjalanan.
+5. Hitung jarak ke titik terdekat dari rute yang dimuat (yaitu deviasi).
+6. Hitung jarak yang tersisa berdasarkan lokasi Anda saat ini dan rute yang ditentukan sebelumnya.
+6. Notifikasi off-route
+7. Widget untuk menunjukkan penyimpangan dan sisa jarak untuk menyelesaikan rute.
+8. Widget untuk menunjukkan profil ketinggian dan posisi Anda saat ini.
+
+Ini adalah aplikasi yang berdiri sendiri. Tidak diperlukan koneksi ke telepon. Mendukung akses online (google) dan offline (leaflet).
+
+Instruksi awal:
+
+1. Klik di sebelah kanan ... untuk masuk ke "Pengaturan". (Ini adalah di bagian paling kanan dari layar peta. Jika peta Anda sudah putih, Anda mungkin tidak dapat melihat titik-titik dengan jelas. Cukup klik di sana.)
+2. Klik "Rute".
+3. Klik "Rute Baru"
+4. Masukkan Nama Rute (contoh: Rumah ke Kantor), dan URL http file gpx Anda. ** Lihat Catatan Di Bawah **
+5. Tunggu hingga selesai mengunduh. Anda akan dibawa kembali ke peta setelah pengunduhan selesai.
+
+** CATATAN PENTING **
+
+URL yang Anda masukkan harus merupakan tautan langsung ke file gpx yang dapat diakses melalui internet terbuka.
+
+Untuk informasi lebih lanjut, silakan kunjungi https://sites.google.com/site/gpxroutetracker/</description>
+    <description xml:lang="th-th">
+โหลดไฟล์เส้นทาง GPX ออนไลน์และแสดงเส้นทางด้วยตำแหน่งปัจจุบันของคุณบน Samsung Gear Watch!
+
+คุณไม่ต้องการรับการแจ้งเตือนหากพลาดการเลี้ยวไปในระหว่างการเดินป่า คุณไม่อยากรู้ว่าจุดสิ้นสุดคือจุดไหน? อย่าบอกฉันว่าคุณไว้ใจเพื่อนของคุณที่พูดเสมอว่า "เกือบจะอยู่ที่นั่น"!
+
+ด้วยแอปพลิเคชันนี้คุณจะได้เพลิดเพลินไปกับคุณสมบัติเช่นเดียวกับนาฬิกา Garmin / Polar ที่มีราคาแพงบนอุปกรณ์สวมใส่ Gear ของคุณ
+
+ค้นหา "GPX Route Tracker" ใน Samsung Galaxy Apps Store
+
+คุณสมบัติ:
+
+1. โหลดเส้นทาง GPX และแสดงบนนาฬิกา
+2. ระบุตำแหน่งปัจจุบันของคุณ
+3. ติดตามเส้นทางปัจจุบันของคุณ
+4 ตัวเลือกในการหมุนแผนที่เพื่อให้ตรงกับทิศทางของการเดินทาง
+5. คำนวณระยะทางไปยังจุดที่ใกล้ที่สุดของเส้นทางที่โหลด (นั่นคือส่วนเบี่ยงเบน)
+6. คำนวณระยะทางที่เหลืออยู่ตามตำแหน่งปัจจุบันของคุณและเส้นทางที่กำหนดไว้ล่วงหน้า
+6. การแจ้งเตือนนอกเส้นทาง
+7. วิดเจ็ตแสดงค่าเบี่ยงเบนและระยะทางที่เหลือเพื่อสิ้นสุดเส้นทาง
+8. วิดเจ็ตเพื่อแสดงโปรไฟล์ความสูงและตำแหน่งปัจจุบันของคุณ
+
+นี้เป็นโปรแกรมแบบสแตนด์อโลน ไม่ต้องมีการเชื่อมต่อกับโทรศัพท์ รองรับการเข้าถึงแบบออนไลน์ (google) และแบบออฟไลน์ (ใบ)
+
+คำแนะนำเริ่มต้น:
+
+1. คลิกที่ปุ่ม ... เพื่อเข้าสู่ "การตั้งค่า" (อยู่ด้านขวาสุดของหน้าจอแผนที่ถ้าแผนที่ของคุณเป็นสีขาวแล้วคุณอาจไม่สามารถมองเห็นจุดได้อย่างชัดเจนเพียงแค่คลิกที่บริเวณนั้น)
+2. คลิกที่ "เส้นทาง"
+3. คลิกที่ "New Route"
+4. ป้อนชื่อเส้นทาง (เช่น: โฮมออฟฟิศ) และ URL http ของไฟล์ gpx ของคุณ ** ดูหมายเหตุด้านล่าง **
+5. รอให้เสร็จสิ้นการดาวน์โหลด คุณจะถูกนำกลับไปที่แผนที่หลังจากดาวน์โหลดเสร็จสิ้น
+
+** โน๊ตสำคัญ **
+
+URL ที่คุณป้อนต้องเป็นลิงก์โดยตรงไปยังไฟล์ gpx ที่เข้าถึงได้ผ่านทางอินเทอร์เน็ตแบบเปิด
+
+สำหรับข้อมูลเพิ่มเติมโปรดไปที่ https://sites.google.com/site/gpxroutetracker/</description>
+
+
     <description>Load a GPX route file online, and display the route with your current location on your Samsung Gear Watch!&#xD;
 Don't you want to be notified if you have missed a turn during your hike? Don't you want to know how far away is the ending point? Don't tell me you trust your buddy who always say &quot;almost there&quot;!&#xD;
 With this app, you can enjoy the same feature as those expensive Garmin / Polar watches on your Gear wearable device.&#xD;
