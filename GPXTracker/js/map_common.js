@@ -547,7 +547,6 @@
 
 	    		latlng = {lat: lat, lng: lng};
 				  		
-	    	//	latlng = new google.maps.LatLng(lat, lng);
 			    landPathCoordinates.push(latlng);	 
 				localStorage.setItem("lastKnownPosition", JSON.stringify(latlng));
 				

@@ -92,7 +92,8 @@ function leaflet_map() {
  	   var latlng = {lat: e.latlng.lat, lng: e.latlng.lng};
  	   
  	   landPathCoordinates.push(latlng);
-		   
+ 	   localStorage.setItem("lastKnownPosition", JSON.stringify(latlng));
+ 	   
  	   if (localStorage.getItem("center_on") == "true")
  		   map.setView(e.latlng, map.getZoom());
 
@@ -100,6 +101,10 @@ function leaflet_map() {
 			   var nearestPt = geolib.findNearest(latlng, routePoints, 0, 1);
 			   console.log("nearest :" + nearestPt.distance);
 			   var remaining = getRemainingDistance(nearestPt.key);
+			   
+			   tizen.preference.setValue("nearestPoint", nearestPt.distance);
+			   tizen.preference.setValue("lastUpdateTime", JSON.stringify(new Date()));	
+			   tizen.preference.setValue("distanceRemaining", remaining);
 			   
 			   var hinttext = TIZEN_L10N['distance_remaining'] + ": " + (remaining / 1000).toFixed(2) + '/' + (gpxRouteDistance / 1000).toFixed(2) + 'KM<br>';
 			   hinttext = hinttext + TIZEN_L10N['deviation'] + ": " + nearestPt.distance + 'M<p><p><p>' ;
