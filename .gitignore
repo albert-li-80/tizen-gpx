@@ -17,10 +17,6 @@
 !/GPXTracker/css/*.css
 
 !/GPXTracker/res/
-!/GPXTracker/res/*
-
-!/GPXTracker/res/xml/
-/GPXTracker/res/xml/*
 
 !/GPXTracker/widget/
 !/GPXTracker/widget/*
