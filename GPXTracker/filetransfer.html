@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+		<link rel="stylesheet" href="lib/tau/wearable/theme/default/tau.min.css">
+		<link rel="stylesheet" media="all and (-tizen-geometric-shape: circle)" href="lib/tau/wearable/theme/default/tau.circle.min.css">
+		<link rel="stylesheet"  href="css/transferstyle.css">
+		<script src="language.js"></script>
+		<script src="js/filetransfer.js"></script>
+		<title>Receive GPX File</title>
+	</head>
+	<body>
+		<div class="ui-page">
+			<header class="ui-header">
+				<h2 class="ui-title"><span data-l10n="receive_gpx_file"></span></h2>
+			</header>
+			<div class="ui-content content-padding">
+				<div id="file-content" class="hidden">
+					<progress max="100" value="0" id="file-progress"></progress>
+					<div class="ui-progress-ratio" id="file-ratio"></div>
+					<div class="ui-progress-proportion" id="file-name"></div>
+					<button type="button" class="ui-btn" id="file-button">Cancel</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="note-container">
+			<!--SA Service Connection Errors-->
+			<div class="note" id="msg-already_exist">The remote Accessory Peer Agent already exists.</div>
+			<div class="note" id="msg-network_error">The connection failed due to a network error.</div>
+			<div class="note" id="msg-device_unreachable">The remote Accessory Peer Agent is unreachable or no longer available, perhaps it has been powered off or the connectivity has been turned off.</div>
+			<div class="note" id="msg-invalid_peeragent">The SAPeerAgent object is invalid.</div>
+			<div class="note" id="msg-peeragent_no_response">The remote Accessory Peer Agent timedout.</div>
+			<div class="note" id="msg-peeragent_rejected">Accessory Peer Agent rejected the request.</div>
+			<div class="note" id="msg-error_reflection_exception">The framework failed to construct an SASocket object.</div>
+
+			<!--SA File Receive Errors-->
+			<div class="note" id="msg-file_io">The file write request failed.</div>
+			<div class="note" id="msg-peer_channel_io">The remote peer is not reachable.</div>
+			<div class="note" id="msg-peer_conn_lost">The connection to the remote peer is lost during the file transfer.</div>
+			<div class="note" id="msg-peer_no_response">The remote peer did not respond.</div>
+			<div class="note" id="msg-peer_rejected">The remote peer rejected/cancelled the file request.</div>
+			<div class="note" id="msg-space_not_available">The receiver device does not have enough free space available.</div>
+
+			<div class="note" id="msg-unknown_error">Unknown error occurred.</div>
+
+			<!--SA Messages-->
+			<div class="note" id="msg-onconnect">File transfer connection established.</div>
+			<div class="note" id="msg-oncomplete">File transfer ended successful.</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="lib/tau/wearable/js/tau.min.js"></script>
+	<script type="text/javascript" src="js/circle-helper.js"></script>
+</html>

@@ -518,6 +518,18 @@
     		});
     	}
 
+    	if (document.title == "Add Files") {
+    		document.getElementById("file_receive_box").addEventListener("click", function(){
+    			console.log("file receive box clicked");
+    			window.location.href = 'filetransfer.html';
+    		});
+    	}
+    	
+    	if ((localStorage.getItem("receiveFilePath") !== null) && (localStorage.getItem("receiveFilePath") != '')) {
+    		document.getElementById("gpx_url_input").textContent = localStorage.getItem("receiveFilePath");
+    		localStorage.setItem("receiveFilePath", '');
+    	}
+    	
 /*    	var height = window.innerHeight;
     	
     	if (document.title == "Add Files") {
@@ -555,6 +567,13 @@
     		console.log(route_name);
     		console.log(gpx_url);
     		console.log(input_filename);
+
+    		if (gpx_url.substring(0, 4) == 'file') {
+    			// CODE FOR PARSING XML
+			    document.getElementById("download_popup_content").innerHTML = TIZEN_L10N['analyzing_route'];
+			    parseXMLfile(gpx_url);
+			    return;
+    		}
     		
     		// Check if Download API is supported not on a device.
     		var download_api_capability = tizen.systeminfo.getCapability("http://tizen.org/feature/download");

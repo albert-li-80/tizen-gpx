@@ -49,5 +49,8 @@ TIZEN_L10N=
 	"remove" : "Vymazat",
 	"new" : "Nový",
 	"off_route_content" : "Jsi Mimo Kurs",
-	"distance_to_nearest_point" : "Od Nejbližšího Bodu Na Trase"
+	"distance_to_nearest_point" : "Od Nejbližšího Bodu Na Trase",
+	"load_gpx_file" : "Poslat Z Telefonu",
+	"transfer_gpx_file" : "Kliknutím Na Přijmout Soubor",
+	"receive_gpx_file" : "Přijímat Gpx Souboru"
 };

@@ -49,5 +49,8 @@ TIZEN_L10N=
 	"remove" : "Cancellare",
 	"new" : "Nuovo",
 	"off_route_content" : "Sei Fuori Rotta",
-	"distance_to_nearest_point" : "Dal Punto Più Vicino Sulla Rotta"
+	"distance_to_nearest_point" : "Dal Punto Più Vicino Sulla Rotta",
+	"load_gpx_file" : "Invio Da Telefono",
+	"transfer_gpx_file" : "Clicca Per Ricevere File",
+	"receive_gpx_file" : "Ricevi File Gpx"
 };

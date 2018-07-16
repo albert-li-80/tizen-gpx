@@ -49,5 +49,8 @@ TIZEN_L10N=
 	"remove" : "Hapus",
 	"new" : "Baru",
 	"off_route_content" : "Anda Tentu Saja",
-	"distance_to_nearest_point" : "Dari Titik Terdekat Pada Rute"
+	"distance_to_nearest_point" : "Dari Titik Terdekat Pada Rute",
+	"load_gpx_file" : "Kirim Dari Telepon",
+	"transfer_gpx_file" : "Klik Untuk Menerima Berkas",
+	"receive_gpx_file" : "Menerima Gpx File"
 };

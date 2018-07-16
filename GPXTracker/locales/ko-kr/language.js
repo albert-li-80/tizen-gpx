@@ -49,5 +49,8 @@ TIZEN_L10N=
 	"remove" : "삭제",
 	"new" : "새로운",
 	"off_route_content" : "물론 당신 떠나라",
-	"distance_to_nearest_point" : "노선에 가장 가까운 지점에서"
+	"distance_to_nearest_point" : "노선에 가장 가까운 지점에서",
+	"load_gpx_file" : "전화로 보내기",
+	"transfer_gpx_file" : "파일 받기 클릭",
+	"receive_gpx_file" : "Gpx 파일 수신"
 };

@@ -49,5 +49,8 @@ TIZEN_L10N=
 	"remove" : "取り除きます",
 	"new" : "新しい",
 	"off_route_content" : "あなたはオフルートです。",
-	"distance_to_nearest_point" : "ルート上の最も近い点までの距離"
+	"distance_to_nearest_point" : "ルート上の最も近い点までの距離",
+	"load_gpx_file" : "電話から送信",
+	"transfer_gpx_file" : "ファイルを受信するためにクリック",
+	"receive_gpx_file" : "Gpxファイルを受信"
 };

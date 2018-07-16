@@ -49,5 +49,8 @@ TIZEN_L10N=
 	"remove" : "刪除",
 	"new" : "新增",
 	"off_route_content" : "您正在偏離路線",
-	"distance_to_nearest_point" : "路線上最近點的距離"
+	"distance_to_nearest_point" : "路線上最近點的距離",
+	"load_gpx_file" : "在手機上發送",
+	"transfer_gpx_file" : "點擊接收文件",
+	"receive_gpx_file" : "接收gpx文件"
 };

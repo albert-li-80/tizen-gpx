@@ -428,6 +428,8 @@ For further information, please visit https://sites.google.com/site/gpxroutetrac
     <tizen:privilege name="http://tizen.org/privilege/power"/>
     <tizen:privilege name="http://tizen.org/privilege/download"/>
     <tizen:privilege name="http://tizen.org/privilege/filesystem.read"/>
+    <tizen:privilege name="http://developer.samsung.com/tizen/privilege/accessoryprotocol"/>
+	<tizen:metadata key="AccessoryServicesLocation" value="res/xml/accessoryservices.xml"/>    
     <tizen:profile name="wearable"/>
     <tizen:setting background-support="enable" encryption="disable" hwkey-event="enable"/>
 </widget>
