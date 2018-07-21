@@ -40,6 +40,7 @@ function SAServerOpen(appName, onFileTransfer, onerror) {
     webapis.sa.requestSAAgent(function(agents) {
         if(agents.length > 0) {
             var SAAgent = agents[0];
+
             SAAgent.setServiceConnectionListener({
                 onrequest : function(peerAgent) {
                     if(peerAgent.appName == appName) {
@@ -52,13 +53,22 @@ function SAServerOpen(appName, onFileTransfer, onerror) {
                     socket.setSocketStatusListener(function(reason) {
                         socket.close();
                     });
+                    var hintcontent = document.getElementById("hint-content");
+                    hintcontent.classList.add("hidden");
                     showNote("onconnect");
+                    socket.setDataReceiveListener(onreceive);
                 },
                 onerror : onerror
             });
-            onFileTransfer(SAAgent.getSAFileTransfer());
-        }
+            
+            onFileTransfer(SAAgent.getSAFileTransfer());           
+         }
     });
+}
+
+function onreceive(channelId, data) {
+	console.log("Data Received: " + data);
+	localStorage.setItem("receiveRouteName", data);
 }
 
 /**
@@ -75,7 +85,7 @@ function onFileTransfer(SAFileTransfer) {
 
     SAFileTransfer.setFileReceiveListener({
         onreceive : function(id, fileName) {
-            var receive = confirm("Do you want to receive file: " + fileName + "?");
+            var receive = confirm(TIZEN_L10N['want_receive_file'] + ": " + fileName + "?");
             if (receive === true) {
                 progress.value = 0;
                 name.innerHTML = fileName;

@@ -3,7 +3,7 @@
 	<application name="FileTransferReceiver">
 		<serviceProfile
 				autoLaunchAppId="1TQRTYAsJG.GPXTracker"
-				id="/sample/filetransfer"
+				id="/gpxsample/filetransfer"
 				name="FileTransferReceiver"
 				role="provider"
 				version="1.0">

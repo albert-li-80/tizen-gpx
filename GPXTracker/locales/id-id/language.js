@@ -52,5 +52,9 @@ TIZEN_L10N=
 	"distance_to_nearest_point" : "Dari Titik Terdekat Pada Rute",
 	"load_gpx_file" : "Kirim Dari Telepon",
 	"transfer_gpx_file" : "Klik Untuk Menerima Berkas",
-	"receive_gpx_file" : "Menerima Gpx File"
+	"receive_gpx_file" : "Menerima Gpx File",
+	"want_receive_file" : "Apakah Anda Ingin Menerima Berkas",
+	"launch_gpx_sender" : "Peluncuran Gpx Pengirim Di Telepon",
+	"connection_established" : "Koneksi Transfer File Didirikan",
+	"transfer_completed" : "Transfer File Berakhir Sukses"
 };

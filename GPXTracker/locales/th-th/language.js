@@ -52,5 +52,9 @@ TIZEN_L10N=
 	"distance_to_nearest_point" : "จากจุดที่ใกล้ที่สุดบนเส้นทาง",
 	"load_gpx_file" : "ส่งจากโทรศัพท์",
 	"transfer_gpx_file" : "คลิกที่นี่เพื่อรับไฟล์",
-	"receive_gpx_file" : "รับ Gpx ไฟล์"
+	"receive_gpx_file" : "รับ Gpx ไฟล์",
+	"want_receive_file" : "คุณต้องการที่จะรับไฟล์",
+	"launch_gpx_sender" : "เปิด Gpx บนโทรศัพท์ของผู้ส่ง",
+	"connection_established" : "การเชื่อมต่อการถ่ายโอนไฟล์ที่จัดตั้งขึ้น",
+	"transfer_completed" : "การถ่ายโอนไฟล์สิ้นสุดวันที่ประสบความสำเร็จ"
 };

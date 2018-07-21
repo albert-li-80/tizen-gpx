@@ -52,5 +52,9 @@ TIZEN_L10N=
 	"distance_to_nearest_point" : "Van Het Dichtstbijzijnde Punt Op De Route",
 	"load_gpx_file" : "Verzenden Uit Phone",
 	"transfer_gpx_file" : "Klik Hier Om Bestand Te Ontvangen",
-	"receive_gpx_file" : "Ontvang Gpx File"
+	"receive_gpx_file" : "Ontvang Gpx File",
+	"want_receive_file" : "Wilt U Bestand Te Ontvangen",
+	"launch_gpx_sender" : "Lancering Gpx Sender Op Telefoon",
+	"connection_established" : "Bestandsoverdracht Verbinding Tot Stand Gebracht",
+	"transfer_completed" : "Bestandsoverdracht Eindigde Succesvol"
 };

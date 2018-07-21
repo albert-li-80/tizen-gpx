@@ -52,5 +52,9 @@ TIZEN_L10N=
 	"distance_to_nearest_point" : "Od Nejbližšího Bodu Na Trase",
 	"load_gpx_file" : "Poslat Z Telefonu",
 	"transfer_gpx_file" : "Kliknutím Na Přijmout Soubor",
-	"receive_gpx_file" : "Přijímat Gpx Souboru"
+	"receive_gpx_file" : "Přijímat Gpx Souboru",
+	"want_receive_file" : "Chcete Dostávat Soubor",
+	"launch_gpx_sender" : "Zahájit Gpx Sender Na Telefonu",
+	"connection_established" : "Navázání Spojení Přenos Souborů",
+	"transfer_completed" : "Přenos Souborů Skončila Úspěšná"
 };

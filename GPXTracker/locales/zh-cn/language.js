@@ -52,5 +52,9 @@ TIZEN_L10N=
 	"distance_to_nearest_point" : "路線上最近點的距離",
 	"load_gpx_file" : "在手机上发送",
 	"transfer_gpx_file" : "点击接收文件",
-	"receive_gpx_file" : "接收gpx文件"
+	"receive_gpx_file" : "接收gpx文件",
+	"want_receive_file" : "你想收到文件",
+	"launch_gpx_sender" : "启动手机上的gpx发件人",
+	"connection_established" : "文件传输连接建立",
+	"transfer_completed" : "文件传输成功结束"
 };

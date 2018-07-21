@@ -16,6 +16,7 @@
 				<h2 class="ui-title"><span data-l10n="receive_gpx_file"></span></h2>
 			</header>
 			<div class="ui-content content-padding">
+				<div id="hint-content"><span data-l10n="launch_gpx_sender"></span></div>
 				<div id="file-content" class="hidden">
 					<progress max="100" value="0" id="file-progress"></progress>
 					<div class="ui-progress-ratio" id="file-ratio"></div>
@@ -46,8 +47,8 @@
 			<div class="note" id="msg-unknown_error">Unknown error occurred.</div>
 
 			<!--SA Messages-->
-			<div class="note" id="msg-onconnect">File transfer connection established.</div>
-			<div class="note" id="msg-oncomplete">File transfer ended successful.</div>
+			<div class="note" id="msg-onconnect"><span data-l10n="connection_established"></span></div>
+			<div class="note" id="msg-oncomplete"><span data-l10n="transfer_completed"></span></div>
 		</div>
 	</body>
 	<script type="text/javascript" src="lib/tau/wearable/js/tau.min.js"></script>
