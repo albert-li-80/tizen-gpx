@@ -54,7 +54,8 @@ TIZEN_L10N=
 	"transfer_gpx_file" : "파일 받기 클릭",
 	"receive_gpx_file" : "Gpx 파일 수신",
 	"want_receive_file" : "당신은 파일을 수신 하시겠습니까",
-	"launch_gpx_sender" : "전화 Gpx 발신자를 시작합니다",
+	"launch_gpx_sender" : "전화 연결 대기 중. 전화를 확인합니다.",
 	"connection_established" : "파일 전송 연결이 설정",
-	"transfer_completed" : "파일 전송이 성공적으로 종료"
+	"transfer_completed" : "파일 전송이 성공적으로 종료",
+	"phone_connected" : "연결. 전화에 상세 정보를 기입하시기 바랍니다."
 };

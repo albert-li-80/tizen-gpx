@@ -54,7 +54,8 @@ TIZEN_L10N=
 	"transfer_gpx_file" : "Kliknutím Na Přijmout Soubor",
 	"receive_gpx_file" : "Přijímat Gpx Souboru",
 	"want_receive_file" : "Chcete Dostávat Soubor",
-	"launch_gpx_sender" : "Zahájit Gpx Sender Na Telefonu",
+	"launch_gpx_sender" : "Čeká na připojení telefonu. Zkontrolujte telefon.",
 	"connection_established" : "Navázání Spojení Přenos Souborů",
-	"transfer_completed" : "Přenos Souborů Skončila Úspěšná"
+	"transfer_completed" : "Přenos Souborů Skončila Úspěšná",
+	"phone_connected" : "Připojen. Vstupní Informace O Telefonu."
 };

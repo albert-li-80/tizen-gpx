@@ -54,7 +54,8 @@ TIZEN_L10N=
 	"transfer_gpx_file" : "Klik Untuk Menerima Berkas",
 	"receive_gpx_file" : "Menerima Gpx File",
 	"want_receive_file" : "Apakah Anda Ingin Menerima Berkas",
-	"launch_gpx_sender" : "Peluncuran Gpx Pengirim Di Telepon",
+	"launch_gpx_sender" : "Menunggu Untuk Koneksi Telepon. Periksa Telepon.",
 	"connection_established" : "Koneksi Transfer File Didirikan",
-	"transfer_completed" : "Transfer File Berakhir Sukses"
+	"transfer_completed" : "Transfer File Berakhir Sukses",
+	"phone_connected" : "Terhubung. Masukkan Rincian Di Telepon."
 };

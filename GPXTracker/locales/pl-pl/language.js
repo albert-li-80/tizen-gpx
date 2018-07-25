@@ -54,7 +54,8 @@ TIZEN_L10N=
 	"transfer_gpx_file" : "Kliknij Pliki Otrzymujących",
 	"receive_gpx_file" : "Otrzymuj Plik Gpx",
 	"want_receive_file" : "Chcesz Otrzymywać Plik",
-	"launch_gpx_sender" : "Uruchom Gpx Sender Na Telefon",
+	"launch_gpx_sender" : "Oczekiwanie Na Połączenie Telefonu. Sprawdzić Telefon.",
 	"connection_established" : "Połączenie Transferu Plików Ustalony",
-	"transfer_completed" : "Transfer Plików Zakończony Sukcesem"
+	"transfer_completed" : "Transfer Plików Zakończony Sukcesem",
+	"phone_connected" : "Podłączony. Podaj Szczegóły W Telefonie."
 };

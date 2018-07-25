@@ -54,7 +54,8 @@ TIZEN_L10N=
 	"transfer_gpx_file" : "Klik Hier Om Bestand Te Ontvangen",
 	"receive_gpx_file" : "Ontvang Gpx File",
 	"want_receive_file" : "Wilt U Bestand Te Ontvangen",
-	"launch_gpx_sender" : "Lancering Gpx Sender Op Telefoon",
+	"launch_gpx_sender" : "Wachten Op Telefoonverbinding. Controleer Telefoon.",
 	"connection_established" : "Bestandsoverdracht Verbinding Tot Stand Gebracht",
-	"transfer_completed" : "Bestandsoverdracht Eindigde Succesvol"
+	"transfer_completed" : "Bestandsoverdracht Eindigde Succesvol",
+	"phone_connected" : "Connected. Vul De Gegevens In De Telefoon."
 };

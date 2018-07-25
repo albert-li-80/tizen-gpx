@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" version="2.0.3" height="360" width="360" viewmodes="maximized">
+<widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" version="2.0.5" height="360" width="360" viewmodes="maximized">
     <access origin="http://googleapis.com" subdomains="true"></access>
     <access origin="http://gstatic.com" subdomains="true"></access>
     <access origin="http://google.com" subdomains="true"></access>
@@ -430,6 +430,11 @@ For further information, please visit https://sites.google.com/site/gpxroutetrac
     <tizen:privilege name="http://tizen.org/privilege/download"/>
     <tizen:privilege name="http://tizen.org/privilege/filesystem.read"/>
     <tizen:privilege name="http://developer.samsung.com/tizen/privilege/accessoryprotocol"/>
+    <tizen:metadata key="master_app_name" value="GPX Route Tracker Companion"/>
+ 	<tizen:metadata key="master_app_packagename" value="com.biamsolution.android.gpxroutetracker.filesender"/>
+ 	<tizen:metadata key="master_app_min_version" value="0"/>
+ 	<tizen:metadata key="master_app_playstore_deeplink" value="market://details?id=com.biamsolution.android.gpxroutetracker.filesender"/>
+ 	<tizen:metadata key="master_app_3rd_url_deeplink" value="https://play.google.com/store/apps/details?id=com.biamsolution.android.gpxroutetracker.filesender"/>    
     <tizen:profile name="wearable"/>
     <tizen:setting background-support="enable" encryption="disable" hwkey-event="enable"/>
 </widget>

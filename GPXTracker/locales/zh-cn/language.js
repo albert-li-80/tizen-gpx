@@ -54,7 +54,8 @@ TIZEN_L10N=
 	"transfer_gpx_file" : "点击接收文件",
 	"receive_gpx_file" : "接收gpx文件",
 	"want_receive_file" : "你想收到文件",
-	"launch_gpx_sender" : "启动手机上的gpx发件人",
+	"launch_gpx_sender" : "等待电话连接。检查手机。",
 	"connection_established" : "文件传输连接建立",
-	"transfer_completed" : "文件传输成功结束"
+	"transfer_completed" : "文件传输成功结束",
+	"phone_connected" : "已連接. 請在手機輸入詳細信息."
 };

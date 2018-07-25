@@ -109,8 +109,37 @@
     	    var elem = document.querySelectorAll('[data-l10n]')[i];
     	    elem.innerHTML = TIZEN_L10N[elem.getAttribute('data-l10n')];
     	}
+    	
+    	// listen to file transfer request
+    	/*
+        try {
+    	    webapis.sa.requestSAAgent(function(agents) {
+    	        if(agents.length > 0) {
+    	            var SAAgent = agents[0];
+    	            console.log("inside request agent");
+    	            SAAgent.setServiceConnectionListener({
+    	                onrequest : function(peerAgent) {
+    	                	console.log("inside onrequest");
+    	                    if(peerAgent.appName == "FileTransferSender") {
+    	                    	SAAgent.rejectServiceConnectionRequest(peerAgent);
+    	                    	
+    	                    	var app = tizen.application.getCurrentApplication();
+    	                    	tizen.application.launch(app.appInfo.id);
+
+    	                    	window.location.href = "filetransfer.html";
+    	                    } else {
+    	                        SAAgent.rejectServiceConnectionRequest(peerAgent);
+    	                    }
+    	                },
+    	            });
+    	         }
+    	    });
+    	    } catch(error) {
+            console.log("FileTransferReceiver: " + error.name + "( " + error.message + " )");
+        }*/
 	};
     
+	
     function registerEventHandlers() {
     	// add eventListener for tizenhwkey
     	document.addEventListener('tizenhwkey', function(e) {

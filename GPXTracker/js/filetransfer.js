@@ -54,7 +54,7 @@ function SAServerOpen(appName, onFileTransfer, onerror) {
                         socket.close();
                     });
                     var hintcontent = document.getElementById("hint-content");
-                    hintcontent.classList.add("hidden");
+                    hintcontent.textContent = TIZEN_L10N['phone_connected'];
                     showNote("onconnect");
                     socket.setDataReceiveListener(onreceive);
                 },
@@ -85,8 +85,8 @@ function onFileTransfer(SAFileTransfer) {
 
     SAFileTransfer.setFileReceiveListener({
         onreceive : function(id, fileName) {
-            var receive = confirm(TIZEN_L10N['want_receive_file'] + ": " + fileName + "?");
-            if (receive === true) {
+   //         var receive = confirm(TIZEN_L10N['want_receive_file'] + ": " + fileName + "?");
+   //         if (receive === true) {
                 progress.value = 0;
                 name.innerHTML = fileName;
                 ratio.innerHTML = "0%";
@@ -109,9 +109,9 @@ function onFileTransfer(SAFileTransfer) {
                 	showNote("unknown_error");
                 }
                 
-            } else {
-                SAFileTransfer.rejectFile(id);
-            }
+  //          } else {
+  //              SAFileTransfer.rejectFile(id);
+  //          }
         },
         onprogress : function(id, value) {
             progress.value = value;
@@ -176,4 +176,31 @@ window.onload = function() {
     } catch(error) {
         console.log("FileTransferReceiver: " + error.name + "( " + error.message + " )");
     }
+    
+    // The following code example launches a specific application explicitly with the package name and application name.
+    var remoteAppControlReplyCallback = {
+        // callee sent a reply
+        onsuccess: function(data) {
+            console.log('Received data is ' + data);
+        },
+        // callee returned failure
+        onfailure: function() {
+            console.log('The launch remote application control failed');
+        }
+    }
+
+    var appControl =
+          new webapis.RemoteApplicationControl(
+                     "http://samsung.com/appcontrol/operation/remote/default",
+                     null,
+                     "com.biamsolution.android.gpxroutetracker.filesender",
+                     "com.biamsolution.android.gpxroutetracker.filesender.FileTransferSenderActivity",
+                     "Test Message");
+
+    webapis.remoteappcontrol.launchRemoteAppControl(
+        appControl,
+        function() {console.log("launch remote application control succeed");},
+        function(e) {console.log("launch remote application control failed. reason: " + e.name);},
+        remoteAppControlReplyCallback);
+    
 };
