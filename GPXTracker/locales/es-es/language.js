@@ -57,5 +57,6 @@ TIZEN_L10N=
 	"launch_gpx_sender" : "Esperando La Conexión Telefónica. Mira El Teléfono.",
 	"connection_established" : "Conexión De Transferencia De Archivos Establecido",
 	"transfer_completed" : "Transferencia De Archivos Finalizó Con Éxito",
-	"phone_connected" : "Conectado. Datos De Entrada En El Teléfono."
+	"phone_connected" : "Conectado. Datos De Entrada En El Teléfono.",
+	"route_set" : "Ruta Se Ha Establecido"
 };

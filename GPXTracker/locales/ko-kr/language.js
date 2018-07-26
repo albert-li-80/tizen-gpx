@@ -57,5 +57,6 @@ TIZEN_L10N=
 	"launch_gpx_sender" : "전화 연결 대기 중. 전화를 확인합니다.",
 	"connection_established" : "파일 전송 연결이 설정",
 	"transfer_completed" : "파일 전송이 성공적으로 종료",
-	"phone_connected" : "연결. 전화에 상세 정보를 기입하시기 바랍니다."
+	"phone_connected" : "연결. 전화에 상세 정보를 기입하시기 바랍니다.",
+	"route_set" : "경로가 설정되어"
 };

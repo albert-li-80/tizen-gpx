@@ -57,5 +57,6 @@ TIZEN_L10N=
 	"launch_gpx_sender" : "Menunggu Untuk Koneksi Telepon. Periksa Telepon.",
 	"connection_established" : "Koneksi Transfer File Didirikan",
 	"transfer_completed" : "Transfer File Berakhir Sukses",
-	"phone_connected" : "Terhubung. Masukkan Rincian Di Telepon."
+	"phone_connected" : "Terhubung. Masukkan Rincian Di Telepon.",
+	"route_set" : "Route Telah Ditetapkan"
 };

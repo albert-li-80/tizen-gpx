@@ -57,5 +57,6 @@ TIZEN_L10N=
 	"launch_gpx_sender" : "Čeká na připojení telefonu. Zkontrolujte telefon.",
 	"connection_established" : "Navázání Spojení Přenos Souborů",
 	"transfer_completed" : "Přenos Souborů Skončila Úspěšná",
-	"phone_connected" : "Připojen. Vstupní Informace O Telefonu."
+	"phone_connected" : "Připojen. Vstupní Informace O Telefonu.",
+	"route_set" : "Trasa Byla Nastavena"
 };

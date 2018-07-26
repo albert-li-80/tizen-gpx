@@ -136,14 +136,15 @@
         					localStorage.setItem("gpxFilelist", JSON.stringify(parsedFileList));
         				}
         			console.log("back to event 2");
-        		    document.getElementById("file_popup_content").innerHTML = "Route has been set to " + parsedFileList[index].file;
+        		    document.getElementById("file_popup_content").innerHTML = TIZEN_L10N['route_set'] + ": " + parsedFileList[index].file;
             		tau.openPopup("#file_popup");
         		    
     			    setTimeout(function(){ 
-    		    		tau.closePopup();
-            			localStorage.setItem("firstPass", "N");
-            			window.location.href = 'index.html';},	 // Alert Popup Toast
-    		    		500);            		
+    		    		tau.closePopup();},	 // Alert Popup Toast
+    		    		500);            
+    			    
+        			localStorage.setItem("firstPass", "N");
+        			window.location.href = 'index.html';
         		});
 
         		if ((parsedFileList[index].infofile == null) || (parsedFileList[index].infofile == ''))
@@ -431,6 +432,120 @@
 
     }
     
+    function saveButtonHandler() {
+    	
+		console.log("save file button clicked");
+		
+	    document.getElementById("save_file_btn").innerHTML = "Downloading...";
+	    document.getElementById("save_file_btn").disabled = true;
+	    
+	    tau.openPopup("#download_popup");
+        document.getElementById("download_popup_content").innerHTML = TIZEN_L10N['initializing_download'];
+	    
+		var gpx_url = document.getElementById("gpx_url_input").textContent;
+		console.log(gpx_url);
+
+		if (gpx_url.substring(0, 4) == 'file') {
+			// CODE FOR PARSING XML
+		    document.getElementById("download_popup_content").innerHTML = TIZEN_L10N['analyzing_route'];
+
+		    try {
+		    	parseXMLfile(gpx_url);
+		    }
+			catch (err) {
+				console.log("Error in parseXMLfile: ", err.toString());
+				
+			    document.getElementById("save_file_btn").innerHTML = "GPX File Format Error";
+		    	document.getElementById("download_popup_content").innerHTML = "GPX File Format Error! <br>" + err.toString();
+			    	
+			    setTimeout(function(){ 
+			    		tau.closePopup();
+			    		document.getElementById("save_file_btn").innerHTML = "Save";
+			    		document.getElementById("save_file_btn").disabled = false;
+			    		window.location.href = 'files.html';},	 // Alert Popup Toast
+			    		3000);				    
+			}
+		    return;
+		}
+		
+
+		gpx_url = encodeURI(document.getElementById("gpx_url_input").textContent);
+		
+		// Check if Download API is supported not on a device.
+		var download_api_capability = tizen.systeminfo.getCapability("http://tizen.org/feature/download");
+		
+		if (download_api_capability === false) {
+		    console.log("Download API is not supported on this device.");
+		}
+
+		var listener = {
+				  onprogress: function(id, receivedSize, totalSize) {
+  			    	var percentage = Math.round(receivedSize / totalSize * 100) + '%';
+			        document.getElementById("save_file_btn").innerHTML = percentage;
+			        document.getElementById("download_popup_content").innerHTML = percentage;
+			        console.log("percent:" + percentage);
+				    console.log('Received with id: ' + id + ', ' + receivedSize + '/' + totalSize);
+				  },
+				  onpaused: function(id) {
+				    console.log('Paused with id: ' + id);
+				  },
+				  oncanceled: function(id) {
+				    console.log('Canceled with id: ' + id);
+				  },
+				  oncompleted: function(id, fileName) {
+				    console.log('Completed with id: ' + id + ', file name: ' + fileName);
+				    
+				    // CODE FOR PARSING XML
+				    document.getElementById("download_popup_content").innerHTML = TIZEN_L10N['analyzing_route'];
+				    parseXMLfile(fileName);
+				    
+				    // END CODE FOR PARSING XML
+				    // storeFilelistAndRedirect(fileName, '');
+				    
+				  },
+				  onfailed: function(id, error) {
+				    console.log('Failed with id: ' + id + ', error name: ' + error.name);
+				    document.getElementById("save_file_btn").innerHTML = "Download Failed!";
+
+			    	document.getElementById("download_popup_content").innerHTML = TIZEN_L10N['download_failed']  + "! <br>" + error.name;
+    			    	
+    			    setTimeout(function(){ 
+    			    		tau.closePopup();	 // Alert Popup Toast
+    			    		document.getElementById("save_file_btn").innerHTML = "Save";
+    			    		document.getElementById("save_file_btn").disabled = false;
+            			    window.location.href = 'files.html';},
+    			    		2000);       			    	
+				  }
+				};
+
+		var request = new tizen.DownloadRequest(
+			    gpx_url, // File URL
+			    "wgt-private" // Destination directory
+			);
+		    		
+		console.log("URL: " + gpx_url);
+		
+		var id = null;
+		
+		try {
+			id = tizen.download.start(request);  		
+			tizen.download.setListener(id, listener);
+		}
+		catch (error) {
+		    console.log('Failed with download start id: ' + id + ', error name: ' + error.name);
+		    document.getElementById("save_file_btn").innerHTML = "Download Failed!";
+
+	    	document.getElementById("download_popup_content").innerHTML = TIZEN_L10N['download_failed'] +  "!<br>" + TIZEN_L10N['try_again'] + "<br>" + error.name;
+		    	
+		    setTimeout(function(){ 
+		    		tau.closePopup();
+		    		document.getElementById("save_file_btn").innerHTML = "Save";
+		    		document.getElementById("save_file_btn").disabled = false;
+		    		window.location.href = 'files.html';},	 // Alert Popup Toast
+		    		3000);			    			       			
+		}
+	}
+    
     function registerEventHandlers() {
 
     	/**
@@ -533,153 +648,23 @@
     	}
     	
     	if ((localStorage.getItem("receiveFilePath") !== null) && (localStorage.getItem("receiveFilePath") != '')) {
+
     		document.getElementById("gpx_url_input").textContent = localStorage.getItem("receiveFilePath");
     		localStorage.setItem("receiveFilePath", '');
+    		
+        	if ((localStorage.getItem("receiveRouteName") !== null) && (localStorage.getItem("receiveRouteName") != '')) {
+        		document.getElementById("route_name_input").textContent = localStorage.getItem("receiveRouteName");
+        		localStorage.setItem("receiveRouteName", '');
+        	}
+
+        	saveButtonHandler();
     	}
 
-    	if ((localStorage.getItem("receiveRouteName") !== null) && (localStorage.getItem("receiveRouteName") != '')) {
-    		document.getElementById("route_name_input").textContent = localStorage.getItem("receiveRouteName");
-    		localStorage.setItem("receiveRouteName", '');
-    	}
-
-/*    	var height = window.innerHeight;
-    	
-    	if (document.title == "Add Files") {
-    		window.addEventListener("resize", function() {
-    			if (window.innerHeight < height) {
-    				console.log("keyboard active");
-    				document.getElementById("save_file_btn").style.display = "none";
-    				document.activeElement.scrollIntoView(false);
-    			} else if (window.innerHeight >= height) {
-    				console.log("keyboard inactive");
-    				document.getElementById("save_file_btn").style.display = "block";
-    		 	}
-    		});
-    	};
- */   	
     	/**
     	 * Save File event handler
     	 */
     	if (document.title == "Add Files") {
-    	document.getElementById("save_file_btn").addEventListener("click", function(){
-    		console.log("save file button clicked");
-    		
-		    document.getElementById("save_file_btn").innerHTML = "Downloading...";
-		    document.getElementById("save_file_btn").disabled = true;
-		    
-		    tau.openPopup("#download_popup");
-	        document.getElementById("download_popup_content").innerHTML = TIZEN_L10N['initializing_download'];
-		    
-//    		var route_name = document.getElementById("route_name_input").textContent;
-    		var gpx_url = document.getElementById("gpx_url_input").textContent;
-//	    	var gpxFilelist = localStorage.getItem("gpxFilelist");    			    	
-//	    	var parsedFileList;
-//	    	var input_filename = gpx_url.split('/').pop();
-	    	
-//    		console.log(route_name);
-    		console.log(gpx_url);
-//    		console.log(input_filename);
-
-    		if (gpx_url.substring(0, 4) == 'file') {
-    			// CODE FOR PARSING XML
-			    document.getElementById("download_popup_content").innerHTML = TIZEN_L10N['analyzing_route'];
-
-			    try {
-			    	parseXMLfile(gpx_url);
-			    }
-				catch (err) {
-					console.log("Error in parseXMLfile: ", err.toString());
-					
-				    document.getElementById("save_file_btn").innerHTML = "GPX File Format Error";
-			    	document.getElementById("download_popup_content").innerHTML = "GPX File Format Error! <br>" + err.toString();
-				    	
-				    setTimeout(function(){ 
-				    		tau.closePopup();
-    			    		document.getElementById("save_file_btn").innerHTML = "Save";
-    			    		document.getElementById("save_file_btn").disabled = false;
-				    		window.location.href = 'files.html';},	 // Alert Popup Toast
-				    		3000);				    
-				}
-			    return;
-    		}
-    		
-
-    		gpx_url = encodeURI(document.getElementById("gpx_url_input").textContent);
-    		
-    		// Check if Download API is supported not on a device.
-    		var download_api_capability = tizen.systeminfo.getCapability("http://tizen.org/feature/download");
-    		
-    		if (download_api_capability === false) {
-    		    console.log("Download API is not supported on this device.");
-    		}
-
-    		var listener = {
-    				  onprogress: function(id, receivedSize, totalSize) {
-      			    	var percentage = Math.round(receivedSize / totalSize * 100) + '%';
-    			        document.getElementById("save_file_btn").innerHTML = percentage;
-    			        document.getElementById("download_popup_content").innerHTML = percentage;
-    			        console.log("percent:" + percentage);
-    				    console.log('Received with id: ' + id + ', ' + receivedSize + '/' + totalSize);
-    				  },
-    				  onpaused: function(id) {
-    				    console.log('Paused with id: ' + id);
-    				  },
-    				  oncanceled: function(id) {
-    				    console.log('Canceled with id: ' + id);
-    				  },
-    				  oncompleted: function(id, fileName) {
-    				    console.log('Completed with id: ' + id + ', file name: ' + fileName);
-    				    
-    				    // CODE FOR PARSING XML
-    				    document.getElementById("download_popup_content").innerHTML = TIZEN_L10N['analyzing_route'];
-    				    parseXMLfile(fileName);
-    				    
-    				    // END CODE FOR PARSING XML
-    				    // storeFilelistAndRedirect(fileName, '');
-    				    
-    				  },
-    				  onfailed: function(id, error) {
-    				    console.log('Failed with id: ' + id + ', error name: ' + error.name);
-    				    document.getElementById("save_file_btn").innerHTML = "Download Failed!";
-
-    			    	document.getElementById("download_popup_content").innerHTML = TIZEN_L10N['download_failed']  + "! <br>" + error.name;
-        			    	
-        			    setTimeout(function(){ 
-        			    		tau.closePopup();	 // Alert Popup Toast
-        			    		document.getElementById("save_file_btn").innerHTML = "Save";
-        			    		document.getElementById("save_file_btn").disabled = false;
-                			    window.location.href = 'files.html';},
-        			    		2000);       			    	
-    				  }
-    				};
- 
-    		var request = new tizen.DownloadRequest(
-    			    gpx_url, // File URL
-    			    "wgt-private" // Destination directory
-    			);
-    		    		
-    		console.log("URL: " + gpx_url);
-    		
-    		var id = null;
-    		
-    		try {
-    			id = tizen.download.start(request);  		
-    			tizen.download.setListener(id, listener);
-    		}
-    		catch (error) {
-			    console.log('Failed with download start id: ' + id + ', error name: ' + error.name);
-			    document.getElementById("save_file_btn").innerHTML = "Download Failed!";
-
-		    	document.getElementById("download_popup_content").innerHTML = TIZEN_L10N['download_failed'] +  "!<br>" + TIZEN_L10N['try_again'] + "<br>" + error.name;
-			    	
-			    setTimeout(function(){ 
-			    		tau.closePopup();
-			    		document.getElementById("save_file_btn").innerHTML = "Save";
-			    		document.getElementById("save_file_btn").disabled = false;
-			    		window.location.href = 'files.html';},	 // Alert Popup Toast
-			    		3000);			    			       			
-    		}
-    	});
+    	document.getElementById("save_file_btn").addEventListener("click", saveButtonHandler);
     	}
     };
     

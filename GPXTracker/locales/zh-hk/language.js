@@ -57,5 +57,6 @@ TIZEN_L10N=
 	"launch_gpx_sender" : "等待電話連接。檢查手機。",
 	"connection_established" : "文件傳輸連接建立",
 	"transfer_completed" : "文件傳輸成功結束",
-	"phone_connected" : "已連接. 請在手機輸入詳細信息."
+	"phone_connected" : "已連接. 請在手機輸入詳細信息.",
+	"route_set" : "路線已定"
 };

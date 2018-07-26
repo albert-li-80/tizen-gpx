@@ -57,5 +57,6 @@ TIZEN_L10N=
 	"launch_gpx_sender" : "電話接続を待っています。携帯電話を確認してください。",
 	"connection_established" : "ファイル転送接続が確立します",
 	"transfer_completed" : "ファイルの転送が成功終了しました",
-	"phone_connected" : "接続されています。電話での入力内容。"
+	"phone_connected" : "接続されています。電話での入力内容。",
+	"route_set" : "ルートが設定されています"
 };

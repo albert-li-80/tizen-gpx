@@ -57,5 +57,6 @@ TIZEN_L10N=
 	"launch_gpx_sender" : "Wachten Op Telefoonverbinding. Controleer Telefoon.",
 	"connection_established" : "Bestandsoverdracht Verbinding Tot Stand Gebracht",
 	"transfer_completed" : "Bestandsoverdracht Eindigde Succesvol",
-	"phone_connected" : "Connected. Vul De Gegevens In De Telefoon."
+	"phone_connected" : "Connected. Vul De Gegevens In De Telefoon.",
+	"route_set" : "Route Is Ingesteld"
 };
