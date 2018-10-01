@@ -272,7 +272,10 @@
 		console.log('inside parseGpxXmlToData');
 		file.readAsText(function(data) { 
 			try {
-				var xmlDoc = jQuery.parseXML(data); 
+				console.log("before parse");
+				var my_data = data.trim().replace("^([\\W]+)<","<");
+				
+				var xmlDoc = jQuery.parseXML(my_data); 
 				console.log("xml data loaded"); 
 				
 	             var xml_parser = new GPXFileParser(xmlDoc);
@@ -349,10 +352,7 @@
 	        			    		document.getElementById("save_file_btn").disabled = false;
 	        			    		window.location.href = 'files.html';},	 // Alert Popup Toast
 	        			    		3000);
-	        			    	
-	                     	 
-
-	                     }, "UTF-8");
+	                     },"UTF-8");
 	                 });       
 			}
 			catch (err) {
@@ -371,7 +371,7 @@
 			    
 
 			}
-		});
+		},null,"UTF-8");
 	}
     
     function parseXMLfile(filename) {
@@ -593,12 +593,23 @@
     			
     			var appControl = new tizen.ApplicationControl('http://tizen.org/appcontrol/operation/get_input',
 //                        null, null, null, [input_type, guide_text], 'GROUP');
-    					null, null, null, [guide_text], 'GROUP');
+    					null, 'text/plain', null, [guide_text], 'GROUP');
     			
     			tizen.application.launchAppControl(appControl, null, function() {
-    			    console.log('launch application control succeed');
+    			    console.log('first time launch application control succeed');
     			}, function(e) {
-    			    console.log('launch application control failed. reason: ' + e.message);
+    			    console.log('first time failed: launch application control failed. reason: ' + e.message);
+    			    
+    			    // code to accomdate tizen 2.3.2 and 3.0
+    			    
+    			    appControl = new tizen.ApplicationControl('http://tizen.org/appcontrol/operation/get_input',
+                            null, null, null, [guide_text], null);
+    			    
+    			    tizen.application.launchAppControl(appControl, null, function() {
+        			    console.log('second time launch application control succeed');
+        			}, function(e) {
+        			    console.log('second time failed: launch application control failed. reason: ' + e.message);        			    
+        			}, nameAppControlReplyCB);
     			}, nameAppControlReplyCB);
     		});
     	}
@@ -630,12 +641,24 @@
     			var guide_text = new tizen.ApplicationControlData('http://tizen.org/appcontrol/data/input_default_text', [document.getElementById("gpx_url_input").textContent]);
     			
     			var appControl = new tizen.ApplicationControl('http://tizen.org/appcontrol/operation/get_input',
-    			                                              null, null, null, [guide_text], null);
+    			                                              null, 'text/plain', null, [guide_text], null);
     			
     			tizen.application.launchAppControl(appControl, null, function() {
-    			    console.log('launch application control succeed');
+    			    console.log('first time launch application control succeed');
     			}, function(e) {
-    			    console.log('launch application control failed. reason: ' + e.message);
+    			    console.log('first time failed: launch application control failed. reason: ' + e.message);
+    			    
+    			    // code to accomdate tizen 2.3.2 and 3.0
+    			    
+    			    appControl = new tizen.ApplicationControl('http://tizen.org/appcontrol/operation/get_input',
+                            null, null, null, [guide_text], null);
+    			    
+    			    tizen.application.launchAppControl(appControl, null, function() {
+        			    console.log('second time launch application control succeed');
+        			}, function(e) {
+        			    console.log('second time failed: launch application control failed. reason: ' + e.message);        			    
+        			}, urlAppControlReplyCB);
+    			    
     			}, urlAppControlReplyCB);
     		});
     	}

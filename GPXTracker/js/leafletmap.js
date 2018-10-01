@@ -1,6 +1,7 @@
 function leaflet_map() {
 	
 	var map;
+	var layer;
 	var landPath;
     var marker = null;
     var circle = null;
@@ -36,7 +37,7 @@ function leaflet_map() {
     function initializeMap() {
     	map = L.map('map_canvas', {zoomControl: false}).setView([22.4,114.1], 13);
     	
-    	var layer = L.tileLayer('https://tile.thunderforest.com/{id}/{z}/{x}/{y}.png?apikey={accessToken}', {
+    	layer = L.tileLayer('https://tile.thunderforest.com/{id}/{z}/{x}/{y}.png?apikey={accessToken}', {
     	    attribution: '© <a href="https://www.thunderforest.com">Thunderforest</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     	    id: localStorage.getItem("map_type"),
     	    maxZoom: 25,
@@ -283,7 +284,22 @@ function leaflet_map() {
  
         var polyline = L.polyline(routePoints, {color: 'red'}).addTo(map);
         // zoom the map to the polyline
-        map.fitBounds(polyline.getBounds());	  
+        
+        var latlng = polyline.getBounds();
+        map.fitBounds(latlng);	  
+        layer.seed(latlng, map.getZoom(), map.getZoom()+1);
+        
+    	// Display seed progress on console
+		layer.on('seedprogress', function(seedData){
+			var percent = 100 - Math.floor(seedData.remainingLength / seedData.queueLength * 100);
+			console.log('Seed queue: ' + seedData.queueLength);
+			console.log('Seed remaining: ' + seedData.remainingLength);
+			console.log('Seeding ' + percent + '% done');
+		});
+		
+		layer.on('seedend', function(seedData){
+			console.log('Cache seeding complete');
+		});
     };
         
 	function locationOnHandler() {
