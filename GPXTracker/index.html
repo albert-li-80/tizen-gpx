@@ -27,7 +27,7 @@
    <div id="selector" class="ui-selector"> 
     <div id="gpx_route" class="ui-item add-gpx-icon" data-title="Route: Not Set"></div> 
     <div id="remove_file" class="ui-item removefile-icon" data-title="Remove Route"></div> 
-    <div id="location_on" class="ui-item currentpos-icon" data-title="Show Current Position: On"></div> 
+    <div id="location_on" class="ui-item currentpos-icon" data-ftitle="Show Current Position: On"></div> 
     <div id="center_on" class="ui-item center-icon" data-title="Set Center to Current Location: On"></div> 
     <div id="follow_heading" class="ui-item orientation-icon" data-title="Map Orientation: North"></div> 
     <div id="draw_trace" class="ui-item trace-icon" data-title="Trace Current Route: On"></div> 
@@ -83,7 +83,7 @@
 		if ((!navigator.onLine) || (localStorage.getItem("map_engine") == null) || (localStorage.getItem("map_engine") == 'leaflet')) { // load leaflet
 		   		$.getScript("lib/leaflet/leaflet.js", function() {
    					$.getScript("lib/leaflet/leaflet-rotatedMarker.min.js", function() {
-   						$.getScript("lib/pouchdb-7.0.0.min.js", function() {
+   						$.getScript("lib/pouchdb-6.4.3.min.js", function() {
    						   	$.getScript("lib/L.TileLayer.PouchDBCached.min.js", function() {
 	   							$.getScript("js/leafletmap.js", function() {
    									console.log("all leaflet javascripts loaded");
