@@ -8,6 +8,19 @@
     $(document).ready(function() {
     	console.log("init: files ready");
     	
+    	if ((localStorage.getItem("receiveFilePath") !== null) && (localStorage.getItem("receiveFilePath") != '')) {
+
+    		document.getElementById("gpx_url_input").textContent = localStorage.getItem("receiveFilePath");
+    		localStorage.setItem("receiveFilePath", '');
+    		
+        	if ((localStorage.getItem("receiveRouteName") !== null) && (localStorage.getItem("receiveRouteName") != '')) {
+        		document.getElementById("route_name_input").textContent = localStorage.getItem("receiveRouteName");
+        		localStorage.setItem("receiveRouteName", '');
+        	}
+
+        	saveButtonHandler();
+    	}
+    	
     	// L10N
     	
     	for (var i = 0; i < document.querySelectorAll('[data-l10n]').length; i++) {
@@ -668,19 +681,6 @@
     			console.log("file receive box clicked");
     			window.location.href = 'filetransfer.html';
     		});
-    	}
-    	
-    	if ((localStorage.getItem("receiveFilePath") !== null) && (localStorage.getItem("receiveFilePath") != '')) {
-
-    		document.getElementById("gpx_url_input").textContent = localStorage.getItem("receiveFilePath");
-    		localStorage.setItem("receiveFilePath", '');
-    		
-        	if ((localStorage.getItem("receiveRouteName") !== null) && (localStorage.getItem("receiveRouteName") != '')) {
-        		document.getElementById("route_name_input").textContent = localStorage.getItem("receiveRouteName");
-        		localStorage.setItem("receiveRouteName", '');
-        	}
-
-        	saveButtonHandler();
     	}
 
     	/**
