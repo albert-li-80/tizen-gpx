@@ -16,10 +16,10 @@ TIZEN_L10N=
 	"direction_of_travel" : "Direction of Travel",
 	"north" : "North",
 	"trace_current_route" : "Show GPS Track",
-	"set_center" : "Set Center to Current Location",
+	"set_center" : "Display Current Position in Center",
 	"follow_route" : "Follow Route",
 	"off_track_notification" : "Off-Route Notification",
-	"map_engine" : "Map Engine",
+	"map_engine" : "Map",
 	"map_type" : "Map Type",
 	"hiking" : "Hiking",
 	"cycling" : "Biking",
@@ -58,5 +58,7 @@ TIZEN_L10N=
 	"connection_established" : "File transfer connection established",
 	"transfer_completed" : "File transfer ended successful",
 	"phone_connected" : "Connected. Input details on phone.",
-	"route_set" : "Route has been set"
+	"route_set" : "Route has been set",
+	"google_online" : "Google (Online)",
+	"leaflet_offline" : "Leaflet (Offline)"
 };

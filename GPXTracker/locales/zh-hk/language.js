@@ -19,7 +19,7 @@ TIZEN_L10N=
 	"set_center" : "以當前位置為中心",
 	"follow_route" : "追踪路線",
 	"off_track_notification" : "偏離路線通知",
-	"map_engine" : "地圖引擎",
+	"map_engine" : "地圖",
 	"map_type" : "地圖類型",
 	"hiking" : "徒步旅行",
 	"cycling" : "騎自行車",
@@ -58,5 +58,7 @@ TIZEN_L10N=
 	"connection_established" : "文件傳輸連接建立",
 	"transfer_completed" : "文件傳輸成功結束",
 	"phone_connected" : "已連接. 請在手機輸入詳細信息.",
-	"route_set" : "路線已定"
+	"route_set" : "路線已定",
+	"google_online" : "谷歌（在線）",
+	"leaflet_offline" : "Leaflet（離線）"
 };

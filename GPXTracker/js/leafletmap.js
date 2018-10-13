@@ -76,42 +76,17 @@ function leaflet_map() {
     	
     }
         
-    function onLocationFound(e) {
-    	 	   	
- 	   if (e.latlng == null)	   
- 		   return;
- 	   
- 	   if (marker != null) 
+    function updateLocation(latlng, accuracy) {
+
+  	   if (marker != null) 
  		   marker.remove();
  	   else
 		   document.getElementById("acquire_signal").innerHTML = '';
 
-	   marker = L.marker(e.latlng);
-	   	   
- 	   console.log("position changed");
- 	   console.log(e.latlng);
- 	   var latlng = {lat: e.latlng.lat, lng: e.latlng.lng};
- 	   
- 	   landPathCoordinates.push(latlng);
- 	   localStorage.setItem("lastKnownPosition", JSON.stringify(latlng));
- 	   
+	   marker = L.marker(latlng);
+	   	    	   
  	   if (localStorage.getItem("center_on") == "true")
- 		   map.setView(e.latlng, map.getZoom());
-
- 	   if ((localStorage.getItem("show_distance") == 'true') && (routePoints != null) && (routePoints.length > 0)) {
-			   var nearestPt = geolib.findNearest(latlng, routePoints, 0, 1);
-			   console.log("nearest :" + nearestPt.distance);
-			   var remaining = getRemainingDistance(nearestPt.key);
-			   
-			   tizen.preference.setValue("nearestPoint", nearestPt.distance);
-			   tizen.preference.setValue("lastUpdateTime", JSON.stringify(new Date()));	
-			   tizen.preference.setValue("distanceRemaining", remaining);
-			   
-			   var hinttext = TIZEN_L10N['distance_remaining'] + ": " + (remaining / 1000).toFixed(2) + '/' + (gpxRouteDistance / 1000).toFixed(2) + 'KM<br>';
-			   hinttext = hinttext + TIZEN_L10N['deviation'] + ": " + nearestPt.distance + 'M<p><p><p>' ;
-
-			   document.getElementById("acquire_signal").innerHTML = hinttext;
-		   }
+ 		   map.setView(latlng, map.getZoom());
  	   
 	   if (localStorage.getItem("follow_heading") == "true") {
 		   
@@ -150,11 +125,42 @@ function leaflet_map() {
 		   
 	   marker.addTo(map);
 
-	   var radius = e.accuracy / 2;
+	   var radius = accuracy / 2;
 
 	   if (circle != null) circle.remove();
-	   circle = L.circle(e.latlng, radius);
-	   circle.addTo(map);    	   
+	   circle = L.circle(latlng, radius);
+	   circle.addTo(map);    	       	
+    }
+    
+    function onLocationFound(e) {
+    	 	   	
+ 	   if (e.latlng == null)	   
+ 		   return;
+
+ 	   console.log("position changed");
+ 	   console.log(e.latlng);
+
+ 	   var latlng = {lat: e.latlng.lat, lng: e.latlng.lng};
+ 	   
+ 	   landPathCoordinates.push(latlng);
+ 	   localStorage.setItem("lastKnownPosition", JSON.stringify(latlng));
+
+ 	   if ((localStorage.getItem("show_distance") == 'true') && (routePoints != null) && (routePoints.length > 0)) {
+		   var nearestPt = geolib.findNearest(latlng, routePoints, 0, 1);
+		   console.log("nearest :" + nearestPt.distance);
+		   var remaining = getRemainingDistance(nearestPt.key);
+		   
+		   tizen.preference.setValue("nearestPoint", nearestPt.distance);
+		   tizen.preference.setValue("lastUpdateTime", JSON.stringify(new Date()));	
+		   tizen.preference.setValue("distanceRemaining", remaining);
+		   
+		   var hinttext = TIZEN_L10N['distance_remaining'] + ": " + (remaining / 1000).toFixed(2) + '/' + (gpxRouteDistance / 1000).toFixed(2) + 'KM<br>';
+		   hinttext = hinttext + TIZEN_L10N['deviation'] + ": " + nearestPt.distance + 'M<p><p><p>' ;
+
+		   document.getElementById("acquire_signal").innerHTML = hinttext;
+	   }
+
+ 	   updateLocation(latlng, e.accuracy);
     }
         		
     function traceCurrentLocation() {
@@ -370,7 +376,8 @@ function leaflet_map() {
 	return {
 		locationOnHandler : locationOnHandler,
 		followHeadingHandler : followHeadingHandler,
-		drawTraceHandler : drawTraceHandler
+		drawTraceHandler : drawTraceHandler,
+		updateLocation : updateLocation
 	}
 };
 

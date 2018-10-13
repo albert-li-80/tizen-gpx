@@ -19,7 +19,7 @@ TIZEN_L10N=
 	"set_center" : "중심으로 현재 위치",
 	"follow_route" : "경로 추적",
 	"off_track_notification" : "오프 경로 알림",
-	"map_engine" : "지도 엔진",
+	"map_engine" : "지도",
 	"map_type" : "지도 유형",
 	"hiking" : "하이킹",
 	"cycling" : "자전거 타기",
@@ -58,5 +58,7 @@ TIZEN_L10N=
 	"connection_established" : "파일 전송 연결이 설정",
 	"transfer_completed" : "파일 전송이 성공적으로 종료",
 	"phone_connected" : "연결. 전화에 상세 정보를 기입하시기 바랍니다.",
-	"route_set" : "경로가 설정되어"
+	"route_set" : "경로가 설정되어",
+	"google_online" : "구글 (온라인)",
+	"leaflet_offline" : "Leaflet (오프라인)"
 };

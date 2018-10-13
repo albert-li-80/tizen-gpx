@@ -19,7 +19,7 @@ TIZEN_L10N=
 	"set_center" : "La Posición Actual Como El Centro",
 	"follow_route" : "Trazado De Ruta",
 	"off_track_notification" : "Fuera De Ruta De Notificación",
-	"map_engine" : "Motor Mapa",
+	"map_engine" : "Mapa",
 	"map_type" : "Tipo De Mapa",
 	"hiking" : "Excursionismo",
 	"cycling" : "Ciclismo",
@@ -58,5 +58,7 @@ TIZEN_L10N=
 	"connection_established" : "Conexión De Transferencia De Archivos Establecido",
 	"transfer_completed" : "Transferencia De Archivos Finalizó Con Éxito",
 	"phone_connected" : "Conectado. Datos De Entrada En El Teléfono.",
-	"route_set" : "Ruta Se Ha Establecido"
+	"route_set" : "Ruta Se Ha Establecido",
+	"google_online" : "Google (En Línea)",
+	"leaflet_offline" : "Leaflet (Sin Conexión)"
 };

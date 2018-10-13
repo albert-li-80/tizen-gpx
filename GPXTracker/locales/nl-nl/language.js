@@ -19,7 +19,7 @@ TIZEN_L10N=
 	"set_center" : "De Huidige Positie In Het Midden",
 	"follow_route" : "Trace Route",
 	"off_track_notification" : "Off-Route Kennisgeving",
-	"map_engine" : "Kaart Engine",
+	"map_engine" : "Kaart",
 	"map_type" : "Kaartsoort",
 	"hiking" : "Wandelen",
 	"cycling" : "Fietsen",
@@ -58,5 +58,7 @@ TIZEN_L10N=
 	"connection_established" : "Bestandsoverdracht Verbinding Tot Stand Gebracht",
 	"transfer_completed" : "Bestandsoverdracht Eindigde Succesvol",
 	"phone_connected" : "Connected. Vul De Gegevens In De Telefoon.",
-	"route_set" : "Route Is Ingesteld"
+	"route_set" : "Route Is Ingesteld",
+	"google_online" : "Google (Online)",
+	"leaflet_offline" : "Leaflet (Offline)"
 };

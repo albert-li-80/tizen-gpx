@@ -19,7 +19,7 @@ TIZEN_L10N=
 	"set_center" : "Posisi Saat Ini Sebagai Pusat",
 	"follow_route" : "Rute Jejak",
 	"off_track_notification" : "Off-Rute Pemberitahuan",
-	"map_engine" : "Peta Mesin",
+	"map_engine" : "Peta",
 	"map_type" : "Jenis Peta",
 	"hiking" : "Hiking",
 	"cycling" : "Bersepeda",
@@ -58,5 +58,7 @@ TIZEN_L10N=
 	"connection_established" : "Koneksi Transfer File Didirikan",
 	"transfer_completed" : "Transfer File Berakhir Sukses",
 	"phone_connected" : "Terhubung. Masukkan Rincian Di Telepon.",
-	"route_set" : "Route Telah Ditetapkan"
+	"route_set" : "Route Telah Ditetapkan",
+	"google_online" : "Google (Online)",
+	"leaflet_offline" : "Leaflet (Offline)"
 };

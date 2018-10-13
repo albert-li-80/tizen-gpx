@@ -19,7 +19,7 @@ TIZEN_L10N=
 	"set_center" : "Aktuální Pozice Jako Centrum",
 	"follow_route" : "Traceroute",
 	"off_track_notification" : "Mimo Trasu Oznámení",
-	"map_engine" : "Map Engine",
+	"map_engine" : "Mapa",
 	"map_type" : "Na Mapě Typ Zařízení",
 	"hiking" : "Turistika",
 	"cycling" : "Jízda Na Kole",
@@ -58,5 +58,7 @@ TIZEN_L10N=
 	"connection_established" : "Navázání Spojení Přenos Souborů",
 	"transfer_completed" : "Přenos Souborů Skončila Úspěšná",
 	"phone_connected" : "Připojen. Vstupní Informace O Telefonu.",
-	"route_set" : "Trasa Byla Nastavena"
+	"route_set" : "Trasa Byla Nastavena",
+	"google_online" : "Google (Online)",
+	"leaflet_offline" : "Leaflet (Offline)"
 };

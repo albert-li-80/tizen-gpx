@@ -110,33 +110,6 @@
     	    elem.innerHTML = TIZEN_L10N[elem.getAttribute('data-l10n')];
     	}
     	
-    	// listen to file transfer request
-    	/*
-        try {
-    	    webapis.sa.requestSAAgent(function(agents) {
-    	        if(agents.length > 0) {
-    	            var SAAgent = agents[0];
-    	            console.log("inside request agent");
-    	            SAAgent.setServiceConnectionListener({
-    	                onrequest : function(peerAgent) {
-    	                	console.log("inside onrequest");
-    	                    if(peerAgent.appName == "FileTransferSender") {
-    	                    	SAAgent.rejectServiceConnectionRequest(peerAgent);
-    	                    	
-    	                    	var app = tizen.application.getCurrentApplication();
-    	                    	tizen.application.launch(app.appInfo.id);
-
-    	                    	window.location.href = "filetransfer.html";
-    	                    } else {
-    	                        SAAgent.rejectServiceConnectionRequest(peerAgent);
-    	                    }
-    	                },
-    	            });
-    	         }
-    	    });
-    	    } catch(error) {
-            console.log("FileTransferReceiver: " + error.name + "( " + error.message + " )");
-        }*/
 	};
     
 	
@@ -267,9 +240,9 @@
     		document.getElementById('off_track').setAttribute("data-title", TIZEN_L10N['off_track_notification'] + ": " + off_track + " M" );
 
     	if (map_engine == "google")
-    		document.getElementById('map_engine').setAttribute("data-title", TIZEN_L10N['map_engine'] + ": Google (Online)" );
+    		document.getElementById('map_engine').setAttribute("data-title", TIZEN_L10N['map_engine'] + ": " + TIZEN_L10N['google_online'] );
     	else if (map_engine == "leaflet")
-    		document.getElementById('map_engine').setAttribute("data-title", TIZEN_L10N['map_engine'] + ": Leaflet (Offline)" );
+    		document.getElementById('map_engine').setAttribute("data-title", TIZEN_L10N['map_engine'] + ": " + TIZEN_L10N['leaflet_offline']);
 
     	if (map_type == "cycle")
     		document.getElementById('map_type').setAttribute("data-title", TIZEN_L10N['map_type'] + ": " + TIZEN_L10N['hiking'] );
@@ -414,13 +387,13 @@
 		
 		if (localStorage.getItem("map_engine") == 'google') {
 			localStorage.setItem("map_engine", 'leaflet');
-    		document.getElementById('map_engine').setAttribute("data-title", TIZEN_L10N['map_engine'] + ": Leaflet (Offline)" );
-	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['map_engine'] + ": Leaflet (Offline)";
+    		document.getElementById('map_engine').setAttribute("data-title", TIZEN_L10N['map_engine'] +  ": " + TIZEN_L10N['leaflet_offline'] );
+	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['map_engine'] +  ": " + TIZEN_L10N['leaflet_offline'];
 			window.location.href = 'index.html';
 		} else if (localStorage.getItem("map_engine") == 'leaflet') {
 			localStorage.setItem("map_engine", 'google');
-			document.getElementById('map_engine').setAttribute("data-title", TIZEN_L10N['map_engine'] + ": Google (Online)" );
-	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['map_engine'] + ": Google (Online)";
+			document.getElementById('map_engine').setAttribute("data-title", TIZEN_L10N['map_engine'] + ": " + TIZEN_L10N['google_online'] );
+	   		elSelector.querySelector(".ui-selector-indicator-text").innerHTML = TIZEN_L10N['map_engine'] + ": " + TIZEN_L10N['google_online'];
 			window.location.href = 'index.html';
 		} 
 	}
@@ -559,7 +532,7 @@
 
 	function onchangedCB(info) {
 		
-		var lat, lng;
+		var lat, lng, acc;
 		var latlng = null;
 		
 	    console.log('gps on change: ');
@@ -571,7 +544,8 @@
 
 	    	lat = info.gpsInfo[index].latitude;
 	    	lng = info.gpsInfo[index].longitude;
-
+	    	acc = info.gpsInfo[index].errorRange;
+	    	
 	    	if (lat != 200) {
 
 	    		latlng = {lat: lat, lng: lng};
@@ -600,6 +574,11 @@
 	    		tizen.preference.setValue("distanceRemaining", remainingDist);
 	    	}
 	    }
+
+		if ((latlng != null) && (tizen.power.isScreenOn())) {			
+			if ((localStorage.getItem("map_engine") != null) && (localStorage.getItem("map_engine") == 'leaflet')) 
+	    		my_leaflet_map.updateLocation(latlng, acc);			
+		}
 		
 		if ((latlng != null) && (localStorage.getItem("off_track") != '0') && (routePoints != null) && (routePoints.length > 0)) {
 			

@@ -19,7 +19,7 @@ TIZEN_L10N=
 	"set_center" : "現在の場所にセンターを設定します",
 	"follow_route" : "ルートをたどります",
 	"off_track_notification" : "オフルート通知",
-	"map_engine" : "地図エンジン",
+	"map_engine" : "地図",
 	"map_type" : "マップタイプ",
 	"hiking" : "ハイキング",
 	"cycling" : "バイク",
@@ -58,5 +58,7 @@ TIZEN_L10N=
 	"connection_established" : "ファイル転送接続が確立します",
 	"transfer_completed" : "ファイルの転送が成功終了しました",
 	"phone_connected" : "接続されています。電話での入力内容。",
-	"route_set" : "ルートが設定されています"
+	"route_set" : "ルートが設定されています",
+	"google_online" : "グーグル（オンライン）",
+	"leaflet_offline" : "リーフレット（オフライン）"
 };

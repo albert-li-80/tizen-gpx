@@ -209,7 +209,7 @@ function google_map() {
     	console.log(elePoints100);
     	tizen.preference.setValue("GPXElePoint100", JSON.stringify(elePoints100));
     }
-    
+        
     function positionChangedHandler() {
 		   
     	   var currentPos = this.getPosition();
@@ -219,12 +219,11 @@ function google_map() {
     	   
 		   console.log("position changed");
 		   console.log(currentPos);
-		   
-		   landPathCoordinates.push(currentPos.toJSON());
-		   
-		   if (localStorage.getItem("center_on") == "true")
-			   map.setCenter(currentPos);
 
+    	   var latlng =  currentPos.toJSON();
+		   landPathCoordinates.push(currentPos.toJSON());
+		   localStorage.setItem("lastKnownPosition", JSON.stringify(currentPos.toJSON()));
+		   
 		   if ((localStorage.getItem("show_distance") == 'true') && (routePoints != null) && (routePoints.length > 0)) {
 			   var nearestPt = geolib.findNearest(currentPos.toJSON(), routePoints, 0, 1);
 			   console.log("nearest :" + nearestPt.distance);
@@ -234,6 +233,9 @@ function google_map() {
 			   
 			   document.getElementById("acquire_signal").innerHTML = hinttext;
 		   }
+
+		   if (localStorage.getItem("center_on") == "true")
+			   map.setCenter(currentPos);
 
 		   if (localStorage.getItem("follow_heading") == "true") {
 			   
@@ -270,7 +272,6 @@ function google_map() {
 			   document.getElementById("map_canvas").style.transform = "rotate(" + degree + "deg)";
 		   }	
 		   
-		   localStorage.setItem("lastKnownPosition", JSON.stringify(currentPos.toJSON()));
 
 		   if (localStorage.getItem("draw_trace") == "true") {
 			   landPath.setPath(landPathCoordinates);
