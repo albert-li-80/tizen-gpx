@@ -8,7 +8,7 @@ TIZEN_L10N=
 	"hello" : "你好",
 	"screen" : "屏幕",
 	"always_on" : "常開",
-	"normal" : "正常",
+	"normal" : "節電模式",
 	"show_current_position" : "顯示當前位置",
 	"on" : "開",
 	"off" : "關",

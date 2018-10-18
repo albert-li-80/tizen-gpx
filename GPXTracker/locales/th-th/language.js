@@ -8,7 +8,7 @@ TIZEN_L10N=
 	"hello" : "สวัสดี",
 	"screen" : "จอภาพ",
 	"always_on" : "เปิดปกติ",
-	"normal" : "ปกติ",
+	"normal" : "โหมดประหยัดแบตเตอรี่",
 	"show_current_position" : "แสดงตำแหน่งปัจจุบัน",
 	"on" : "เปิด",
 	"off" : "ปิด",

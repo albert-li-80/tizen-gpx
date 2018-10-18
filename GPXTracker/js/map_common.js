@@ -17,7 +17,7 @@
 	
 	var nextNotificationTime = tizen.time.getCurrentDateTime();
 	var gpsCallbackInterval = 10000;
-	var gpsSampleInterval = 10000;
+	var gpsSampleInterval = 5000;
 	var notificationID = null;
 
 	/* For Tracking */

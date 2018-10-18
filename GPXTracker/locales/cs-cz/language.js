@@ -8,7 +8,7 @@ TIZEN_L10N=
 	"hello" : "Ahoj",
 	"screen" : "Obrazovka",
 	"always_on" : "Normálně Otevřený",
-	"normal" : "Normální",
+	"normal" : "Režim Úspory Baterie",
 	"show_current_position" : "Ukázat Current Position",
 	"on" : "Otevřeno",
 	"off" : "Zavřít",

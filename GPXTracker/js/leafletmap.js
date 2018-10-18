@@ -76,46 +76,49 @@ function leaflet_map() {
     	
     }
         
-    function updateLocation(latlng, accuracy) {
+    function updateLocation(latlng, accuracy) {		
 
-  	   if (marker != null) 
- 		   marker.remove();
- 	   else
-		   document.getElementById("acquire_signal").innerHTML = '';
+    	if (localStorage.getItem("location_on") == 'false') {
+    		document.getElementById("acquire_signal").innerHTML = '';
+    		return;
+    	}
 
-	   marker = L.marker(latlng);
+    	if (marker != null)  
+    		marker.remove();
+    	else 
+    		document.getElementById("acquire_signal").innerHTML = '';
+  	   
+    	marker = L.marker(latlng);
 	   	    	   
- 	   if (localStorage.getItem("center_on") == "true")
- 		   map.setView(latlng, map.getZoom());
+ 	   	if (localStorage.getItem("center_on") == "true")
+ 	   		map.setView(latlng, map.getZoom());
  	   
-	   if (localStorage.getItem("follow_heading") == "true") {
+ 	   	if (localStorage.getItem("follow_heading") == "true") {
 		   
-		   var degree = 0;
-		   var heading = 0;
-		   var lastPosition;
+ 	   		var degree = 0;
+ 	   		var heading = 0;
+ 	   		var lastPosition;
 
-		   if (landPathCoordinates.length > 5)
+ 	   		if (landPathCoordinates.length > 5)
 			   lastPosition = landPathCoordinates[landPathCoordinates.length - 5];
-		   else
+ 	   		else
 			   lastPosition = landPathCoordinates[landPathCoordinates.length];
 
 		   
-		   if (lastPosition != null) {
+ 	   		if (lastPosition != null) {
 			   console.log("last position: " + lastPosition.toString());
 			   heading = geolib.getBearing(lastPosition, latlng);				   				   
 			   degree = 360 - heading;
-		   }
+ 	   		}
 	   
-		   console.log("heading: " + heading);
-		   console.log("degree: " + degree);
+ 	   		console.log("heading: " + heading);
+ 	   		console.log("degree: " + degree);
 		   
-		   marker.setRotationAngle(heading);
-		   marker.setRotationOrigin('top center');
-		   marker.setIcon(arrowIcon);
-		   document.getElementById("map_canvas").style.transform = "rotate(" + degree + "deg)";
-	   }	
-
-	   localStorage.setItem("lastKnownPosition", JSON.stringify(latlng));
+ 	   		marker.setRotationAngle(heading);
+ 	   		marker.setRotationOrigin('top center');
+ 	   		marker.setIcon(arrowIcon);
+ 	   		document.getElementById("map_canvas").style.transform = "rotate(" + degree + "deg)";
+ 	   	}	
 
 	   // Draw trace to be implemented
 	   
@@ -145,6 +148,8 @@ function leaflet_map() {
  	   landPathCoordinates.push(latlng);
  	   localStorage.setItem("lastKnownPosition", JSON.stringify(latlng));
 
+ 	   updateLocation(latlng, e.accuracy);
+
  	   if ((localStorage.getItem("show_distance") == 'true') && (routePoints != null) && (routePoints.length > 0)) {
 		   var nearestPt = geolib.findNearest(latlng, routePoints, 0, 1);
 		   console.log("nearest :" + nearestPt.distance);
@@ -159,8 +164,6 @@ function leaflet_map() {
 
 		   document.getElementById("acquire_signal").innerHTML = hinttext;
 	   }
-
- 	   updateLocation(latlng, e.accuracy);
     }
         		
     function traceCurrentLocation() {

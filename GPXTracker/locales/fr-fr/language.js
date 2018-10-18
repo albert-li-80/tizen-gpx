@@ -8,7 +8,7 @@ TIZEN_L10N=
 	"hello" : "Bonjour",
 	"screen" : "Écran",
 	"always_on" : "Normalement Ouvert",
-	"normal" : "Ordinaire",
+	"normal" : "Mode D'Économie De La Batterie",
 	"show_current_position" : "Voir Position Actuelle",
 	"on" : "Ouvert",
 	"off" : "Fermer",

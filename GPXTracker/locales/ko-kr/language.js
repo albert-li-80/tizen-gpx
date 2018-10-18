@@ -8,7 +8,7 @@ TIZEN_L10N=
 	"hello" : "여보세요",
 	"screen" : "화면",
 	"always_on" : "일반적으로 열려",
-	"normal" : "표준",
+	"normal" : "배터리 절약 모드",
 	"show_current_position" : "현재 위치보기",
 	"on" : "열린",
 	"off" : "닫은",

@@ -8,7 +8,7 @@ TIZEN_L10N=
 	"hello" : "Hola",
 	"screen" : "Pantalla",
 	"always_on" : "Normalmente Abierto",
-	"normal" : "Normal",
+	"normal" : "Modo De Ahorro De Batería",
 	"show_current_position" : "Mostrar La Posición Actual",
 	"on" : "Abierto",
 	"off" : "Cerrar",

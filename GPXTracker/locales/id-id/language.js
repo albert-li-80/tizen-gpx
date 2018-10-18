@@ -8,7 +8,7 @@ TIZEN_L10N=
 	"hello" : "Halo",
 	"screen" : "Layar",
 	"always_on" : "Biasanya Terbuka",
-	"normal" : "Normal",
+	"normal" : "Baterai Saving Mode",
 	"show_current_position" : "Tampilkan Posisi Sekarang",
 	"on" : "Terbuka",
 	"off" : "Menutup",

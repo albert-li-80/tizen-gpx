@@ -8,7 +8,7 @@ TIZEN_L10N=
 	"hello" : "Hello",
 	"screen" : "Screen",
 	"always_on" : "Always On",
-	"normal" : "Normal",
+	"normal" : "Battery Saving Mode",
 	"show_current_position" : "Show Current Position",
 	"on" : "On",
 	"off" : "Off",
