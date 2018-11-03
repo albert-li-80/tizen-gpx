@@ -5,6 +5,12 @@ function leaflet_map() {
 	var landPath;
     var marker = null;
     var circle = null;
+
+	var bluedotIcon = L.icon({
+	    iconUrl: 'lib/leaflet/images/bluedot-icon.png',
+	    iconSize: [30, 30],
+		iconAnchor: [15,15]
+	});
 	
 	var markerIcon = L.icon({
 	    iconUrl: 'lib/leaflet/images/marker-icon.png',
@@ -15,7 +21,7 @@ function leaflet_map() {
 	var arrowIcon = L.icon({
 	    iconUrl: 'lib/leaflet/images/right-arrow-icon.png',
 	    iconSize: [40, 40],
-	    iconAnchor: [20,0]
+	    iconAnchor: [20,3]
 	});
 	
     // initialize with a little help of jQuery
@@ -88,7 +94,7 @@ function leaflet_map() {
     	else 
     		document.getElementById("acquire_signal").innerHTML = '';
   	   
-    	marker = L.marker(latlng);
+    	marker = L.marker(latlng, {icon: bluedotIcon, opacity: 0.8});
 	   	    	   
  	   	if (localStorage.getItem("center_on") == "true")
  	   		map.setView(latlng, map.getZoom());
@@ -345,7 +351,7 @@ function leaflet_map() {
     		if (marker != null) {
     			marker.setRotationAngle(0);
     			marker.setRotationOrigin('top center');
-    			marker.setIcon(markerIcon);
+    			marker.setIcon(bluedotIcon);
     		}
 			document.getElementById("map_canvas").style.transform = "rotate(0deg)";
 
