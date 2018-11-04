@@ -33,8 +33,8 @@
     	var screen_on = localStorage.getItem("screen_on");
     	
     	if (screen_on == null) {
-    		localStorage.setItem("screen_on", "true");
-    		screen_on = "true";
+    		localStorage.setItem("screen_on", "false");
+    		screen_on = "false";
     	}
 
     	if (screen_on == "true") {
