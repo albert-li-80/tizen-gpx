@@ -17,7 +17,7 @@ TIZEN_L10N=
 	"north" : "Norden",
 	"trace_current_route" : "Show-Gps-Schiene",
 	"set_center" : "Die Aktuelle Position Als Das Zentrum",
-	"follow_route" : "Trace Route",
+	"follow_route" : "Berechnen Abweichung",
 	"off_track_notification" : "Off-Route-Benachrichtigung",
 	"map_engine" : "Karte",
 	"map_type" : "Kartentyp",

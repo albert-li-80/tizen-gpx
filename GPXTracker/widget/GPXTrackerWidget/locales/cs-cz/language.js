@@ -8,5 +8,5 @@ TIZEN_L10N=
 	"no_route_info" : "Ne Informace O Trase",
 	"last_updated" : "Naposledy Aktualizováno",
 	"set_route" : "Nastavena Cesta V Gpx Tracker",
-	"no_data" : "Žádná Data. Aktivovat Follow Route"
+	"no_data" : "Žádná Data. Aktivovat Vypočítat Odchylka"
 };

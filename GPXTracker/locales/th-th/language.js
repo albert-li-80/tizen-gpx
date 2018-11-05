@@ -17,7 +17,7 @@ TIZEN_L10N=
 	"north" : "ทางทิศเหนือ",
 	"trace_current_route" : "แสดงจีพีเอสติดตาม",
 	"set_center" : "ตำแหน่งปัจจุบันเป็นศูนย์กลาง",
-	"follow_route" : "ติดตามเส้นทาง",
+	"follow_route" : "คำนวณค่าเบี่ยงเบน",
 	"off_track_notification" : "ปิดเส้นทางการแจ้งเตือน",
 	"map_engine" : "แผนที่",
 	"map_type" : "ประเภทแผนที่",

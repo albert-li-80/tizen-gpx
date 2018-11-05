@@ -8,5 +8,5 @@ TIZEN_L10N=
 	"no_route_info" : "ルート情報なし",
 	"last_updated" : "最終更新",
 	"set_route" : "Gpxトラッカーにルートを設定します。",
-	"no_data" : "データなし。フォロールートを有効にします"
+	"no_data" : "データなし。計算偏差を有効にします"
 };

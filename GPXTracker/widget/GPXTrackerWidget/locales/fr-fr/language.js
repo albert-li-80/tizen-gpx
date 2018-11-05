@@ -8,5 +8,5 @@ TIZEN_L10N=
 	"no_route_info" : "Aucune Information Route",
 	"last_updated" : "Dernière Mise À Jour",
 	"set_route" : "Définir Itinéraire Gpx Tracker",
-	"no_data" : "Pas De Données. Activer Route"
+	"no_data" : "Pas De Données. Activer Calculer Déviation"
 };

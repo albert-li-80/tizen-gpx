@@ -17,7 +17,7 @@ TIZEN_L10N=
 	"north" : "북쪽",
 	"trace_current_route" : "쇼 Gps 트랙",
 	"set_center" : "중심으로 현재 위치",
-	"follow_route" : "경로 추적",
+	"follow_route" : "편차를 계산",
 	"off_track_notification" : "오프 경로 알림",
 	"map_engine" : "지도",
 	"map_type" : "지도 유형",

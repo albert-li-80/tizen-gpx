@@ -17,7 +17,7 @@ TIZEN_L10N=
 	"north" : "Severní",
 	"trace_current_route" : "Show Gps Track",
 	"set_center" : "Aktuální Pozice Jako Centrum",
-	"follow_route" : "Traceroute",
+	"follow_route" : "Vypočítat Odchylka",
 	"off_track_notification" : "Mimo Trasu Oznámení",
 	"map_engine" : "Mapa",
 	"map_type" : "Na Mapě Typ Zařízení",

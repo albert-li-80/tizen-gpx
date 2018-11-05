@@ -17,7 +17,7 @@ TIZEN_L10N=
 	"north" : "Noorden",
 	"trace_current_route" : "Toon Gps Track",
 	"set_center" : "De Huidige Positie In Het Midden",
-	"follow_route" : "Trace Route",
+	"follow_route" : "Bereken Deviation",
 	"off_track_notification" : "Off-Route Kennisgeving",
 	"map_engine" : "Kaart",
 	"map_type" : "Kaartsoort",

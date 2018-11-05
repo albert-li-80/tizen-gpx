@@ -17,7 +17,7 @@ TIZEN_L10N=
 	"north" : "Utara",
 	"trace_current_route" : "Tampilkan Gps Track",
 	"set_center" : "Posisi Saat Ini Sebagai Pusat",
-	"follow_route" : "Rute Jejak",
+	"follow_route" : "Hitung Deviasi",
 	"off_track_notification" : "Off-Rute Pemberitahuan",
 	"map_engine" : "Peta",
 	"map_type" : "Jenis Peta",

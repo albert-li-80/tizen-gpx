@@ -653,8 +653,8 @@
 	    nextNotificationTime = tizen.time.getCurrentDateTime();
 
     	var option = {
-    	    callbackInterval: gpsCallbackInterval,
-    	    sampleInterval: gpsSampleInterval
+    	    'callbackInterval': gpsCallbackInterval,
+    	    'sampleInterval': gpsSampleInterval
     	};
     	console.log("before setting HAM");
     	tizen.humanactivitymonitor.start('GPS', onchangedCB, onerrorCB, option);

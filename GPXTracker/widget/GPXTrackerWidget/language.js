@@ -8,5 +8,5 @@ TIZEN_L10N=
 	"no_route_info" : "No route Information",
 	"last_updated" : "Last updated",
 	"set_route" : "Set route in GPX Tracker",
-	"no_data" : "No data. Enable Follow Route"
+	"no_data" : "No data. Enable Calculate Deviation"
 };

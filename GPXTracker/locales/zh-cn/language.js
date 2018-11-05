@@ -17,7 +17,7 @@ TIZEN_L10N=
 	"north" : "北",
 	"trace_current_route" : "显示gps轨迹",
 	"set_center" : "以當前位置為中心",
-	"follow_route" : "追踪路線",
+	"follow_route" : "計算偏差",
 	"off_track_notification" : "偏離路線通知",
 	"map_engine" : "地图",
 	"map_type" : "地图类型",

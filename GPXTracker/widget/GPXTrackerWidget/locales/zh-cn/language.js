@@ -8,5 +8,5 @@ TIZEN_L10N=
 	"no_route_info" : "沒有路線資料",
 	"last_updated" : "最近更新时间",
 	"set_route" : "在gpx追踪器设置路径",
-	"no_data" : "没有数据。启用跟踪路线"
+	"no_data" : "没有数据。启用计算偏离"
 };

@@ -8,5 +8,5 @@ TIZEN_L10N=
 	"no_route_info" : "No Información De Ruta",
 	"last_updated" : "Última Actualización",
 	"set_route" : "Conjunto De Rutas En Gpx Rastreador",
-	"no_data" : "Sin Datos. Habilitar Siga La Ruta"
+	"no_data" : "Sin Datos. Habilitar Calcular La Desviación"
 };

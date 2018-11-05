@@ -8,5 +8,5 @@ TIZEN_L10N=
 	"no_route_info" : "어떤 경로 정보 없음",
 	"last_updated" : "최종 업데이트",
 	"set_route" : "Gpx 트래커의 설정 경로",
-	"no_data" : "데이터가 없습니다. 팔로우 경로 사용"
+	"no_data" : "데이터가 없습니다. 계산 편차를 사용"
 };
