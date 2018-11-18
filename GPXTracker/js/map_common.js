@@ -245,9 +245,9 @@
     		document.getElementById('map_engine').setAttribute("data-title", TIZEN_L10N['map_engine'] + ": " + TIZEN_L10N['leaflet_offline']);
 
     	if (map_type == "cycle")
-    		document.getElementById('map_type').setAttribute("data-title", TIZEN_L10N['map_type'] + ": " + TIZEN_L10N['hiking'] );
-    	else if (map_type == "outdoors")
     		document.getElementById('map_type').setAttribute("data-title", TIZEN_L10N['map_type'] + ": " + TIZEN_L10N['cycling'] );
+    	else if (map_type == "outdoors")
+    		document.getElementById('map_type').setAttribute("data-title", TIZEN_L10N['map_type'] + ": " + TIZEN_L10N['hiking'] );
 
 		document.getElementById('remove_file').setAttribute("data-title", TIZEN_L10N['remove_route']);
 
