@@ -125,7 +125,7 @@
              		var hinttext = distanceRemaining.toFixed(2) + ' / ' + gpxRouteDistance.toFixed(2);
               	    document.getElementById('remaining').textContent = hinttext; 
               	    
-              	    if ((oldDistanceRemaining == null) || ((oldDistanceRemaining - distanceRemaining) > (gpxRouteDistance / 100)))
+              	    if ((oldDistanceRemaining == null) || ((Math.abs((oldDistanceRemaining - distanceRemaining))) > (gpxRouteDistance / 100)))
               	    	drawElevationProfile();
               	    break;
  
@@ -208,8 +208,9 @@
     		for (var i=0; i< 100 ; i++) {
     			console.log("i: " + i + " elearray" + elearray[i]);
     			document.getElementById('s' + (i+1).toString()).style.height = elearray[i]/maxEle*100 + '%';
-    			if ((distanceRemaining!= null) && ((gpxRouteDistance - distanceRemaining) > (gpxRouteDistance / 100 * i)))
-    				document.getElementById('s' + (i+1).toString()).style.backgroundColor = "blue";
+    			if ((distanceRemaining!= null) && ((gpxRouteDistance - distanceRemaining) > (gpxRouteDistance / 100 * i))) {
+    				document.getElementById('s' + (i+1).toString()).style.backgroundColor = "blue";    				
+    			}
     		}
     		
     		oldDistanceRemaining = distanceRemaining;
