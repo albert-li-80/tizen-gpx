@@ -574,12 +574,14 @@
 	    		tizen.preference.setValue("distanceRemaining", remainingDist);
 	    	}
 	    }
-
+/*
+ * commented out to try to see if it improves battery usage
+ * 
 		if ((latlng != null) && (tizen.power.isScreenOn())) {			
 			if ((localStorage.getItem("map_engine") != null) && (localStorage.getItem("map_engine") == 'leaflet')) 
 	    		my_leaflet_map.updateLocation(latlng, acc);			
 		}
-		
+*/		
 		if ((latlng != null) && (localStorage.getItem("off_track") != '0') && (routePoints != null) && (routePoints.length > 0)) {
 			
 			var off_track = localStorage.getItem("off_track");
@@ -657,7 +659,9 @@
     	    'sampleInterval': gpsSampleInterval
     	};
     	console.log("before setting HAM");
-    	tizen.humanactivitymonitor.start('GPS', onchangedCB, onerrorCB, option);
+// commented out to see it battery usage improves
+//    	tizen.humanactivitymonitor.start('GPS', onchangedCB, onerrorCB, option);
+    	tizen.humanactivitymonitor.start('GPS', onchangedCB, onerrorCB, null);
     	console.log("after setting HAM");
     };
     

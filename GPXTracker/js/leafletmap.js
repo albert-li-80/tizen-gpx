@@ -302,7 +302,11 @@ function leaflet_map() {
         
         var latlng = polyline.getBounds();
         map.fitBounds(latlng);	  
-        layer.seed(latlng, map.getZoom(), map.getZoom()+1);
+        
+        if (map.getZoom() > 15)
+        	layer.seed(latlng, map.getZoom(), map.getZoom()+1);
+        else
+        	layer.seed(latlng, map.getZoom(), 16);
         
     	// Display seed progress on console
 		layer.on('seedprogress', function(seedData){
